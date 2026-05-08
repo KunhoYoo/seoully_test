@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#f6f8fb">
+  <meta name="theme-color" content="#ffffff">
   <meta name="description" content="Kall helps travelers make Korean phone reservations without speaking Korean.">
   <title>Kall | Korean Phone Reservations</title>
   <style>
     :root {
       color-scheme: light;
-      --bg: #f6f8fb;
+      --bg: #fff;
       --paper: #fff;
       --paper-soft: rgba(255,255,255,.92);
       --ink: #111827;
@@ -38,7 +38,7 @@
       margin: 0;
       min-height: 100vh;
       color: var(--ink);
-      background: linear-gradient(180deg, #fbfcff 0%, #f6f8fb 42%, #eef4f8 100%);
+      background: #fff;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Apple SD Gothic Neo", "Noto Sans KR", "Noto Sans JP", "Noto Sans SC", Arial, sans-serif;
       letter-spacing: 0;
     }
@@ -67,8 +67,8 @@
       gap: 12px;
       margin: calc(-12px - var(--safe-top)) -16px 12px;
       padding: calc(12px + var(--safe-top)) 16px 11px;
-      background: rgba(246,248,251,.78);
-      border-bottom: 1px solid rgba(255,255,255,.78);
+      background: #fff;
+      border-bottom: 1px solid rgba(17,24,39,.06);
       backdrop-filter: blur(18px);
     }
 
@@ -84,7 +84,7 @@
       flex: 0 0 auto;
       display: grid;
       place-items: center;
-      border-radius: 14px;
+      border-radius: 999px;
       color: #fff;
       background: linear-gradient(135deg, #1d4ed8 0%, #2563ff 58%, #1fb6a5 100%);
       box-shadow: 0 14px 26px rgba(37,99,255,.24), inset 0 1px 0 rgba(255,255,255,.42);
@@ -190,7 +190,7 @@
     }
     .btn.secondary {
       color: #1f2937;
-      background: rgba(255,255,255,.96);
+      background: #fff;
       border: 1px solid rgba(17,24,39,.08);
       box-shadow: 0 12px 28px rgba(15,23,42,.08);
     }
@@ -391,26 +391,26 @@
 
     .messenger-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 8px;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 7px;
     }
     .messenger {
-      min-height: 102px;
+      min-height: 96px;
       min-width: 0;
       display: grid;
       justify-items: center;
       align-content: center;
-      gap: 7px;
-      border-radius: 18px;
-      padding: 10px 6px;
+      gap: 6px;
+      border-radius: 17px;
+      padding: 9px 4px;
       text-align: center;
       background: #fff;
       border: 1px solid rgba(17,24,39,.06);
       box-shadow: 0 10px 24px rgba(15,23,42,.07);
     }
     .logo-box {
-      width: 38px;
-      height: 38px;
+      width: 36px;
+      height: 36px;
       display: grid;
       place-items: center;
       flex: 0 0 auto;
@@ -419,9 +419,9 @@
       border: 1px solid rgba(17,24,39,.08);
       overflow: hidden;
     }
-    .logo-box img { width: 28px; height: 28px; object-fit: contain; }
-    .messenger b { display: block; font-size: 12px; line-height: 1; font-weight: 920; }
-    .messenger span { display: block; margin-top: 5px; color: var(--muted); font-size: 10px; line-height: 1.22; font-weight: 760; }
+    .logo-box img { width: 27px; height: 27px; object-fit: contain; }
+    .messenger b { display: block; font-size: 11px; line-height: 1; font-weight: 920; }
+    .messenger span { display: block; margin-top: 5px; color: var(--muted); font-size: 9.5px; line-height: 1.22; font-weight: 760; }
 
     .book-shell { display: grid; gap: 14px; }
     .progress-card { padding: 15px; }
@@ -774,7 +774,7 @@
       box-shadow: 0 16px 36px rgba(37,99,255,.24);
     }
     .support-panel { padding: 16px; margin-top: 14px; }
-    .support-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 12px; }
+    .support-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 7px; margin-top: 12px; }
     .support-chip {
       min-height: 54px;
       display: grid;
@@ -785,10 +785,10 @@
       color: #1f2937;
       background: #f8fafc;
       border: 1px solid rgba(17,24,39,.06);
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 880;
     }
-    .support-chip img { width: 26px; height: 26px; object-fit: contain; }
+    .support-chip img { width: 25px; height: 25px; object-fit: contain; }
 
     .receipt-paper {
       position: relative;
@@ -836,7 +836,7 @@
       width: min(100%, var(--max));
       transform: translateX(-50%);
       padding: 8px 14px calc(10px + var(--safe-bottom));
-      background: linear-gradient(180deg, rgba(246,248,251,0), rgba(246,248,251,.96) 34%, #f6f8fb);
+      background: #fff;
       backdrop-filter: blur(14px);
     }
     .nav-inner {
@@ -846,7 +846,7 @@
       gap: 6px;
       padding: 7px;
       border-radius: 23px;
-      background: rgba(255,255,255,.96);
+      background: #fff;
       border: 1px solid rgba(17,24,39,.07);
       box-shadow: 0 16px 36px rgba(15,23,42,.14);
     }
@@ -867,13 +867,14 @@
 
     .language-modal {
       position: fixed;
+      min-height: 100vh;
       inset: 0;
       z-index: 100;
       display: grid;
       place-items: center;
       padding: calc(18px + var(--safe-top)) 16px calc(18px + var(--safe-bottom));
-      background: rgba(246,248,251,.90);
-      backdrop-filter: blur(22px);
+      background: #fff;
+      backdrop-filter: none;
       transition: opacity .2s ease, visibility .2s ease;
     }
     .language-modal.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
@@ -884,32 +885,30 @@
       overflow: auto;
       border-radius: 28px;
       padding: 17px;
-      background: rgba(255,255,255,.96);
+      background: #fff;
       border: 1px solid rgba(255,255,255,.88);
       box-shadow: 0 30px 78px rgba(15,23,42,.18);
     }
     .language-visual {
-      height: 112px;
+      width: min(100%, 316px);
+      height: 106px;
       display: grid;
       place-items: center;
-      margin: 14px 0 12px;
-      border-radius: 22px;
-      color: #fff;
-      background: linear-gradient(135deg, #1d4ed8 0%, #2563ff 58%, #1fb6a5 100%);
-      box-shadow: var(--shadow-soft);
+      margin: 14px auto 12px;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid rgba(17,24,39,.055);
+      box-shadow: 0 16px 34px rgba(15,23,42,.08);
       overflow: hidden;
+      padding: 0 24px;
     }
-    .language-visual .language-logo {
-      width: 66px;
-      height: 66px;
-      display: grid;
-      place-items: center;
-      border-radius: 22px;
-      background: rgba(255,255,255,.18);
-      border: 1px solid rgba(255,255,255,.22);
-      font-size: 34px;
-      font-weight: 950;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.32);
+    .language-hero-logo {
+      width: 100%;
+      max-width: 252px;
+      max-height: 68px;
+      object-fit: contain;
+      display: block;
+      filter: brightness(1.08) contrast(1.08) saturate(1.06);
     }
     .language-copy { display: grid; gap: 5px; text-align: center; }
     .language-copy h2 { font-size: 22px; }
@@ -986,20 +985,9 @@
       .phone-scene { min-height: 312px; }
       .screen { min-height: 274px; }
       .choice-grid, .pay-methods { grid-template-columns: 1fr; }
-      .messenger-grid, .support-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-      .messenger {
-      min-height: 102px;
-      min-width: 0;
-      display: grid;
-      justify-items: center;
-      align-content: center;
-      gap: 7px;
-      border-radius: 18px;
-      padding: 10px 6px;
-      text-align: center;
-      background: #fff;
-      border: 1px solid rgba(17,24,39,.06);
-      box-shadow: 0 10px 24px rgba(15,23,42,.07);
+      .messenger-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .support-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .messenger { min-height: 92px; }
     }
 
     @media (min-width: 430px) {
@@ -1011,12 +999,8 @@
       .app { padding-left: 24px; padding-right: 24px; }
       .topbar { margin-left: -24px; margin-right: -24px; padding-left: 24px; padding-right: 24px; }
       .hero { display: grid; grid-template-columns: 1fr minmax(280px, 334px); align-items: center; gap: 22px; }
-      .messenger-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 8px;
+      .messenger-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
     }
-
     @media (min-width: 920px) {
       body { display: grid; justify-items: center; }
       :root { --max: 720px; }
@@ -1025,7 +1009,7 @@
         margin-bottom: 26px;
         min-height: calc(100vh - 52px);
         border-radius: 38px;
-        background: rgba(246,248,251,.94);
+        background: #fff;
         box-shadow: 0 0 0 1px rgba(17,24,39,.06), 0 32px 80px rgba(15,23,42,.13);
       }
       .bottom-nav { border-radius: 0 0 38px 38px; }
@@ -1053,7 +1037,7 @@
         </div>
       </div>
       <div class="language-visual" aria-hidden="true">
-        <div class="language-logo">K</div>
+        <img class="language-hero-logo" src="./logo.png" alt="">
       </div>
       <div class="language-copy">
         <h2 id="languageTitle" data-i18n="languageTitle">Choose language</h2>
@@ -1163,6 +1147,7 @@
         <div class="section-head"><div><div class="kicker" data-i18n="messengerKicker">Messenger updates</div><h2 data-i18n="messengerTitle">Receive updates where you already chat.</h2></div></div>
         <div class="messenger-grid">
           <div class="messenger"><div class="logo-box"><img alt="WhatsApp logo" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/WhatsApp.svg"></div><div><b>WhatsApp</b><span data-i18n="waDesc">Global updates</span></div></div>
+          <div class="messenger"><div class="logo-box"><img alt="WeChat logo" src="https://static.cdnlogo.com/logos/w/79/wechat.svg"></div><div><b>WeChat</b><span data-i18n="wechatDesc">China updates</span></div></div>
           <div class="messenger"><div class="logo-box"><img alt="LINE logo" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/LINE_logo.svg"></div><div><b>LINE</b><span data-i18n="lineDesc">Japan and Taiwan</span></div></div>
           <div class="messenger"><div class="logo-box"><img alt="KakaoTalk logo" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/KakaoTalk_logo.svg"></div><div><b>KakaoTalk</b><span data-i18n="kakaoDesc">Useful in Korea</span></div></div>
         </div>
@@ -1263,7 +1248,7 @@
                 </div>
 
                 <div class="two-col">
-                  <div class="field"><label for="messenger" data-i18n="messengerLabel">Messenger</label><select id="messenger" name="messenger" data-required><option>WhatsApp</option><option>LINE</option><option>KakaoTalk</option></select><span class="field-help" data-i18n="requiredHelp">Required</span></div>
+                  <div class="field"><label for="messenger" data-i18n="messengerLabel">Messenger</label><select id="messenger" name="messenger" data-required><option>WhatsApp</option><option>WeChat</option><option>LINE</option><option>KakaoTalk</option></select><span class="field-help" data-i18n="requiredHelp">Required</span></div>
                   <div class="field"><label for="messengerId" data-i18n="messengerIdLabel">Messenger ID or number</label><input id="messengerId" name="messengerId" placeholder="+1 555 ..." data-required><span class="field-help" data-i18n="requiredHelp">Required</span></div>
                 </div>
 
@@ -1385,9 +1370,10 @@
           </div>
           <div class="glass support-panel">
             <h3 data-i18n="supportTitle">Want to change something?</h3>
-            <p class="copy" data-i18n="supportCopy">If you change your mind within 10 minutes after payment, contact support through WhatsApp, LINE, or KakaoTalk.</p>
+            <p class="copy" data-i18n="supportCopy">If you change your mind within 10 minutes after payment, contact support through WhatsApp, WeChat, LINE, or KakaoTalk.</p>
             <div class="support-grid">
               <a class="support-chip" href="https://wa.me/" target="_blank" rel="noreferrer"><img alt="WhatsApp logo" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/WhatsApp.svg"><span>WhatsApp</span></a>
+              <a class="support-chip" href="https://www.wechat.com/" target="_blank" rel="noreferrer"><img alt="WeChat logo" src="https://static.cdnlogo.com/logos/w/79/wechat.svg"><span>WeChat</span></a>
               <a class="support-chip" href="https://line.me/" target="_blank" rel="noreferrer"><img alt="LINE logo" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/LINE_logo.svg"><span>LINE</span></a>
               <a class="support-chip" href="https://www.kakaocorp.com/page/service/service/KakaoTalk" target="_blank" rel="noreferrer"><img alt="KakaoTalk logo" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/KakaoTalk_logo.svg"><span>KakaoTalk</span></a>
             </div>
@@ -1477,7 +1463,7 @@
         step2Title: "Add required details", step2Desc: "Dates cannot be in the past, and required fields block the next step.",
         step3Title: "Pay and track", step3Desc: "Get a booking number, request popup, and paper-style receipt.",
         messengerKicker: "Messenger updates", messengerTitle: "Receive updates where you already chat.",
-        waDesc: "Global updates", lineDesc: "Japan and Taiwan", kakaoDesc: "Useful in Korea",
+        waDesc: "Global updates", wechatDesc: "China updates", lineDesc: "Japan and Taiwan", kakaoDesc: "Useful in Korea",
         bookKicker: "Reservation request", bookTitle: "Plan first, then details.", bookCopy: "Required fields must be complete before the next step.",
         sumPlan: "Plan", sumType: "Type", sumPlace: "Place", sumTime: "Time", paymentSummaryTotal: "Total",
         stepPlanTitle: "Choose plan and service type", stepPlanCopy: "Prices are shown in your selected language's currency.",
@@ -1497,7 +1483,7 @@
         statusReceived: "Received", copyBookingNo: "Copy booking number", viewReceipt: "View receipt",
         tlRequest: "Request submitted", tlRequestSub: "Tap to review submitted details", tlPayment: "Payment completed",
         tlQueue: "Waiting for call", tlQueueSub: "Kall will call during Korean business hours", tlResult: "Result update", tlResultSub: "Confirmed, full, no answer, or backup needed", soon: "Soon", next: "Next",
-        supportTitle: "Want to change something?", supportCopy: "If you change your mind within 10 minutes after payment, contact support through WhatsApp, LINE, or KakaoTalk.",
+        supportTitle: "Want to change something?", supportCopy: "If you change your mind within 10 minutes after payment, contact support through WhatsApp, WeChat, LINE, or KakaoTalk.",
         navIntro: "Intro", navBook: "Book", navStatus: "Status", paymentTitle: "Complete payment", paymentSummaryPlan: "Plan", paymentSummaryPlace: "Place",
         policy1: "I understand Kall provides call support, not a guaranteed reservation.", policy2: "Please ask me before confirming any deposit, cancellation fee, or major change.",
         payNow: "Pay and get booking number", requiredHelp: "Required", dateHelp: "Choose today or a future date.",
@@ -1527,7 +1513,7 @@
         step2Title: "필수 정보 입력", step2Desc: "과거 날짜는 선택할 수 없고 필수값이 비면 다음 단계로 갈 수 없습니다.",
         step3Title: "결제 및 조회", step3Desc: "예약 번호, 접수 팝업, 종이 영수증 팝업을 확인하세요.",
         messengerKicker: "메신저 알림", messengerTitle: "자주 쓰는 메신저로 진행 상황을 받아보세요.",
-        waDesc: "글로벌 업데이트", lineDesc: "일본/대만 여행자", kakaoDesc: "한국 체류에 편리",
+        waDesc: "글로벌 업데이트", wechatDesc: "중국 여행자", lineDesc: "일본/대만 여행자", kakaoDesc: "한국 체류에 편리",
         bookKicker: "예약 요청", bookTitle: "가격 먼저, 그다음 정보.", bookCopy: "필수 입력이 완료되어야 다음 단계로 넘어갑니다.",
         sumPlan: "플랜", sumType: "유형", sumPlace: "장소", sumTime: "시간", paymentSummaryTotal: "총액",
         stepPlanTitle: "플랜과 서비스 유형 선택", stepPlanCopy: "선택한 언어 기준 통화로 가격이 표시됩니다.",
@@ -1547,7 +1533,7 @@
         statusReceived: "접수 완료", copyBookingNo: "예약 번호 복사", viewReceipt: "영수증 보기",
         tlRequest: "요청 접수", tlRequestSub: "누르면 접수 정보를 확인합니다", tlPayment: "결제 완료",
         tlQueue: "전화 대기 중", tlQueueSub: "한국 영업시간에 맞춰 Kall이 전화합니다", tlResult: "결과 업데이트", tlResultSub: "확정, 만석, 미연결, 차선 필요 여부 안내", soon: "곧 진행", next: "다음",
-        supportTitle: "내용을 바꾸고 싶나요?", supportCopy: "결제 후 10분 이내 변심이 생기면 WhatsApp, LINE, KakaoTalk으로 문의센터에 연결하세요.",
+        supportTitle: "내용을 바꾸고 싶나요?", supportCopy: "결제 후 10분 이내 변심이 생기면 WhatsApp, WeChat, LINE, KakaoTalk으로 문의센터에 연결하세요.",
         navIntro: "소개", navBook: "예약", navStatus: "조회", paymentTitle: "결제 완료하기", paymentSummaryPlan: "플랜", paymentSummaryPlace: "장소",
         policy1: "Kall은 전화 지원 서비스이며 예약 성공을 보장하지 않는다는 점을 이해했습니다.", policy2: "예약금, 취소 수수료, 큰 변경은 확정 전 먼저 확인해 주세요.",
         payNow: "결제하고 예약 번호 받기", requiredHelp: "필수 입력", dateHelp: "오늘 또는 이후 날짜를 선택하세요.",
@@ -1577,7 +1563,7 @@
         step2Title: "必須情報を入力", step2Desc: "過去の日付は選択できず、必須項目が未入力なら進めません。",
         step3Title: "支払いと確認", step3Desc: "予約番号、受付ポップアップ、紙風の領収書を確認。",
         messengerKicker: "メッセンジャー通知", messengerTitle: "普段使うメッセンジャーで更新を受信。",
-        waDesc: "グローバル更新", lineDesc: "日本・台湾向け", kakaoDesc: "韓国滞在に便利",
+        waDesc: "グローバル更新", wechatDesc: "中国向け", lineDesc: "日本・台湾向け", kakaoDesc: "韓国滞在に便利",
         bookKicker: "予約依頼", bookTitle: "料金を先に、詳細は後で。", bookCopy: "必須項目を完了すると次へ進めます。",
         sumPlan: "プラン", sumType: "種類", sumPlace: "場所", sumTime: "時間", paymentSummaryTotal: "合計",
         stepPlanTitle: "プランとサービス種類を選択", stepPlanCopy: "選択した言語の通貨で料金を表示します。",
@@ -1597,7 +1583,7 @@
         statusReceived: "受付済み", copyBookingNo: "番号をコピー", viewReceipt: "領収書を見る",
         tlRequest: "依頼受付", tlRequestSub: "タップして受付内容を確認", tlPayment: "支払い完了",
         tlQueue: "電話待ち", tlQueueSub: "韓国の営業時間にKallが電話します", tlResult: "結果更新", tlResultSub: "確定、満席、不通、予備案内など", soon: "まもなく", next: "次",
-        supportTitle: "内容を変更しますか？", supportCopy: "支払い後10分以内なら、WhatsApp、LINE、KakaoTalkからサポートへ連絡できます。",
+        supportTitle: "内容を変更しますか？", supportCopy: "支払い後10分以内なら、WhatsApp、WeChat、LINE、KakaoTalkからサポートへ連絡できます。",
         navIntro: "紹介", navBook: "予約", navStatus: "状況", paymentTitle: "支払い完了", paymentSummaryPlan: "プラン", paymentSummaryPlace: "場所",
         policy1: "Kallは電話サポートであり、予約成功を保証しないことを理解しました。", policy2: "予約金、キャンセル料、大きな変更は確定前に確認してください。",
         payNow: "支払い、予約番号を取得", requiredHelp: "必須", dateHelp: "今日以降の日付を選択してください。",
@@ -1627,7 +1613,7 @@
         step2Title: "填写必填信息", step2Desc: "不能选择过去日期，必填项未完成不能进入下一步。",
         step3Title: "付款并查询", step3Desc: "获取预约编号，查看请求弹窗和纸质收据样式。",
         messengerKicker: "聊天软件更新", messengerTitle: "在常用聊天软件接收进度。",
-        waDesc: "全球更新", lineDesc: "日本和台湾", kakaoDesc: "在韩国很方便",
+        waDesc: "全球更新", wechatDesc: "中国旅客", lineDesc: "日本和台湾", kakaoDesc: "在韩国很方便",
         bookKicker: "预约请求", bookTitle: "先选价格，再填详情。", bookCopy: "必填项完成后才能进入下一步。",
         sumPlan: "套餐", sumType: "类型", sumPlace: "地点", sumTime: "时间", paymentSummaryTotal: "总计",
         stepPlanTitle: "选择套餐和服务类型", stepPlanCopy: "价格会按所选语言显示对应货币。",
@@ -1647,7 +1633,7 @@
         statusReceived: "已接收", copyBookingNo: "复制预约编号", viewReceipt: "查看收据",
         tlRequest: "请求已接收", tlRequestSub: "点击查看提交信息", tlPayment: "付款完成",
         tlQueue: "等待拨打电话", tlQueueSub: "Kall 会在韩国营业时间联系商家", tlResult: "结果更新", tlResultSub: "确认、满位、无人接听或需要备用方案", soon: "即将", next: "下一步",
-        supportTitle: "想修改内容吗？", supportCopy: "付款后10分钟内如改变想法，可通过 WhatsApp、LINE 或 KakaoTalk 联系客服。",
+        supportTitle: "想修改内容吗？", supportCopy: "付款后10分钟内如改变想法，可通过 WhatsApp、WeChat、LINE 或 KakaoTalk 联系客服。",
         navIntro: "介绍", navBook: "预约", navStatus: "状态", paymentTitle: "完成付款", paymentSummaryPlan: "套餐", paymentSummaryPlace: "地点",
         policy1: "我了解 Kall 提供电话沟通支持，但不保证一定预约成功。", policy2: "如有订金、取消费或重大变更，请在确认前先联系我。",
         payNow: "付款并获取预约编号", requiredHelp: "必填", dateHelp: "请选择今天或未来日期。",
@@ -1677,7 +1663,7 @@
         step2Title: "Ajouter les détails requis", step2Desc: "Les dates passées sont bloquées et les champs requis bloquent l'étape suivante.",
         step3Title: "Payer et suivre", step3Desc: "Recevez un numéro, une popup de demande et un reçu papier.",
         messengerKicker: "Notifications", messengerTitle: "Recevez les mises à jour dans votre messagerie.",
-        waDesc: "Mises à jour globales", lineDesc: "Japon et Taïwan", kakaoDesc: "Pratique en Corée",
+        waDesc: "Mises à jour globales", wechatDesc: "Voyageurs chinois", lineDesc: "Japon et Taïwan", kakaoDesc: "Pratique en Corée",
         bookKicker: "Demande", bookTitle: "Le prix d'abord, les détails ensuite.", bookCopy: "Les champs requis doivent être complétés avant l'étape suivante.",
         sumPlan: "Formule", sumType: "Type", sumPlace: "Lieu", sumTime: "Heure", paymentSummaryTotal: "Total",
         stepPlanTitle: "Choisir formule et type de service", stepPlanCopy: "Les prix s'affichent dans la devise de votre langue.",
@@ -1697,7 +1683,7 @@
         statusReceived: "Reçue", copyBookingNo: "Copier le numéro", viewReceipt: "Voir le reçu",
         tlRequest: "Demande envoyée", tlRequestSub: "Touchez pour revoir les détails", tlPayment: "Paiement terminé",
         tlQueue: "En attente d'appel", tlQueueSub: "Kall appellera pendant les horaires d'ouverture en Corée", tlResult: "Mise à jour du résultat", tlResultSub: "Confirmé, complet, sans réponse ou secours requis", soon: "Bientôt", next: "Suivant",
-        supportTitle: "Envie de modifier ?", supportCopy: "Si vous changez d'avis dans les 10 minutes après paiement, contactez le support via WhatsApp, LINE ou KakaoTalk.",
+        supportTitle: "Envie de modifier ?", supportCopy: "Si vous changez d'avis dans les 10 minutes après paiement, contactez le support via WhatsApp, WeChat, LINE ou KakaoTalk.",
         navIntro: "Intro", navBook: "Réserver", navStatus: "Statut", paymentTitle: "Finaliser le paiement", paymentSummaryPlan: "Formule", paymentSummaryPlace: "Lieu",
         policy1: "Je comprends que Kall fournit une aide par téléphone, sans garantir la réservation.", policy2: "Veuillez me demander avant de confirmer un acompte, des frais d'annulation ou un changement important.",
         payNow: "Payer et recevoir le numéro", requiredHelp: "Requis", dateHelp: "Choisissez aujourd'hui ou une date future.",
