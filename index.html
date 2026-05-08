@@ -3,29 +3,30 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#f7f9fc">
-  <meta name="description" content="Seoully helps travelers make Korean phone reservations without speaking Korean.">
-  <title>Seoully | Korean Phone Reservations</title>
+  <meta name="theme-color" content="#f6f8fb">
+  <meta name="description" content="Kall helps travelers make Korean phone reservations without speaking Korean.">
+  <title>Kall | Korean Phone Reservations</title>
   <style>
     :root {
       color-scheme: light;
-      --bg: #f7f9fc;
+      --bg: #f6f8fb;
       --paper: #fff;
-      --paper-soft: rgba(255,255,255,.88);
-      --ink: #101827;
+      --paper-soft: rgba(255,255,255,.92);
+      --ink: #111827;
       --ink-2: #334155;
-      --muted: #7b879a;
-      --line: rgba(20,28,44,.08);
+      --muted: #7b8796;
+      --line: rgba(17,24,39,.09);
       --blue: #2563ff;
-      --blue-2: #1554f5;
-      --blue-soft: #e9f0ff;
-      --green: #11c879;
-      --orange: #ff8a3d;
-      --pink: #ff6b9d;
-      --violet: #7657ff;
-      --yellow: #ffd54a;
-      --shadow: 0 22px 60px rgba(17,31,64,.14);
-      --shadow-soft: 0 12px 32px rgba(17,31,64,.10);
+      --blue-2: #174bd7;
+      --blue-soft: #eaf1ff;
+      --green: #13b981;
+      --orange: #f97316;
+      --pink: #ec4899;
+      --violet: #7c3aed;
+      --yellow: #f7c948;
+      --red: #ef4444;
+      --shadow: 0 24px 60px rgba(15,23,42,.14);
+      --shadow-soft: 0 12px 30px rgba(15,23,42,.09);
       --max: 560px;
       --safe-top: env(safe-area-inset-top, 0px);
       --safe-bottom: env(safe-area-inset-bottom, 0px);
@@ -36,27 +37,24 @@
     body {
       margin: 0;
       min-height: 100vh;
+      color: var(--ink);
+      background: linear-gradient(180deg, #fbfcff 0%, #f6f8fb 42%, #eef4f8 100%);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Apple SD Gothic Neo", "Noto Sans KR", "Noto Sans JP", "Noto Sans SC", Arial, sans-serif;
       letter-spacing: 0;
-      color: var(--ink);
-      background:
-        radial-gradient(circle at 16% -6%, rgba(37,99,255,.16), transparent 32%),
-        radial-gradient(circle at 92% 0%, rgba(17,200,121,.12), transparent 28%),
-        linear-gradient(180deg, #fbfcff 0%, #f6f9fd 46%, #eef4fa 100%);
     }
     body.locked { overflow: hidden; }
 
     a { color: inherit; text-decoration: none; }
     button, input, textarea, select { font: inherit; }
     button { border: 0; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+    img, svg { display: block; }
 
     .app {
       width: min(100%, var(--max));
       min-height: 100vh;
       margin: 0 auto;
-      padding: calc(12px + var(--safe-top)) 16px calc(96px + var(--safe-bottom));
+      padding: calc(12px + var(--safe-top)) 16px calc(98px + var(--safe-bottom));
       position: relative;
-      overflow: hidden;
     }
 
     .topbar {
@@ -69,8 +67,8 @@
       gap: 12px;
       margin: calc(-12px - var(--safe-top)) -16px 12px;
       padding: calc(12px + var(--safe-top)) 16px 11px;
-      background: rgba(247,249,252,.78);
-      border-bottom: 1px solid rgba(255,255,255,.72);
+      background: rgba(246,248,251,.78);
+      border-bottom: 1px solid rgba(255,255,255,.78);
       backdrop-filter: blur(18px);
     }
 
@@ -83,17 +81,18 @@
     .brand-logo {
       width: 40px;
       height: 40px;
-      border-radius: 16px;
+      flex: 0 0 auto;
       display: grid;
       place-items: center;
+      border-radius: 14px;
       color: #fff;
-      background: linear-gradient(135deg, #2f78ff 0%, #1554f5 55%, #63cdff 100%);
-      box-shadow: 0 14px 26px rgba(37,99,255,.28), inset 0 1px 0 rgba(255,255,255,.42);
-      flex: 0 0 auto;
+      background: linear-gradient(135deg, #1d4ed8 0%, #2563ff 58%, #1fb6a5 100%);
+      box-shadow: 0 14px 26px rgba(37,99,255,.24), inset 0 1px 0 rgba(255,255,255,.42);
+      font-size: 21px;
+      font-weight: 950;
     }
-    .brand-logo svg { width: 23px; height: 23px; display: block; }
     .brand-copy { display: grid; gap: 2px; min-width: 0; }
-    .brand-name { font-size: 17px; line-height: 1; font-weight: 950; }
+    .brand-name { font-size: 18px; line-height: 1; font-weight: 950; }
     .brand-sub {
       color: var(--muted);
       font-size: 11px;
@@ -107,18 +106,18 @@
     .icon-btn {
       width: 44px;
       height: 44px;
-      border-radius: 17px;
       display: grid;
       place-items: center;
+      border-radius: 16px;
       color: #0f172a;
       background: rgba(255,255,255,.95);
-      border: 1px solid rgba(20,28,44,.06);
-      box-shadow: 0 10px 24px rgba(17,31,64,.08);
+      border: 1px solid rgba(17,24,39,.07);
+      box-shadow: 0 10px 24px rgba(15,23,42,.08);
       position: relative;
       transition: transform .18s ease;
     }
-    .icon-btn:active, .btn:active, .nav-btn:active, .choice:active, .pay-method:active { transform: translateY(1px) scale(.99); }
-    .lang-icon { width: 31px; height: 31px; display: block; }
+    .icon-btn:active, .btn:active, .nav-btn:active, .choice:active, .pay-method:active, .timeline-item:active { transform: translateY(1px) scale(.99); }
+    .lang-icon { width: 23px; height: 23px; }
     .lang-code {
       position: absolute;
       right: -2px;
@@ -140,50 +139,22 @@
     .view.active { display: block; }
     @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-    .eyebrow {
-      width: fit-content;
-      max-width: 100%;
-      min-height: 34px;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin: 4px 0 15px;
-      padding: 0 12px;
-      border-radius: 999px;
-      color: #1f58da;
-      background: rgba(37,99,255,.10);
-      font-size: 12px;
-      font-weight: 900;
-    }
-    .live-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--green);
-      box-shadow: 0 0 0 6px rgba(17,200,121,.14);
-    }
-
     h1, h2, h3 { margin: 0; letter-spacing: 0; }
-    h1 {
-      color: #101827;
-      font-size: 42px;
-      line-height: 1.04;
-      font-weight: 950;
-    }
-    h2 { font-size: 25px; line-height: 1.18; font-weight: 940; }
-    h3 { font-size: 17px; line-height: 1.2; font-weight: 930; }
+    h1 { color: var(--ink); font-size: 40px; line-height: 1.04; font-weight: 950; }
+    h2 { color: var(--ink); font-size: 25px; line-height: 1.18; font-weight: 940; }
+    h3 { color: var(--ink); font-size: 17px; line-height: 1.2; font-weight: 930; }
     .lead {
-      margin: 15px 0 20px;
+      margin: 14px 0 20px;
       color: var(--ink-2);
-      font-size: 16px;
-      line-height: 1.6;
+      font-size: 15px;
+      line-height: 1.58;
       font-weight: 650;
     }
     .copy {
-      margin: 9px 0 0;
+      margin: 8px 0 0;
       color: var(--ink-2);
-      font-size: 14px;
-      line-height: 1.6;
+      font-size: 13px;
+      line-height: 1.55;
       font-weight: 650;
     }
     .kicker {
@@ -193,81 +164,77 @@
       font-weight: 930;
     }
 
-    .hero { padding: 14px 0 2px; }
+    .hero { padding: 12px 0 0; }
     .hero-actions {
       display: grid;
       grid-template-columns: 1fr;
       gap: 10px;
-      margin: 18px 0 22px;
+      margin: 18px 0 20px;
     }
     .btn {
-      min-height: 56px;
-      border-radius: 17px;
+      width: 100%;
+      min-height: 54px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 9px;
       padding: 0 18px;
+      border-radius: 16px;
       color: #fff;
-      background: linear-gradient(180deg, #3375ff 0%, #1c55f4 100%);
-      box-shadow: 0 16px 34px rgba(37,99,255,.34), inset 0 1px 0 rgba(255,255,255,.28);
-      font-size: 16px;
+      background: linear-gradient(180deg, #3375ff 0%, #1d55ef 100%);
+      box-shadow: 0 16px 34px rgba(37,99,255,.30), inset 0 1px 0 rgba(255,255,255,.28);
+      font-size: 15px;
       line-height: 1.2;
       font-weight: 920;
       transition: transform .18s ease, box-shadow .18s ease;
     }
     .btn.secondary {
       color: #1f2937;
-      background: rgba(255,255,255,.94);
-      border: 1px solid rgba(20,28,44,.07);
-      box-shadow: 0 12px 28px rgba(17,31,64,.08);
+      background: rgba(255,255,255,.96);
+      border: 1px solid rgba(17,24,39,.08);
+      box-shadow: 0 12px 28px rgba(15,23,42,.08);
     }
     .btn.dark {
-      background: linear-gradient(180deg, #222a37 0%, #101827 100%);
-      box-shadow: 0 16px 34px rgba(16,24,39,.24);
+      background: linear-gradient(180deg, #202938 0%, #111827 100%);
+      box-shadow: 0 16px 34px rgba(17,24,39,.24);
     }
-    .btn.small { min-height: 44px; border-radius: 15px; padding: 0 14px; font-size: 13px; }
-    .icon { width: 21px; height: 21px; display: block; flex: 0 0 auto; }
+    .btn.small { min-height: 44px; border-radius: 14px; padding: 0 13px; font-size: 13px; }
+    .btn:disabled { opacity: .5; cursor: not-allowed; box-shadow: none; }
+    .icon { width: 21px; height: 21px; flex: 0 0 auto; }
 
     .phone-scene {
-      min-height: 350px;
+      min-height: 330px;
       display: grid;
       place-items: center;
       position: relative;
       perspective: 1200px;
-      margin: 2px -4px 12px;
+      margin: 2px -2px 4px;
     }
     .phone {
-      width: min(100%, 326px);
-      min-height: 328px;
-      border-radius: 42px;
-      padding: 14px;
-      background: linear-gradient(145deg, rgba(255,255,255,.96), rgba(226,237,255,.92));
-      border: 1px solid rgba(255,255,255,.9);
-      box-shadow: 0 38px 78px rgba(37,99,255,.18), 0 18px 44px rgba(15,25,50,.16), inset 0 1px 0 rgba(255,255,255,.9);
-      transform: rotateX(10deg) rotateY(-10deg) rotateZ(1deg);
+      width: min(100%, 324px);
+      min-height: 316px;
+      border-radius: 39px;
+      padding: 13px;
+      background: linear-gradient(145deg, rgba(255,255,255,.98), rgba(230,238,250,.94));
+      border: 1px solid rgba(255,255,255,.92);
+      box-shadow: 0 34px 70px rgba(37,99,255,.16), 0 18px 42px rgba(15,23,42,.14), inset 0 1px 0 rgba(255,255,255,.9);
+      transform: rotateX(9deg) rotateY(-8deg) rotateZ(1deg);
       transform-style: preserve-3d;
       animation: floatPhone 5s ease-in-out infinite;
     }
     @keyframes floatPhone {
-      0%,100% { transform: rotateX(10deg) rotateY(-10deg) rotateZ(1deg) translateY(0); }
-      50% { transform: rotateX(8deg) rotateY(-7deg) rotateZ(-1deg) translateY(-9px); }
+      0%,100% { transform: rotateX(9deg) rotateY(-8deg) rotateZ(1deg) translateY(0); }
+      50% { transform: rotateX(7deg) rotateY(-6deg) rotateZ(-1deg) translateY(-8px); }
     }
     .screen {
-      min-height: 300px;
-      border-radius: 31px;
-      padding: 17px;
+      min-height: 290px;
+      border-radius: 29px;
+      padding: 16px;
       overflow: hidden;
-      background: radial-gradient(circle at 14% 0%, rgba(37,99,255,.16), transparent 34%), linear-gradient(180deg, #fff 0%, #f8fbff 100%);
-      box-shadow: inset 0 0 0 1px rgba(20,28,44,.05);
+      background: linear-gradient(180deg, #fff 0%, #f7fbff 100%);
+      box-shadow: inset 0 0 0 1px rgba(17,24,39,.05);
     }
-    .screen-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      margin-bottom: 13px;
-    }
+    .screen-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 13px; }
     .screen-head b { font-size: 13px; font-weight: 920; }
     .screen-badge {
       min-height: 28px;
@@ -276,16 +243,16 @@
       border-radius: 999px;
       padding: 0 9px;
       color: #05704a;
-      background: rgba(17,200,121,.12);
+      background: rgba(19,185,129,.12);
       font-size: 11px;
       font-weight: 930;
       white-space: nowrap;
     }
     .mini-card {
-      border-radius: 23px;
-      padding: 16px;
+      border-radius: 22px;
+      padding: 15px;
       background: #fff;
-      border: 1px solid rgba(20,28,44,.05);
+      border: 1px solid rgba(17,24,39,.06);
       box-shadow: var(--shadow-soft);
     }
     .mini-card h3 { font-size: 20px; line-height: 1.15; }
@@ -318,22 +285,22 @@
       gap: 8px;
       padding: 9px 11px;
       border-radius: 999px;
-      background: rgba(255,255,255,.94);
-      border: 1px solid rgba(255,255,255,.8);
-      box-shadow: 0 14px 32px rgba(17,31,64,.14);
+      background: rgba(255,255,255,.95);
+      border: 1px solid rgba(255,255,255,.85);
+      box-shadow: 0 14px 32px rgba(15,23,42,.13);
       backdrop-filter: blur(12px);
       font-size: 12px;
       font-weight: 920;
       transform: translateZ(60px);
     }
-    .float-left { left: 0; top: 68px; }
-    .float-right { right: -2px; bottom: 76px; }
+    .float-left { left: 0; top: 66px; }
+    .float-right { right: -2px; bottom: 68px; }
     .chip-symbol {
       width: 26px;
       height: 26px;
-      border-radius: 11px;
       display: grid;
       place-items: center;
+      border-radius: 10px;
       color: #fff;
       background: var(--green);
       font-size: 13px;
@@ -341,16 +308,16 @@
     }
     .chip-symbol.blue { background: var(--blue); }
 
-    .section { margin: 28px 0; }
+    .section { margin: 25px 0; }
     .section-head {
       display: flex;
       align-items: flex-end;
       justify-content: space-between;
       gap: 12px;
-      margin-bottom: 14px;
+      margin-bottom: 13px;
     }
     .glass {
-      border-radius: 24px;
+      border-radius: 22px;
       background: var(--paper-soft);
       border: 1px solid rgba(255,255,255,.84);
       box-shadow: var(--shadow-soft);
@@ -358,85 +325,33 @@
       overflow: hidden;
     }
 
-    .steps { display: grid; gap: 10px; }
-    .step-card {
-      min-height: 82px;
-      display: grid;
-      grid-template-columns: 42px 1fr;
-      align-items: center;
-      gap: 12px;
-      border-radius: 22px;
-      padding: 14px;
-      background: #fff;
-      border: 1px solid rgba(20,28,44,.05);
-      box-shadow: 0 10px 26px rgba(17,31,64,.07);
-    }
-    .step-no {
-      width: 42px;
-      height: 42px;
-      display: grid;
-      place-items: center;
-      border-radius: 16px;
-      color: #fff;
-      background: var(--blue);
-      font-weight: 950;
-    }
-    .step-card b { display: block; font-size: 15px; line-height: 1.22; font-weight: 920; }
-    .step-card span { display: block; margin-top: 5px; color: var(--muted); font-size: 12px; line-height: 1.4; font-weight: 740; }
-
-    .messenger-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-    }
-    .messenger {
-      min-height: 76px;
-      display: flex;
-      align-items: center;
-      gap: 11px;
-      border-radius: 21px;
-      padding: 12px;
-      background: #fff;
-      border: 1px solid rgba(20,28,44,.05);
-      box-shadow: 0 10px 26px rgba(17,31,64,.07);
-    }
-    .logo-box {
-      width: 42px;
-      height: 42px;
-      display: grid;
-      place-items: center;
-      flex: 0 0 auto;
-      border-radius: 16px;
-      background: #fff;
-      border: 1px solid rgba(20,28,44,.08);
-      overflow: hidden;
-    }
-    .logo-box img { width: 31px; height: 31px; display: block; object-fit: contain; }
-    .messenger b { display: block; font-size: 13px; line-height: 1; font-weight: 920; }
-    .messenger span { display: block; margin-top: 6px; color: var(--muted); font-size: 11px; line-height: 1.25; font-weight: 760; }
-
-    .pricing { display: grid; gap: 11px; }
+    .pricing { display: grid; gap: 10px; }
     .price-card {
       position: relative;
       overflow: hidden;
-      border-radius: 24px;
-      padding: 18px;
+      border-radius: 20px;
+      padding: 16px;
       background: #fff;
-      border: 1px solid rgba(20,28,44,.05);
-      box-shadow: 0 12px 30px rgba(17,31,64,.08);
+      border: 1px solid rgba(17,24,39,.06);
+      box-shadow: 0 10px 24px rgba(15,23,42,.07);
+      cursor: pointer;
+      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
     }
     .price-card.featured {
       color: #fff;
-      background: radial-gradient(circle at 100% 0%, rgba(255,255,255,.28), transparent 34%), linear-gradient(135deg, #2563ff, #123fbf);
-      box-shadow: 0 18px 42px rgba(37,99,255,.28);
+      background: linear-gradient(135deg, #2563ff 0%, #174bd7 62%, #103072 100%);
+      box-shadow: 0 18px 42px rgba(37,99,255,.27);
     }
     .price-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
-    .price { font-size: 29px; line-height: 1; font-weight: 950; white-space: nowrap; }
-    .price-card p { margin: 12px 0 0; color: var(--ink-2); font-size: 13px; line-height: 1.55; font-weight: 660; }
-    .price-card.featured p { color: rgba(255,255,255,.84); }
-    .tag-row { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+    .price { font-size: 28px; line-height: 1; font-weight: 950; white-space: nowrap; }
+    .price-card p { margin: 11px 0 0; color: var(--ink-2); font-size: 13px; line-height: 1.5; font-weight: 670; }
+    .price-card.featured h3, .price-card.featured .price { color: #fff; text-shadow: 0 1px 10px rgba(2,6,23,.18); }
+    .price-card.featured p { color: rgba(255,255,255,.88); }
+    .price-card:hover { transform: translateY(-2px); box-shadow: 0 16px 32px rgba(15,23,42,.10); }
+    .price-card:focus-visible { outline: 3px solid rgba(37,99,255,.25); outline-offset: 3px; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 13px; }
     .tag {
-      min-height: 30px;
+      min-height: 29px;
       display: inline-flex;
       align-items: center;
       border-radius: 999px;
@@ -448,8 +363,68 @@
     }
     .featured .tag { color: #fff; background: rgba(255,255,255,.18); }
 
+    .steps { display: grid; gap: 10px; }
+    .step-card {
+      min-height: 78px;
+      display: grid;
+      grid-template-columns: 40px 1fr;
+      align-items: center;
+      gap: 12px;
+      border-radius: 20px;
+      padding: 13px;
+      background: #fff;
+      border: 1px solid rgba(17,24,39,.06);
+      box-shadow: 0 10px 24px rgba(15,23,42,.07);
+    }
+    .step-no {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      color: #fff;
+      background: var(--blue);
+      font-weight: 950;
+    }
+    .step-card b { display: block; font-size: 14px; line-height: 1.22; font-weight: 920; }
+    .step-card span { display: block; margin-top: 5px; color: var(--muted); font-size: 12px; line-height: 1.38; font-weight: 740; }
+
+    .messenger-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+    }
+    .messenger {
+      min-height: 102px;
+      min-width: 0;
+      display: grid;
+      justify-items: center;
+      align-content: center;
+      gap: 7px;
+      border-radius: 18px;
+      padding: 10px 6px;
+      text-align: center;
+      background: #fff;
+      border: 1px solid rgba(17,24,39,.06);
+      box-shadow: 0 10px 24px rgba(15,23,42,.07);
+    }
+    .logo-box {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      border-radius: 15px;
+      background: #fff;
+      border: 1px solid rgba(17,24,39,.08);
+      overflow: hidden;
+    }
+    .logo-box img { width: 28px; height: 28px; object-fit: contain; }
+    .messenger b { display: block; font-size: 12px; line-height: 1; font-weight: 920; }
+    .messenger span { display: block; margin-top: 5px; color: var(--muted); font-size: 10px; line-height: 1.22; font-weight: 760; }
+
     .book-shell { display: grid; gap: 14px; }
-    .progress-card { padding: 16px; }
+    .progress-card { padding: 15px; }
     .progress-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 12px; }
     .progress-title { color: var(--muted); font-size: 13px; font-weight: 890; }
     .progress-percent {
@@ -464,14 +439,14 @@
       font-weight: 930;
     }
     .progress-line { height: 8px; border-radius: 99px; background: #e7edf6; overflow: hidden; }
-    .progress-fill { width: 33%; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #2563ff, #63cdff); transition: width .2s ease; }
+    .progress-fill { width: 33%; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #2563ff, #1fb6a5); transition: width .2s ease; }
     .summary {
       display: grid;
       gap: 9px;
-      padding: 14px;
-      border-radius: 21px;
+      padding: 13px;
+      border-radius: 18px;
       background: #f8fafc;
-      border: 1px solid rgba(20,28,44,.06);
+      border: 1px solid rgba(17,24,39,.06);
     }
     .summary-row {
       display: flex;
@@ -491,17 +466,17 @@
       overflow-wrap: anywhere;
     }
 
-    .form-card { padding: 18px; }
+    .form-card { padding: 17px; }
     .form-step { display: none; }
     .form-step.active { display: grid; gap: 12px; }
     .field { display: grid; gap: 7px; }
     .field label { color: #334155; font-size: 12px; font-weight: 920; }
     .field input, .field textarea, .field select {
       width: 100%;
-      min-height: 52px;
-      border-radius: 17px;
-      border: 1px solid rgba(20,28,44,.08);
-      padding: 0 14px;
+      min-height: 50px;
+      border-radius: 15px;
+      border: 1px solid rgba(17,24,39,.09);
+      padding: 0 13px;
       color: var(--ink);
       background: #f8fafc;
       outline: none;
@@ -511,8 +486,8 @@
       appearance: none;
     }
     .field textarea {
-      min-height: 96px;
-      padding-top: 14px;
+      min-height: 94px;
+      padding-top: 13px;
       line-height: 1.5;
       resize: vertical;
     }
@@ -521,96 +496,109 @@
       background: #fff;
       box-shadow: 0 0 0 4px rgba(37,99,255,.10);
     }
-    .date-wrap { position: relative; }
-    .date-wrap input { padding-right: 46px; }
-    .date-wrap svg {
-      position: absolute;
-      right: 14px;
-      top: 50%;
-      width: 18px;
-      height: 18px;
-      transform: translateY(-50%);
-      color: #111827;
-      pointer-events: none;
+    .field.invalid input, .field.invalid textarea, .field.invalid select {
+      border-color: rgba(239,68,68,.72);
+      background: #fff7f7;
+      box-shadow: 0 0 0 4px rgba(239,68,68,.10);
     }
+    .field-help { display: none; color: var(--red); font-size: 11px; font-weight: 800; }
+    .field.invalid .field-help { display: block; }
     .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-    .choice-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .choice-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
     .choice {
-      min-height: 96px;
-      border-radius: 21px;
-      padding: 14px;
+      min-height: 76px;
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      align-items: center;
+      gap: 10px;
+      border-radius: 18px;
+      padding: 10px;
       text-align: left;
       background: #fff;
-      border: 1px solid rgba(20,28,44,.06);
-      box-shadow: 0 10px 26px rgba(17,31,64,.07);
+      border: 1px solid rgba(17,24,39,.07);
+      box-shadow: 0 9px 22px rgba(15,23,42,.06);
       transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
     }
     .choice.selected {
-      border-color: rgba(37,99,255,.52);
-      box-shadow: 0 12px 30px rgba(37,99,255,.16);
+      border-color: rgba(37,99,255,.55);
+      box-shadow: 0 12px 28px rgba(37,99,255,.14);
       background: linear-gradient(180deg, #fff, #f7faff);
     }
     .choice-icon {
-      width: 35px;
-      height: 35px;
+      width: 42px;
+      height: 42px;
       display: grid;
       place-items: center;
-      margin-bottom: 10px;
-      border-radius: 14px;
+      border-radius: 15px;
       color: #fff;
-      font-weight: 950;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.45), 0 9px 18px rgba(15,23,42,.12);
+      transform: rotateX(10deg) rotateY(-10deg);
     }
-    .bg-orange { background: var(--orange); }
-    .bg-pink { background: var(--pink); }
-    .bg-green { background: var(--green); }
-    .bg-violet { background: var(--violet); }
-    .choice b { display: block; font-size: 14px; line-height: 1.18; font-weight: 920; }
-    .choice span { display: block; margin-top: 5px; color: var(--muted); font-size: 11px; line-height: 1.3; font-weight: 750; }
-    .form-actions { display: grid; grid-template-columns: .75fr 1fr; gap: 10px; margin-top: 4px; }
-    .form-actions.single { grid-template-columns: 1fr; }
-    .form-actions .btn { min-height: 52px; }
-
-    .plan-options { display: grid; gap: 10px; }
+    .choice-icon svg { width: 29px; height: 29px; }
+    .bg-orange { background: linear-gradient(135deg, #fb923c, #f97316); }
+    .bg-pink { background: linear-gradient(135deg, #f9a8d4, #ec4899); }
+    .bg-green { background: linear-gradient(135deg, #34d399, #0f9f74); }
+    .bg-violet { background: linear-gradient(135deg, #a78bfa, #7c3aed); }
+    .choice b { display: block; font-size: 13px; line-height: 1.16; font-weight: 920; }
+    .choice span { display: block; margin-top: 4px; color: var(--muted); font-size: 10.5px; line-height: 1.28; font-weight: 750; }
+    .plan-options { display: grid; gap: 9px; }
     .plan-option {
       display: grid;
       grid-template-columns: 1fr auto;
       align-items: center;
       gap: 10px;
-      border-radius: 22px;
-      border: 1px solid rgba(20,28,44,.07);
+      border-radius: 19px;
+      border: 1px solid rgba(17,24,39,.08);
       background: #fff;
-      padding: 14px;
-      box-shadow: 0 10px 26px rgba(17,31,64,.06);
+      padding: 13px;
+      box-shadow: 0 9px 22px rgba(15,23,42,.06);
       cursor: pointer;
     }
     .plan-option input { display: none; }
     .plan-option:has(input:checked) {
-      border-color: rgba(37,99,255,.54);
+      border-color: rgba(37,99,255,.56);
       background: linear-gradient(180deg, #fff, #f7faff);
-      box-shadow: 0 12px 30px rgba(37,99,255,.15);
+      box-shadow: 0 12px 28px rgba(37,99,255,.14);
     }
     .plan-option b { display: block; font-size: 15px; font-weight: 930; }
     .plan-option span span { display: block; margin-top: 5px; color: var(--muted); font-size: 11px; line-height: 1.35; font-weight: 760; }
+    .plan-price-pill {
+      min-height: 32px;
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 0 10px;
+      color: #1d4ed8;
+      background: var(--blue-soft);
+      font-size: 12px;
+      font-weight: 950;
+      white-space: nowrap;
+    }
+    .form-actions { display: grid; grid-template-columns: .75fr 1fr; gap: 10px; margin-top: 4px; }
+    .form-actions.single { grid-template-columns: 1fr; }
+    .form-actions .btn { min-height: 51px; }
 
-    .payment-sheet {
+    [hidden] { display: none !important; }
+
+    .payment-sheet, .info-modal {
       position: fixed;
       inset: 0;
       z-index: 90;
       display: grid;
       align-items: end;
-      background: rgba(15,23,42,.28);
+      background: rgba(15,23,42,.30);
       backdrop-filter: blur(10px);
       opacity: 0;
       visibility: hidden;
       transition: opacity .2s ease, visibility .2s ease;
     }
-    .payment-sheet.open { opacity: 1; visibility: visible; }
-    .sheet-panel {
+    .payment-sheet.open, .info-modal.open { opacity: 1; visibility: visible; }
+    .sheet-panel, .modal-panel {
       width: min(100%, var(--max));
       max-height: min(88vh, 760px);
       overflow: auto;
       margin: 0 auto;
-      border-radius: 30px 30px 0 0;
+      border-radius: 28px 28px 0 0;
       padding: 16px 16px calc(18px + var(--safe-bottom));
       background: #fff;
       box-shadow: 0 -24px 70px rgba(15,23,42,.20);
@@ -620,39 +608,33 @@
     .sheet-head h2 { font-size: 23px; }
     .pay-methods { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 14px 0; }
     .pay-method {
-      min-height: 82px;
+      min-height: 80px;
       display: grid;
       align-content: center;
       gap: 8px;
-      border-radius: 21px;
-      padding: 13px;
-      text-align: left;
+      border-radius: 19px;
+      padding: 12px;
+      text-align: center;
       background: #f8fafc;
-      border: 1px solid rgba(20,28,44,.07);
+      border: 1px solid rgba(17,24,39,.08);
       transition: transform .18s ease, border-color .18s ease, background .18s ease;
     }
     .pay-method.selected {
-      border-color: rgba(37,99,255,.54);
+      border-color: rgba(37,99,255,.56);
       background: #fff;
-      box-shadow: 0 12px 30px rgba(37,99,255,.13);
+      box-shadow: 0 12px 28px rgba(37,99,255,.13);
     }
     .pay-logo {
-      width: 36px;
-      height: 36px;
-      display: grid;
-      place-items: center;
-      border-radius: 14px;
-      color: #fff;
-      font-size: 12px;
-      font-weight: 950;
+      width: 100%;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
     }
-    .wechat { background: #07c160; }
-    .paypal { background: #003087; }
-    .alipay { background: #1677ff; }
-    .cardpay { background: #111827; }
-    .applepay { background: #000; }
-    .googlepay { background: linear-gradient(135deg, #4285f4, #34a853 42%, #fbbc04 70%, #ea4335); }
-    .pay-method b { font-size: 13px; font-weight: 920; }
+    .pay-logo img { width: 96px; max-width: 100%; height: 30px; object-fit: contain; object-position: center center; }
+    .pay-logo.square img { width: 34px; height: 34px; }
+    .pay-method b { font-size: 13px; font-weight: 920; text-align: center; }
     .policy { display: grid; gap: 8px; margin: 14px 0; }
     .check-row {
       display: grid;
@@ -669,10 +651,10 @@
     .lookup-card { padding: 16px; margin-bottom: 14px; }
     .lookup-row { display: grid; grid-template-columns: 1fr auto; gap: 9px; margin-top: 12px; }
     .status-card {
-      border-radius: 28px;
-      padding: 18px;
-      background: radial-gradient(circle at 90% 0%, rgba(17,200,121,.20), transparent 34%), linear-gradient(180deg, #fff, #f7fbff);
-      border: 1px solid rgba(20,28,44,.05);
+      border-radius: 25px;
+      padding: 17px;
+      background: #fff;
+      border: 1px solid rgba(17,24,39,.06);
       box-shadow: var(--shadow-soft);
     }
     .status-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; margin-bottom: 14px; }
@@ -685,81 +667,166 @@
       border-radius: 999px;
       padding: 0 10px;
       color: #05704a;
-      background: rgba(17,200,121,.12);
+      background: rgba(19,185,129,.12);
       font-size: 12px;
       font-weight: 920;
       white-space: nowrap;
     }
-    .status-card h2 { font-size: 25px; line-height: 1.18; }
-    .status-card p { margin: 10px 0 0; color: var(--ink-2); font-size: 14px; line-height: 1.6; font-weight: 650; }
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 0 6px rgba(19,185,129,.14);
+      animation: pulseSoft 2.4s ease-in-out infinite;
+    }
+    @keyframes pulseSoft {
+      0%, 100% { box-shadow: 0 0 0 4px rgba(19,185,129,.13); opacity: .78; }
+      50% { box-shadow: 0 0 0 8px rgba(19,185,129,.22); opacity: 1; }
+    }
+    .status-card h2 { font-size: 24px; line-height: 1.18; }
+    .status-card p { margin: 9px 0 0; color: var(--ink-2); font-size: 14px; line-height: 1.56; font-weight: 650; }
     .booking-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
-    .timeline { display: grid; gap: 10px; margin-top: 16px; }
-    .timeline-item {
-      min-height: 52px;
+    .timeline {
+      position: relative;
       display: grid;
-      grid-template-columns: 30px 1fr auto;
+      gap: 10px;
+      margin-top: 16px;
+      padding: 6px 0 0 2px;
+      background: #fff;
+      border-radius: 22px;
+    }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 31px;
+      top: 30px;
+      bottom: 28px;
+      width: 2px;
+      background: linear-gradient(180deg, #60a5fa 0 32%, #22c55e 32% 55%, #2563ff 55% 76%, #d7deea 76%);
+      border-radius: 99px;
+    }
+    .timeline-item {
+      position: relative;
+      min-height: 74px;
+      display: grid;
+      grid-template-columns: 58px 1fr auto;
       align-items: center;
       gap: 10px;
-      border-radius: 18px;
+      border-radius: 19px;
       padding: 10px;
+      text-align: left;
+      appearance: none;
+      width: 100%;
       background: #fff;
-      border: 1px solid rgba(20,28,44,.05);
+      border: 1px solid rgba(17,24,39,.07);
+      box-shadow: 0 9px 24px rgba(15,23,42,.055);
     }
-    .timeline-dot {
-      width: 30px;
-      height: 30px;
+    .timeline-item.active {
+      border-color: rgba(37,99,255,.32);
+      background: #fff;
+      box-shadow: 0 0 0 1px rgba(37,99,255,.08), 0 10px 24px rgba(37,99,255,.10);
+    }
+    .stage-icon {
+      position: relative;
+      z-index: 1;
+      width: 50px;
+      height: 50px;
       display: grid;
       place-items: center;
-      border-radius: 50%;
-      color: #fff;
-      background: var(--green);
-      font-size: 13px;
-      font-weight: 950;
+      border-radius: 17px;
+      background: #fff;
+      color: inherit;
+      box-shadow: none;
+      transform-origin: center;
     }
-    .timeline-dot.now { background: var(--blue); box-shadow: 0 0 0 6px rgba(37,99,255,.10); }
-    .timeline-dot.todo { background: #cbd5e1; }
+    .stage-icon svg { width: 58px; height: 58px; display: block; overflow: visible; }
+    .active .stage-icon { animation: stageBlink 2.25s ease-in-out infinite; }
+    .todo .stage-icon { opacity: .86; filter: saturate(.78); }
+    @keyframes stageBlink {
+      0%, 100% { transform: translateY(0) scale(1); filter: drop-shadow(0 8px 14px rgba(37,99,255,.13)); }
+      50% { transform: translateY(-1px) scale(1.035); filter: drop-shadow(0 12px 21px rgba(37,99,255,.25)); }
+    }
     .timeline-item b { display: block; font-size: 13px; line-height: 1.2; font-weight: 920; }
-    .timeline-item span { display: block; margin-top: 4px; color: var(--muted); font-size: 11px; line-height: 1.3; font-weight: 760; }
+    .timeline-item > div span { display: block; margin-top: 4px; color: var(--muted); font-size: 11px; line-height: 1.3; font-weight: 760; }
     .timeline-time { color: var(--muted); font-size: 11px; font-weight: 920; white-space: nowrap; }
-
     .empty-state {
-      min-height: 250px;
+      min-height: 240px;
       display: grid;
       align-content: center;
       justify-items: center;
       gap: 14px;
-      padding: 26px;
-      border-radius: 28px;
+      padding: 25px;
+      border-radius: 25px;
       text-align: center;
       background: #fff;
-      border: 1px solid rgba(20,28,44,.05);
+      border: 1px solid rgba(17,24,39,.06);
       box-shadow: var(--shadow-soft);
     }
     .empty-icon {
-      width: 84px;
-      height: 84px;
+      width: 80px;
+      height: 80px;
       display: grid;
       place-items: center;
-      border-radius: 30px;
+      border-radius: 27px;
       color: #fff;
-      background: linear-gradient(135deg, #2563ff, #63cdff);
-      box-shadow: 0 16px 36px rgba(37,99,255,.26);
+      background: linear-gradient(135deg, #2563ff, #1fb6a5);
+      box-shadow: 0 16px 36px rgba(37,99,255,.24);
     }
     .support-panel { padding: 16px; margin-top: 14px; }
-    .support-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 12px; }
+    .support-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 12px; }
     .support-chip {
-      min-height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
+      min-height: 54px;
+      display: grid;
+      justify-items: center;
+      align-content: center;
+      gap: 6px;
       border-radius: 16px;
       color: #1f2937;
       background: #f8fafc;
-      border: 1px solid rgba(20,28,44,.06);
+      border: 1px solid rgba(17,24,39,.06);
       font-size: 12px;
       font-weight: 880;
     }
+    .support-chip img { width: 26px; height: 26px; object-fit: contain; }
+
+    .receipt-paper {
+      position: relative;
+      margin: 14px 4px 0;
+      padding: 20px 18px 22px;
+      color: #172033;
+      background:
+        linear-gradient(135deg, transparent 10px, #fff 0) top left,
+        linear-gradient(225deg, transparent 10px, #fff 0) top right,
+        linear-gradient(315deg, transparent 10px, #fff 0) bottom right,
+        linear-gradient(45deg, transparent 10px, #fff 0) bottom left;
+      background-size: 50% 50%;
+      background-repeat: no-repeat;
+      filter: drop-shadow(0 16px 28px rgba(15,23,42,.14));
+      border: 1px solid rgba(17,24,39,.08);
+    }
+    .receipt-paper::before, .receipt-paper::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 10px;
+      background: radial-gradient(circle at 8px 5px, transparent 5px, #fff 5.5px) left/16px 10px repeat-x;
+    }
+    .receipt-paper::before { top: -9px; }
+    .receipt-paper::after { bottom: -9px; transform: rotate(180deg); }
+    .receipt-logo { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
+    .receipt-logo b { font-size: 24px; font-weight: 950; }
+    .receipt-logo span { color: #64748b; font-size: 12px; font-weight: 800; }
+    .receipt-total {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px dashed #cbd5e1;
+    }
+    .receipt-total b { font-size: 28px; font-weight: 950; }
 
     .bottom-nav {
       position: fixed;
@@ -769,7 +836,7 @@
       width: min(100%, var(--max));
       transform: translateX(-50%);
       padding: 8px 14px calc(10px + var(--safe-bottom));
-      background: linear-gradient(180deg, rgba(247,249,252,0), rgba(247,249,252,.96) 34%, #f7f9fc);
+      background: linear-gradient(180deg, rgba(246,248,251,0), rgba(246,248,251,.96) 34%, #f6f8fb);
       backdrop-filter: blur(14px);
     }
     .nav-inner {
@@ -778,10 +845,10 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 6px;
       padding: 7px;
-      border-radius: 24px;
-      background: rgba(255,255,255,.95);
-      border: 1px solid rgba(20,28,44,.06);
-      box-shadow: 0 16px 36px rgba(17,31,64,.14);
+      border-radius: 23px;
+      background: rgba(255,255,255,.96);
+      border: 1px solid rgba(17,24,39,.07);
+      box-shadow: 0 16px 36px rgba(15,23,42,.14);
     }
     .nav-btn {
       min-width: 0;
@@ -789,7 +856,7 @@
       place-items: center;
       align-content: center;
       gap: 4px;
-      border-radius: 18px;
+      border-radius: 17px;
       color: var(--muted);
       background: transparent;
       font-size: 11px;
@@ -805,88 +872,83 @@
       display: grid;
       place-items: center;
       padding: calc(18px + var(--safe-top)) 16px calc(18px + var(--safe-bottom));
-      background: radial-gradient(circle at 50% -10%, rgba(37,99,255,.18), transparent 36%), rgba(247,249,252,.88);
+      background: rgba(246,248,251,.90);
       backdrop-filter: blur(22px);
       transition: opacity .2s ease, visibility .2s ease;
     }
     .language-modal.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
     .language-panel {
-      width: min(100%, 430px);
-      max-height: min(850px, calc(100vh - 34px - var(--safe-top) - var(--safe-bottom)));
+      width: min(calc(100vw - 32px), 400px);
+      max-width: 100%;
+      max-height: min(660px, calc(100vh - 34px - var(--safe-top) - var(--safe-bottom)));
       overflow: auto;
-      border-radius: 34px;
-      padding: 18px;
-      background: rgba(255,255,255,.95);
-      border: 1px solid rgba(255,255,255,.86);
-      box-shadow: 0 32px 80px rgba(17,31,64,.20);
+      border-radius: 28px;
+      padding: 17px;
+      background: rgba(255,255,255,.96);
+      border: 1px solid rgba(255,255,255,.88);
+      box-shadow: 0 30px 78px rgba(15,23,42,.18);
     }
     .language-visual {
-      min-height: 216px;
+      height: 112px;
       display: grid;
       place-items: center;
-      margin: 12px 0 16px;
-      border-radius: 30px;
+      margin: 14px 0 12px;
+      border-radius: 22px;
       color: #fff;
-      background: radial-gradient(circle at 18% 12%, rgba(255,255,255,.26), transparent 24%), linear-gradient(135deg, #2563ff 0%, #63cdff 100%);
+      background: linear-gradient(135deg, #1d4ed8 0%, #2563ff 58%, #1fb6a5 100%);
       box-shadow: var(--shadow-soft);
       overflow: hidden;
     }
-    .language-visual .lang-icon-large { width: 128px; height: 128px; filter: drop-shadow(0 24px 40px rgba(15,23,42,.18)); }
-    .language-copy {
-      min-height: 96px;
-      display: grid;
-      align-content: start;
-    }
-    .language-copy h2 { font-size: 28px; min-height: 68px; display: flex; align-items: flex-end; }
-    .language-copy p {
-      margin: 9px 0 0;
-      min-height: 44px;
-      color: var(--ink-2);
-      font-size: 14px;
-      line-height: 1.56;
-      font-weight: 650;
-    }
-    .language-list { display: grid; gap: 9px; margin: 17px 0; }
-    .lang-option {
-      height: 62px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      border-radius: 19px;
-      padding: 0 14px;
-      text-align: left;
-      color: var(--ink);
-      background: #f8fafc;
-      border: 1px solid rgba(20,28,44,.06);
-      font-weight: 920;
-    }
-    .lang-option.selected {
-      background: #fff;
-      border-color: rgba(37,99,255,.54);
-      box-shadow: 0 12px 28px rgba(37,99,255,.14);
-    }
-    .lang-option span {
-      display: block;
-      margin-top: 4px;
-      color: var(--muted);
-      font-size: 11px;
-      line-height: 1.15;
-      font-weight: 760;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .lang-flag {
-      min-width: 34px;
-      height: 34px;
+    .language-visual .language-logo {
+      width: 66px;
+      height: 66px;
       display: grid;
       place-items: center;
-      border-radius: 14px;
-      color: #fff;
-      background: var(--blue);
-      font-size: 12px;
+      border-radius: 22px;
+      background: rgba(255,255,255,.18);
+      border: 1px solid rgba(255,255,255,.22);
+      font-size: 34px;
       font-weight: 950;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.32);
+    }
+    .language-copy { display: grid; gap: 5px; text-align: center; }
+    .language-copy h2 { font-size: 22px; }
+    .language-copy p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+      font-weight: 720;
+    }
+    .language-list {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 8px;
+      margin: 15px 0;
+    }
+    .lang-option {
+      height: 62px;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      background: #f8fafc;
+      border: 1px solid rgba(17,24,39,.07);
+      box-shadow: 0 8px 18px rgba(15,23,42,.05);
+      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+      min-width: 0;
+    }
+    .lang-option img, .lang-option .flag-svg {
+      width: 44px;
+      height: 31px;
+      object-fit: cover;
+      border-radius: 7px;
+      box-shadow: 0 0 0 1px rgba(17,24,39,.08);
+    }
+    .lang-option .ko-flag { object-fit: contain; background: #fff; }
+    .lang-option.selected {
+      background: #fff;
+      border-color: rgba(37,99,255,.58);
+      box-shadow: 0 12px 26px rgba(37,99,255,.15);
     }
 
     .toast {
@@ -923,10 +985,21 @@
       .phone { width: 292px; min-height: 300px; }
       .phone-scene { min-height: 312px; }
       .screen { min-height: 274px; }
-      .messenger-grid, .choice-grid, .support-grid, .pay-methods { grid-template-columns: 1fr; }
-      .two-col, .lookup-row, .booking-actions { grid-template-columns: 1fr; }
-      .summary-row { display: grid; gap: 4px; }
-      .summary-row b { max-width: 100%; text-align: left; }
+      .choice-grid, .pay-methods { grid-template-columns: 1fr; }
+      .messenger-grid, .support-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .messenger {
+      min-height: 102px;
+      min-width: 0;
+      display: grid;
+      justify-items: center;
+      align-content: center;
+      gap: 7px;
+      border-radius: 18px;
+      padding: 10px 6px;
+      text-align: center;
+      background: #fff;
+      border: 1px solid rgba(17,24,39,.06);
+      box-shadow: 0 10px 24px rgba(15,23,42,.07);
     }
 
     @media (min-width: 430px) {
@@ -938,12 +1011,10 @@
       .app { padding-left: 24px; padding-right: 24px; }
       .topbar { margin-left: -24px; margin-right: -24px; padding-left: 24px; padding-right: 24px; }
       .hero { display: grid; grid-template-columns: 1fr minmax(280px, 334px); align-items: center; gap: 22px; }
-      .messenger-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-      .messenger { min-height: 118px; display: grid; justify-items: center; align-content: center; text-align: center; }
-      .pricing { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-      .choice-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-      .book-shell { grid-template-columns: .9fr 1.1fr; align-items: start; }
-      .progress-card { position: sticky; top: 74px; }
+      .messenger-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
     }
 
     @media (min-width: 920px) {
@@ -953,16 +1024,11 @@
         margin-top: 26px;
         margin-bottom: 26px;
         min-height: calc(100vh - 52px);
-        border-radius: 42px;
-        background: rgba(247,249,252,.94);
-        box-shadow: 0 0 0 1px rgba(20,28,44,.06), 0 32px 80px rgba(17,31,64,.14);
+        border-radius: 38px;
+        background: rgba(246,248,251,.94);
+        box-shadow: 0 0 0 1px rgba(17,24,39,.06), 0 32px 80px rgba(15,23,42,.13);
       }
-      .bottom-nav { border-radius: 0 0 42px 42px; }
-    }
-
-    @media (max-height: 680px) and (max-width: 430px) {
-      .language-visual { min-height: 168px; }
-      .language-copy h2 { min-height: 54px; font-size: 24px; }
+      .bottom-nav { border-radius: 0 0 38px 38px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -977,69 +1043,56 @@
   </style>
 </head>
 <body class="locked">
-  <template id="phoneLogo">
-    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M6.2 2.7c.7-.4 1.6-.3 2.2.3l2.4 2.4c.6.6.7 1.5.3 2.2L10 9.7c-.2.4-.2.8.1 1.1.9 1.2 2 2.3 3.2 3.2.3.3.8.3 1.1.1l2.1-1.1c.7-.4 1.6-.3 2.2.3l2.4 2.4c.6.6.7 1.5.3 2.2l-1.2 2.1c-.6 1-1.8 1.5-2.9 1.2C10 19.3 4.7 14 2.8 6.6c-.3-1.1.2-2.3 1.2-2.9l2.2-1Z" fill="currentColor"/>
-    </svg>
-  </template>
-
   <div class="language-modal" id="languageModal" role="dialog" aria-modal="true" aria-labelledby="languageTitle">
     <div class="language-panel">
       <div class="brand">
-        <div class="brand-logo" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M6.2 2.7c.7-.4 1.6-.3 2.2.3l2.4 2.4c.6.6.7 1.5.3 2.2L10 9.7c-.2.4-.2.8.1 1.1.9 1.2 2 2.3 3.2 3.2.3.3.8.3 1.1.1l2.1-1.1c.7-.4 1.6-.3 2.2.3l2.4 2.4c.6.6.7 1.5.3 2.2l-1.2 2.1c-.6 1-1.8 1.5-2.9 1.2C10 19.3 4.7 14 2.8 6.6c-.3-1.1.2-2.3 1.2-2.9l2.2-1Z" fill="currentColor"/></svg>
-        </div>
+        <div class="brand-logo" aria-hidden="true">K</div>
         <div class="brand-copy">
-          <div class="brand-name">Seoully</div>
+          <div class="brand-name">Kall</div>
           <div class="brand-sub" data-i18n="brandSub">Korean phone booking help</div>
         </div>
       </div>
-      <div class="language-visual">
-        <svg class="lang-icon-large" viewBox="0 0 160 160" fill="none" aria-hidden="true">
-          <path d="M80 136c30.9 0 56-25.1 56-56S110.9 24 80 24 24 49.1 24 80s25.1 56 56 56Z" fill="rgba(255,255,255,.24)" stroke="white" stroke-width="7"/>
-          <path d="M80 24c14 14 22 33.3 22 56s-8 42-22 56c-14-14-22-33.3-22-56s8-42 22-56Z" stroke="white" stroke-width="7" stroke-linecap="round"/>
-          <path d="M28 80h104" stroke="white" stroke-width="7" stroke-linecap="round"/>
-          <path d="M6 19c0-7.2 5.8-13 13-13h43c7.2 0 13 5.8 13 13v39c0 7.2-5.8 13-13 13H34L18 84V71c-6.7-.5-12-6.1-12-13V19Z" fill="white"/>
-          <path d="M32 53 46 21h8l14 32h-9l-3-8H44l-3 8h-9Zm15-16h7l-3.5-9-3.5 9Z" fill="#0b1220"/>
-          <path d="M91 87c0-7.2 5.8-13 13-13h37c7.2 0 13 5.8 13 13v35c0 7.2-5.8 13-13 13h-24l-17 14v-15c-5.2-1.6-9-6.5-9-12V87Z" fill="white"/>
-          <path d="M110 105h26M123 91v11c0 12.4-5.7 21.1-14 25M123 102c1.5 10.2 6.7 18.1 15 24" stroke="#0b1220" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+      <div class="language-visual" aria-hidden="true">
+        <div class="language-logo">K</div>
       </div>
       <div class="language-copy">
-        <h2 id="languageTitle" data-i18n="languageTitle">Choose your language</h2>
-        <p data-i18n="languageDesc">Seoully supports Korean phone reservations in your language.</p>
+        <h2 id="languageTitle" data-i18n="languageTitle">Choose language</h2>
+        <p data-i18n="languageDesc">Pick a flag to continue.</p>
       </div>
       <div class="language-list" role="listbox" aria-label="Language">
-        <button class="lang-option selected" type="button" data-lang="en"><div>English<span>Global travelers</span></div><div class="lang-flag">EN</div></button>
-        <button class="lang-option" type="button" data-lang="ko"><div>한국어<span>한국어 고객/운영 확인용</span></div><div class="lang-flag">KO</div></button>
-        <button class="lang-option" type="button" data-lang="ja"><div>日本語<span>日本からの旅行者向け</span></div><div class="lang-flag">JP</div></button>
-        <button class="lang-option" type="button" data-lang="zh"><div>中文<span>适合来韩国旅行的用户</span></div><div class="lang-flag">中</div></button>
-        <button class="lang-option" type="button" data-lang="fr"><div>Français<span>Pour voyager en Corée</span></div><div class="lang-flag">FR</div></button>
+        <button class="lang-option selected" type="button" data-lang="en" aria-label="English">
+          <svg class="flag-svg" viewBox="0 0 44 31" aria-hidden="true"><rect width="44" height="31" fill="#fff"/><path d="M0 0h44v2.4H0zm0 4.8h44v2.4H0zm0 4.8h44V12H0zm0 4.8h44v2.4H0zm0 4.8h44v2.4H0zm0 4.8h44v2.4H0zm0 4.8h44V31H0z" fill="#b22234"/><rect width="19.5" height="16.8" fill="#3c3b6e"/><g fill="#fff"><circle cx="3.2" cy="3" r=".8"/><circle cx="7.2" cy="3" r=".8"/><circle cx="11.2" cy="3" r=".8"/><circle cx="15.2" cy="3" r=".8"/><circle cx="5.2" cy="6.2" r=".8"/><circle cx="9.2" cy="6.2" r=".8"/><circle cx="13.2" cy="6.2" r=".8"/><circle cx="17.2" cy="6.2" r=".8"/><circle cx="3.2" cy="9.4" r=".8"/><circle cx="7.2" cy="9.4" r=".8"/><circle cx="11.2" cy="9.4" r=".8"/><circle cx="15.2" cy="9.4" r=".8"/><circle cx="5.2" cy="12.6" r=".8"/><circle cx="9.2" cy="12.6" r=".8"/><circle cx="13.2" cy="12.6" r=".8"/><circle cx="17.2" cy="12.6" r=".8"/></g></svg>
+        </button>
+        <button class="lang-option" type="button" data-lang="ja" aria-label="日本語">
+          <svg class="flag-svg" viewBox="0 0 44 31" aria-hidden="true"><rect width="44" height="31" fill="#fff"/><circle cx="22" cy="15.5" r="8.4" fill="#bc002d"/></svg>
+        </button>
+        <button class="lang-option" type="button" data-lang="zh" aria-label="中文">
+          <svg class="flag-svg" viewBox="0 0 44 31" aria-hidden="true"><rect width="44" height="31" fill="#de2910"/><path d="m8 5 1.2 3.5h3.7l-3 2.1 1.2 3.5L8 12 5 14.1l1.1-3.5-3-2.1h3.7L8 5Z" fill="#ffde00"/><circle cx="16.5" cy="6.8" r="1.1" fill="#ffde00"/><circle cx="19.2" cy="10.5" r="1.1" fill="#ffde00"/><circle cx="19" cy="15" r="1.1" fill="#ffde00"/><circle cx="16.2" cy="18.4" r="1.1" fill="#ffde00"/></svg>
+        </button>
+        <button class="lang-option" type="button" data-lang="fr" aria-label="Français">
+          <svg class="flag-svg" viewBox="0 0 44 31" aria-hidden="true"><rect width="14.7" height="31" fill="#0055a4"/><rect x="14.7" width="14.6" height="31" fill="#fff"/><rect x="29.3" width="14.7" height="31" fill="#ef4135"/></svg>
+        </button>
+        <button class="lang-option" type="button" data-lang="ko" aria-label="한국어">
+          <img class="flag-svg ko-flag" alt="" src="https://upload.wikimedia.org/wikipedia/commons/0/09/Flag_of_South_Korea.svg">
+        </button>
       </div>
-      <button class="btn" type="button" id="startApp" data-i18n="startApp">Start with Seoully</button>
+      <button class="btn" type="button" id="startApp" data-i18n="startApp">Start with Kall</button>
     </div>
   </div>
 
   <main class="app">
     <header class="topbar">
-      <a class="brand" href="#" data-nav="intro" aria-label="Seoully home">
-        <div class="brand-logo" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M6.2 2.7c.7-.4 1.6-.3 2.2.3l2.4 2.4c.6.6.7 1.5.3 2.2L10 9.7c-.2.4-.2.8.1 1.1.9 1.2 2 2.3 3.2 3.2.3.3.8.3 1.1.1l2.1-1.1c.7-.4 1.6-.3 2.2.3l2.4 2.4c.6.6.7 1.5.3 2.2l-1.2 2.1c-.6 1-1.8 1.5-2.9 1.2C10 19.3 4.7 14 2.8 6.6c-.3-1.1.2-2.3 1.2-2.9l2.2-1Z" fill="currentColor"/></svg>
-        </div>
+      <a class="brand" href="#" data-nav="intro" aria-label="Kall home">
+        <div class="brand-logo" aria-hidden="true">K</div>
         <div class="brand-copy">
-          <div class="brand-name">Seoully</div>
+          <div class="brand-name">Kall</div>
           <div class="brand-sub" data-i18n="brandSub">Korean phone booking help</div>
         </div>
       </a>
       <button class="icon-btn" type="button" id="openLanguage" aria-label="Open language settings">
-        <svg class="lang-icon" viewBox="0 0 64 64" fill="none" aria-hidden="true">
-          <path d="M32 56c13.3 0 24-10.7 24-24S45.3 8 32 8 8 18.7 8 32s10.7 24 24 24Z" stroke="currentColor" stroke-width="4.6"/>
-          <path d="M32 8c6 6 9.4 14.2 9.4 24S38 50 32 56c-6-6-9.4-14.2-9.4-24S26 14 32 8Z" stroke="currentColor" stroke-width="4.6"/>
-          <path d="M9 32h46" stroke="currentColor" stroke-width="4.6" stroke-linecap="round"/>
-          <path d="M2 9c0-4 3-7 7-7h19c4 0 7 3 7 7v17c0 4-3 7-7 7H16l-8 7v-7c-3.4-.5-6-3.4-6-7V9Z" fill="#fff" stroke="currentColor" stroke-width="4"/>
-          <path d="M13 24 19 9h4l6 15h-5l-1-3h-5l-1 3h-4Z" fill="currentColor"/>
-          <path d="M36 33c0-4 3-7 7-7h12c4 0 7 3 7 7v15c0 4-3 7-7 7h-7l-8 7v-8c-2.4-1.1-4-3.5-4-6V33Z" fill="#fff" stroke="currentColor" stroke-width="4"/>
-          <path d="M44 42h11M49 35v6c0 6-2.8 10-7 13M49 41c1 5.2 3.4 9.5 7 12" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+        <svg class="lang-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z" stroke="currentColor" stroke-width="2"/>
+          <path d="M3.7 9h16.6M3.7 15h16.6M12 3c2 2.2 3 5.2 3 9s-1 6.8-3 9c-2-2.2-3-5.2-3-9s1-6.8 3-9Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
         </svg>
         <span class="lang-code" id="langCode">EN</span>
       </button>
@@ -1048,9 +1101,8 @@
     <section class="view active" id="view-intro">
       <div class="hero">
         <div>
-          <div class="eyebrow"><span class="live-dot"></span><span data-i18n="introEyebrow">For Korea trips, before or after arrival</span></div>
           <h1 data-i18n="heroTitle">Need a Korean phone reservation?</h1>
-          <p class="lead" data-i18n="heroLead">Tell us where, when, and how many people. Seoully calls in Korean and sends the result to your messenger.</p>
+          <p class="lead" data-i18n="heroLead">Tell us the place, time, and required details. Kall calls in Korean and sends the result to your messenger.</p>
           <div class="hero-actions">
             <button class="btn" type="button" data-nav="book">
               <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M5 5h14v14H5z" stroke="currentColor" stroke-width="2.2"/><path d="M8 9h8M8 13h5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
@@ -1059,11 +1111,11 @@
             <button class="btn secondary" type="button" data-nav="status" data-i18n="ctaTrack">Track booking</button>
           </div>
         </div>
-        <div class="phone-scene" aria-label="Seoully booking preview">
-          <div class="float-chip float-left"><span class="chip-symbol">✓</span><span data-i18n="chipConfirmed">Confirmed details</span></div>
+        <div class="phone-scene" aria-label="Kall booking preview">
+          <div class="float-chip float-left"><span class="chip-symbol">✓</span><span data-i18n="chipConfirmed">Details received</span></div>
           <div class="phone">
             <div class="screen">
-              <div class="screen-head"><b>Seoully</b><span class="screen-badge" data-i18n="screenBadge">Calling now</span></div>
+              <div class="screen-head"><b>Kall</b><span class="screen-badge" data-i18n="screenBadge">Calling now</span></div>
               <div class="mini-card">
                 <h3 data-i18n="screenTitle">Dinner in Seoul</h3>
                 <p data-i18n="screenText">May 12 · 7:30 PM · 2 guests · backup time ready</p>
@@ -1073,107 +1125,153 @@
               </div>
             </div>
           </div>
-          <div class="float-chip float-right"><span class="chip-symbol blue">$</span><span data-i18n="chipPrice">From $2.99</span></div>
+          <div class="float-chip float-right"><span class="chip-symbol blue">$</span><span id="chipPrice">From $3.99</span></div>
         </div>
       </div>
 
       <section class="section">
-        <div class="section-head"><div><div class="kicker" data-i18n="howKicker">How it works</div><h2 data-i18n="howTitle">Three steps, no Korean phone needed.</h2></div></div>
-        <div class="steps">
-          <article class="step-card"><div class="step-no">1</div><div><b data-i18n="step1Title">Send the place and time</b><span data-i18n="step1Desc">Google link, people, preferred time, and backup options.</span></div></article>
-          <article class="step-card"><div class="step-no">2</div><div><b data-i18n="step2Title">Choose a plan and pay</b><span data-i18n="step2Desc">WeChat Pay, PayPal, Alipay, card, Apple Pay, or Google Pay.</span></div></article>
-          <article class="step-card"><div class="step-no">3</div><div><b data-i18n="step3Title">Get your booking number</b><span data-i18n="step3Desc">Copy it, save the receipt image, and use it to check status anytime.</span></div></article>
+        <div class="section-head"><div><div class="kicker" data-i18n="priceKicker">Pricing first</div><h2 data-i18n="priceTitle">Pick the call support you need.</h2></div></div>
+        <div class="pricing">
+          <article class="price-card" data-select-plan="Basic Booking" role="button" tabindex="0">
+            <div class="price-top"><h3 data-i18n="planBasicName">Basic Booking</h3><div class="price" data-price-plan="Basic Booking">$3.99</div></div>
+            <p data-i18n="planBasicDesc">📞 One place, one request, up to five Korean call attempts every 10 minutes.</p>
+            <div class="tag-row"><span class="tag" data-i18n="tagAttempts">5 attempts</span><span class="tag" data-i18n="tagInterval">10 min interval</span></div>
+          </article>
+          <article class="price-card featured" data-select-plan="Plus Booking" role="button" tabindex="0">
+            <div class="price-top"><h3 data-i18n="planPlusName">Plus Booking</h3><div class="price" data-price-plan="Plus Booking">$7.99</div></div>
+            <p data-i18n="planPlusDesc">🗓️ Backup date or time coordination if the first choice is full.</p>
+            <div class="tag-row"><span class="tag" data-i18n="tagBackup">Backup options</span><span class="tag" data-i18n="tagPopular">Most popular</span></div>
+          </article>
+          <article class="price-card" data-select-plan="Rush Booking" role="button" tabindex="0">
+            <div class="price-top"><h3 data-i18n="planRushName">Rush Booking</h3><div class="price" data-price-plan="Rush Booking">$14.99</div></div>
+            <p data-i18n="planRushDesc">⚡ Priority handling for same-day restaurant, beauty, clinic, or special requests.</p>
+            <div class="tag-row"><span class="tag" data-i18n="tagPriority">Priority</span><span class="tag" data-i18n="tagSameDay">Same day</span></div>
+          </article>
         </div>
       </section>
 
       <section class="section">
-        <div class="section-head"><div><div class="kicker" data-i18n="messengerKicker">Messenger updates</div><h2 data-i18n="messengerTitle">Receive updates in the messenger you prefer.</h2></div></div>
+        <div class="section-head"><div><div class="kicker" data-i18n="howKicker">How it works</div><h2 data-i18n="howTitle">Three steps, no Korean phone needed.</h2></div></div>
+        <div class="steps">
+          <article class="step-card"><div class="step-no">1</div><div><b data-i18n="step1Title">Choose a plan and type</b><span data-i18n="step1Desc">Start with the price, then select restaurant, beauty, clinic, or other.</span></div></article>
+          <article class="step-card"><div class="step-no">2</div><div><b data-i18n="step2Title">Add required details</b><span data-i18n="step2Desc">Dates cannot be in the past, and required fields block the next step.</span></div></article>
+          <article class="step-card"><div class="step-no">3</div><div><b data-i18n="step3Title">Pay and track</b><span data-i18n="step3Desc">Get a booking number, request popup, and paper-style receipt.</span></div></article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head"><div><div class="kicker" data-i18n="messengerKicker">Messenger updates</div><h2 data-i18n="messengerTitle">Receive updates where you already chat.</h2></div></div>
         <div class="messenger-grid">
           <div class="messenger"><div class="logo-box"><img alt="WhatsApp logo" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/WhatsApp.svg"></div><div><b>WhatsApp</b><span data-i18n="waDesc">Global updates</span></div></div>
           <div class="messenger"><div class="logo-box"><img alt="LINE logo" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/LINE_logo.svg"></div><div><b>LINE</b><span data-i18n="lineDesc">Japan and Taiwan</span></div></div>
           <div class="messenger"><div class="logo-box"><img alt="KakaoTalk logo" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/KakaoTalk_logo.svg"></div><div><b>KakaoTalk</b><span data-i18n="kakaoDesc">Useful in Korea</span></div></div>
-          <div class="messenger"><div class="logo-box"><img alt="Telegram logo" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Telegram_logo.svg"></div><div><b>Telegram</b><span data-i18n="telegramDesc">Quick alerts</span></div></div>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="section-head"><div><div class="kicker" data-i18n="priceKicker">Simple pricing</div><h2 data-i18n="priceTitle">Pick the call support you need.</h2></div></div>
-        <div class="pricing">
-          <article class="price-card"><div class="price-top"><h3 data-i18n="planBasicName">Basic Booking</h3><div class="price">$2.99</div></div><p data-i18n="planBasicDesc">1 place, 1 reservation request, up to 5 call attempts every 10 minutes.</p><div class="tag-row"><span class="tag" data-i18n="tagAttempts">5 attempts</span><span class="tag" data-i18n="tagInterval">10 min interval</span></div></article>
-          <article class="price-card featured"><div class="price-top"><h3 data-i18n="planPlusName">Plus Booking</h3><div class="price">$5.99</div></div><p data-i18n="planPlusDesc">Includes backup time or date coordination when your first choice is full.</p><div class="tag-row"><span class="tag" data-i18n="tagBackup">Backup options</span><span class="tag" data-i18n="tagPopular">Most popular</span></div></article>
-          <article class="price-card"><div class="price-top"><h3 data-i18n="planRushName">Rush Booking</h3><div class="price">$12.99</div></div><p data-i18n="planRushDesc">Priority handling for same-day reservations, beauty, clinic, or event calls.</p><div class="tag-row"><span class="tag" data-i18n="tagPriority">Priority</span><span class="tag" data-i18n="tagSameDay">Same day</span></div></article>
         </div>
       </section>
     </section>
 
     <section class="view" id="view-book">
       <section class="section" style="margin-top:16px;">
-        <div class="section-head"><div><div class="kicker" data-i18n="bookKicker">Reservation request</div><h2 data-i18n="bookTitle">Tell us what to book.</h2><p class="copy" data-i18n="bookCopy">Add the place, preferred time, people, backup options, and messenger.</p></div></div>
+        <div class="section-head"><div><div class="kicker" data-i18n="bookKicker">Reservation request</div><h2 data-i18n="bookTitle">Plan first, then details.</h2><p class="copy" data-i18n="bookCopy">Required fields must be complete before the next step.</p></div></div>
         <div class="book-shell">
           <aside class="glass progress-card">
             <div class="progress-top"><span class="progress-title" id="stepLabel">Step 1 of 3</span><span class="progress-percent" id="progressLabel">33%</span></div>
             <div class="progress-line"><div class="progress-fill" id="progressFill"></div></div>
             <div class="summary" style="margin-top:14px;">
+              <div class="summary-row"><span data-i18n="sumPlan">Plan</span><b id="sumPlan">Plus Booking · $7.99</b></div>
+              <div class="summary-row"><span data-i18n="sumType">Type</span><b id="sumType">Restaurant</b></div>
               <div class="summary-row"><span data-i18n="sumPlace">Place</span><b id="sumPlace">Not added</b></div>
               <div class="summary-row"><span data-i18n="sumTime">Time</span><b id="sumTime">Not added</b></div>
-              <div class="summary-row"><span data-i18n="sumPeople">People</span><b id="sumPeople">Not added</b></div>
-              <div class="summary-row"><span data-i18n="sumPlan">Plan</span><b id="sumPlan">Plus Booking · $5.99</b></div>
             </div>
           </aside>
 
           <div class="glass form-card">
-            <form id="bookingForm">
+            <form id="bookingForm" novalidate>
               <div class="form-step active" data-step="1">
-                <h2 data-i18n="stepPlaceTitle">Place information</h2>
-                <p class="copy" data-i18n="stepPlaceCopy">A Google Maps, Naver Map, Instagram, or website link is enough.</p>
-                <div class="field"><label for="placeName" data-i18n="placeNameLabel">Place name</label><input id="placeName" name="placeName" autocomplete="organization" placeholder="Mongtan Seoul"></div>
-                <div class="field"><label for="placeLink" data-i18n="placeLinkLabel">Google link or website</label><input id="placeLink" name="placeLink" inputmode="url" placeholder="https://maps.google.com/..."></div>
-                <div class="field"><label for="placePhone" data-i18n="placePhoneLabel">Phone number if you know it</label><input id="placePhone" name="placePhone" inputmode="tel" placeholder="+82 2 ..."></div>
-                <div class="choice-grid">
-                  <button class="choice selected" type="button" data-category="Restaurant"><div class="choice-icon bg-orange">R</div><b data-i18n="catRestaurant">Restaurant</b><span data-i18n="catRestaurantDesc">Dining, cafes, bars</span></button>
-                  <button class="choice" type="button" data-category="Beauty"><div class="choice-icon bg-pink">B</div><b data-i18n="catBeauty">Beauty</b><span data-i18n="catBeautyDesc">Hair, nail, spa</span></button>
-                  <button class="choice" type="button" data-category="Clinic"><div class="choice-icon bg-green">C</div><b data-i18n="catClinic">Clinic</b><span data-i18n="catClinicDesc">Simple appointment</span></button>
-                  <button class="choice" type="button" data-category="Other"><div class="choice-icon bg-violet">O</div><b data-i18n="catOther">Other</b><span data-i18n="catOtherDesc">Lost item, event, stock</span></button>
+                <h2 data-i18n="stepPlanTitle">Choose plan and service type</h2>
+                <p class="copy" data-i18n="stepPlanCopy">Prices are shown in your selected language's currency.</p>
+                <div class="plan-options">
+                  <label class="plan-option"><span><b data-plan-label="Basic Booking">Basic Booking · $3.99</b><span data-i18n="planBasicShort">1 place, 5 call attempts, every 10 minutes.</span></span><span class="plan-price-pill" data-price-plan="Basic Booking">$3.99</span><input type="radio" name="plan" value="Basic Booking" data-price-usd="3.99"></label>
+                  <label class="plan-option"><span><b data-plan-label="Plus Booking">Plus Booking · $7.99</b><span data-i18n="planPlusShort">Backup time/date coordination included.</span></span><span class="plan-price-pill" data-price-plan="Plus Booking">$7.99</span><input type="radio" name="plan" value="Plus Booking" data-price-usd="7.99" checked></label>
+                  <label class="plan-option"><span><b data-plan-label="Rush Booking">Rush Booking · $14.99</b><span data-i18n="planRushShort">Priority same-day handling when available.</span></span><span class="plan-price-pill" data-price-plan="Rush Booking">$14.99</span><input type="radio" name="plan" value="Rush Booking" data-price-usd="14.99"></label>
                 </div>
-                <div class="form-actions single"><button class="btn" type="button" data-next-step data-i18n="continueDetails">Continue to details</button></div>
+                <div class="choice-grid" aria-label="Service type">
+                  <button class="choice selected" type="button" data-category="Restaurant">
+                    <div class="choice-icon bg-orange" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none"><path d="M10 9v10c0 3 2 5 5 5v8" stroke="white" stroke-width="3" stroke-linecap="round"/><path d="M15 9v23M21 10v22M27 9c3 5 3 11 0 16v7" stroke="white" stroke-width="3" stroke-linecap="round"/></svg></div>
+                    <div><b data-i18n="catRestaurant">Restaurant</b><span data-i18n="catRestaurantDesc">Dining, cafes, bars</span></div>
+                  </button>
+                  <button class="choice" type="button" data-category="Beauty">
+                    <div class="choice-icon bg-pink" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none"><path d="M20 7l2.7 7.5L30 17l-7.3 2.6L20 27l-2.7-7.4L10 17l7.3-2.5L20 7Z" fill="white"/><path d="M29 25l1.2 3.2 3.1 1.1-3.1 1.1L29 34l-1.2-3.6-3.1-1.1 3.1-1.1L29 25Z" fill="white" opacity=".8"/></svg></div>
+                    <div><b data-i18n="catBeauty">Beauty</b><span data-i18n="catBeautyDesc">Hair, skin, spa</span></div>
+                  </button>
+                  <button class="choice" type="button" data-category="Clinic">
+                    <div class="choice-icon bg-green" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none"><path d="M17 9h6v8h8v6h-8v8h-6v-8H9v-6h8V9Z" fill="white"/><path d="M10 32h20" stroke="white" stroke-width="3" stroke-linecap="round" opacity=".55"/></svg></div>
+                    <div><b data-i18n="catClinic">Clinic</b><span data-i18n="catClinicDesc">Treatment, consult</span></div>
+                  </button>
+                  <button class="choice" type="button" data-category="Other">
+                    <div class="choice-icon bg-violet" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none"><path d="M20 7 31 13.5v13L20 33 9 26.5v-13L20 7Z" fill="white" opacity=".92"/><path d="m9.5 14 10.5 6 10.5-6M20 20v12" stroke="#7c3aed" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                    <div><b data-i18n="catOther">Other</b><span data-i18n="catOtherDesc">Lost item, event, stock</span></div>
+                  </button>
+                </div>
+                <div class="form-actions single"><button class="btn" type="button" data-next-step data-i18n="continuePlace">Continue to place</button></div>
               </div>
 
               <div class="form-step" data-step="2">
-                <h2 data-i18n="stepDetailTitle">Reservation details</h2>
-                <p class="copy" data-i18n="stepDetailCopy">Backup options help us continue quickly if the first time is full.</p>
-                <div class="two-col">
-                  <div class="field"><label for="people" data-i18n="peopleLabel">People</label><input id="people" name="people" inputmode="numeric" value="2"></div>
-                  <div class="field"><label for="reservationName" data-i18n="reservationNameLabel">Name for booking</label><input id="reservationName" name="reservationName" autocomplete="name" placeholder="John Smith"></div>
-                </div>
-                <div class="two-col">
-                  <div class="field"><label for="date1" data-i18n="date1Label">Preferred date</label><div class="date-wrap"><input id="date1" name="date1" inputmode="numeric" data-date-field placeholder="MM/DD/YYYY"><svg viewBox="0 0 24 24" fill="none"><path d="M7 3v4M17 3v4M4 9h16M5 5h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div></div>
-                  <div class="field"><label for="time1" data-i18n="time1Label">Preferred time</label><input id="time1" name="time1" inputmode="numeric" placeholder="7:30 PM"></div>
-                </div>
-                <div class="two-col">
-                  <div class="field"><label for="date2" data-i18n="date2Label">Backup date</label><div class="date-wrap"><input id="date2" name="date2" inputmode="numeric" data-date-field placeholder="MM/DD/YYYY"><svg viewBox="0 0 24 24" fill="none"><path d="M7 3v4M17 3v4M4 9h16M5 5h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div></div>
-                  <div class="field"><label for="time2" data-i18n="time2Label">Backup time</label><input id="time2" name="time2" inputmode="numeric" placeholder="8:00 PM"></div>
-                </div>
-                <div class="field"><label for="note" data-i18n="noteLabel">Requests to tell the venue</label><textarea id="note" name="note" data-i18n-placeholder="notePlaceholder" placeholder="Window seat if possible. Please check deposit and cancellation policy."></textarea></div>
-                <div class="two-col">
-                  <div class="field"><label for="messenger" data-i18n="messengerLabel">Messenger</label><select id="messenger" name="messenger"><option>WhatsApp</option><option>LINE</option><option>KakaoTalk</option><option>Telegram</option></select></div>
-                  <div class="field"><label for="messengerId" data-i18n="messengerIdLabel">Messenger ID or number</label><input id="messengerId" name="messengerId" placeholder="+1 555 ..."></div>
-                </div>
-                <div class="form-actions"><button class="btn secondary" type="button" data-prev-step data-i18n="back">Back</button><button class="btn" type="button" data-next-step data-i18n="continuePay">Continue to pay</button></div>
+                <h2 data-i18n="stepPlaceTitle">Place information</h2>
+                <p class="copy" data-i18n="stepPlaceCopy">A Google Maps, Naver Map, Instagram, or website link helps us call the right location.</p>
+                <div class="field"><label for="placeName" data-i18n="placeNameLabel">Place name</label><input id="placeName" name="placeName" autocomplete="organization" placeholder="Mongtan Seoul" data-required><span class="field-help" data-i18n="requiredHelp">Required</span></div>
+                <div class="field"><label for="placeLink" data-i18n="placeLinkLabel">Map, Instagram, or website link</label><input id="placeLink" name="placeLink" inputmode="url" placeholder="https://maps.google.com/..." data-required><span class="field-help" data-i18n="requiredHelp">Required</span></div>
+                <div class="field"><label for="placePhone" data-i18n="placePhoneLabel">Phone number if you know it</label><input id="placePhone" name="placePhone" inputmode="tel" placeholder="+82 2 ..."></div>
+                <div class="form-actions"><button class="btn secondary" type="button" data-prev-step data-i18n="back">Back</button><button class="btn" type="button" data-next-step data-i18n="continueDetails">Continue to details</button></div>
               </div>
 
               <div class="form-step" data-step="3">
-                <h2 data-i18n="stepPayTitle">Choose your call plan</h2>
-                <p class="copy" data-i18n="stepPayCopy">You only pay the Seoully call support fee here. Deposit or venue fees are confirmed separately.</p>
-                <div class="plan-options">
-                  <label class="plan-option"><span><b data-i18n="planBasicDisplay">Basic Booking · $2.99</b><span data-i18n="planBasicShort">1 place, 5 call attempts, every 10 minutes.</span></span><input type="radio" name="plan" value="Basic Booking" data-price="2.99"></label>
-                  <label class="plan-option"><span><b data-i18n="planPlusDisplay">Plus Booking · $5.99</b><span data-i18n="planPlusShort">Backup time/date coordination included.</span></span><input type="radio" name="plan" value="Plus Booking" data-price="5.99" checked></label>
-                  <label class="plan-option"><span><b data-i18n="planRushDisplay">Rush Booking · $12.99</b><span data-i18n="planRushShort">Priority same-day handling when available.</span></span><input type="radio" name="plan" value="Rush Booking" data-price="12.99"></label>
+                <h2 data-i18n="stepDetailTitle">Reservation details</h2>
+                <p class="copy" data-i18n="stepDetailCopy">Preferred and backup dates cannot be in the past.</p>
+                <div class="two-col">
+                  <div class="field"><label for="date1" data-i18n="date1Label">Preferred date</label><input id="date1" name="date1" type="date" data-required data-future-date><span class="field-help" data-i18n="dateHelp">Choose today or a future date.</span></div>
+                  <div class="field"><label for="time1" data-i18n="time1Label">Preferred time</label><input id="time1" name="time1" type="time" data-required><span class="field-help" data-i18n="requiredHelp">Required</span></div>
                 </div>
+                <div class="two-col">
+                  <div class="field"><label for="date2" data-i18n="date2Label">Backup date</label><input id="date2" name="date2" type="date" data-required data-future-date><span class="field-help" data-i18n="dateHelp">Choose today or a future date.</span></div>
+                  <div class="field"><label for="time2" data-i18n="time2Label">Backup time</label><input id="time2" name="time2" type="time" data-required><span class="field-help" data-i18n="requiredHelp">Required</span></div>
+                </div>
+
+                <div data-category-fields="Restaurant">
+                  <div class="two-col">
+                    <div class="field"><label for="people" data-i18n="peopleLabel">People</label><input id="people" name="people" inputmode="numeric" value="2" data-required><span class="field-help" data-i18n="requiredHelp">Required</span></div>
+                    <div class="field"><label for="reservationName" data-i18n="reservationNameLabel">Name for booking</label><input id="reservationName" name="reservationName" autocomplete="name" placeholder="John Smith" data-required><span class="field-help" data-i18n="requiredHelp">Required</span></div>
+                  </div>
+                  <div class="field"><label for="note" data-i18n="noteLabel">Requests to tell the venue</label><textarea id="note" name="note" data-i18n-placeholder="notePlaceholder" placeholder="Window seat if possible. Please check deposit and cancellation policy."></textarea></div>
+                </div>
+
+                <div data-category-fields="Beauty Clinic" hidden>
+                  <div class="field"><label for="fullName" data-i18n="fullNameLabel">Full name as shown on passport</label><input id="fullName" name="fullName" autocomplete="name" placeholder="JOHN SMITH" data-required><span class="field-help" data-i18n="requiredHelp">Required</span></div>
+                  <div class="two-col">
+                    <div class="field"><label for="passportNo" data-i18n="passportNoLabel">Passport number</label><input id="passportNo" name="passportNo" placeholder="M12345678" data-required><span class="field-help" data-i18n="requiredHelp">Required</span></div>
+                    <div class="field"><label for="birthDate" data-i18n="birthDateLabel">Date of birth</label><input id="birthDate" name="birthDate" type="date" data-required><span class="field-help" data-i18n="requiredHelp">Required</span></div>
+                  </div>
+                  <div class="two-col">
+                    <div class="field"><label for="gender" data-i18n="genderLabel">Gender</label><select id="gender" name="gender" data-required><option value="" data-i18n="selectOne">Select</option><option data-i18n="genderFemale">Female</option><option data-i18n="genderMale">Male</option><option data-i18n="genderOther">Other</option></select><span class="field-help" data-i18n="requiredHelp">Required</span></div>
+                    <div class="field"><label for="procedureName" data-i18n="procedureNameLabel">Needed treatment name</label><input id="procedureName" name="procedureName" placeholder="Skin consultation, haircut..." data-required><span class="field-help" data-i18n="requiredHelp">Required</span></div>
+                  </div>
+                  <div class="field"><label for="symptoms" data-i18n="symptomsLabel">Symptoms or request</label><textarea id="symptoms" name="symptoms" placeholder="Describe symptoms or the treatment you want." data-required></textarea><span class="field-help" data-i18n="requiredHelp">Required</span></div>
+                </div>
+
+                <div data-category-fields="Other" hidden>
+                  <div class="field"><label for="requestTitle" data-i18n="requestTitleLabel">What should we ask?</label><input id="requestTitle" name="requestTitle" placeholder="Lost item, event ticket, product stock..." data-required><span class="field-help" data-i18n="requiredHelp">Required</span></div>
+                  <div class="field"><label for="otherNote" data-i18n="otherNoteLabel">Request details</label><textarea id="otherNote" name="otherNote" placeholder="Share the exact question or outcome you need." data-required></textarea><span class="field-help" data-i18n="requiredHelp">Required</span></div>
+                </div>
+
+                <div class="two-col">
+                  <div class="field"><label for="messenger" data-i18n="messengerLabel">Messenger</label><select id="messenger" name="messenger" data-required><option>WhatsApp</option><option>LINE</option><option>KakaoTalk</option></select><span class="field-help" data-i18n="requiredHelp">Required</span></div>
+                  <div class="field"><label for="messengerId" data-i18n="messengerIdLabel">Messenger ID or number</label><input id="messengerId" name="messengerId" placeholder="+1 555 ..." data-required><span class="field-help" data-i18n="requiredHelp">Required</span></div>
+                </div>
+
                 <div class="summary">
                   <div class="summary-row"><span data-i18n="sumPlace">Place</span><b id="payPlace">Not added</b></div>
                   <div class="summary-row"><span data-i18n="sumTime">Time</span><b id="payTime">Not added</b></div>
                   <div class="summary-row"><span data-i18n="messengerLabel">Messenger</span><b id="payMessenger">WhatsApp</b></div>
-                  <div class="summary-row"><span data-i18n="paymentSummaryTotal">Total</span><b id="payTotal">$5.99</b></div>
+                  <div class="summary-row"><span data-i18n="paymentSummaryTotal">Total</span><b id="payTotal">$7.99</b></div>
                 </div>
                 <div class="form-actions"><button class="btn secondary" type="button" data-prev-step data-i18n="back">Back</button><button class="btn dark" type="button" id="checkoutBtn" data-i18n="checkout">Checkout</button></div>
               </div>
@@ -1185,12 +1283,12 @@
 
     <section class="view" id="view-status">
       <section class="section" style="margin-top:16px;">
-        <div class="section-head"><div><div class="kicker" data-i18n="statusKicker">My booking</div><h2 data-i18n="statusTitle">Check your Seoully request.</h2></div></div>
+        <div class="section-head"><div><div class="kicker" data-i18n="statusKicker">My booking</div><h2 data-i18n="statusTitle">Check your Kall request.</h2></div></div>
         <div class="glass lookup-card">
           <h3 data-i18n="lookupTitle">Find by booking number</h3>
-          <p class="copy" data-i18n="lookupCopy">No login needed. Paste your Seoully number to check the last saved request on this device.</p>
+          <p class="copy" data-i18n="lookupCopy">Enter your Kall number to show the saved request details below.</p>
           <div class="lookup-row">
-            <div class="field"><input id="lookupInput" placeholder="SL-260507-1234"></div>
+            <div class="field"><input id="lookupInput" placeholder="KA-260508-1234"></div>
             <button class="btn small" type="button" id="lookupBtn" data-i18n="lookupBtn">Check</button>
           </div>
         </div>
@@ -1198,40 +1296,101 @@
         <div id="emptyStatus" class="empty-state">
           <div class="empty-icon"><svg class="icon" style="width:42px;height:42px;" viewBox="0 0 24 24" fill="none"><path d="M5 5h14v14H5z" stroke="currentColor" stroke-width="2.2"/><path d="M8 9h8M8 13h5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></div>
           <h2 data-i18n="emptyTitle">No booking yet</h2>
-          <p class="copy" data-i18n="emptyCopy">Make a request first. After checkout, your Seoully booking number will appear here.</p>
+          <p class="copy" data-i18n="emptyCopy">Make a request first. After checkout, your Kall booking number will appear here.</p>
           <button class="btn" type="button" data-nav="book" data-i18n="startBooking">Start booking</button>
         </div>
 
         <div id="activeStatus" hidden>
           <div class="status-card" id="receiptCard">
             <div class="status-top">
-              <span class="status-no" id="bookingNo">Seoully #SL-0000</span>
+              <span class="status-no" id="bookingNo">Kall #KA-0000</span>
               <span class="status-pill"><span class="live-dot"></span><span data-i18n="statusReceived">Received</span></span>
             </div>
-            <h2 id="statusMain">Your request is ready for Seoully.</h2>
+            <h2 id="statusMain">Your request is ready for Kall.</h2>
             <p id="statusDesc">We will call the venue in Korean and update your selected messenger.</p>
             <div class="summary" style="margin-top:14px;">
+              <div class="summary-row"><span data-i18n="sumType">Type</span><b id="statusType">-</b></div>
               <div class="summary-row"><span data-i18n="sumPlace">Place</span><b id="statusPlace">-</b></div>
               <div class="summary-row"><span data-i18n="sumTime">Time</span><b id="statusTime">-</b></div>
-              <div class="summary-row"><span data-i18n="sumPeople">People</span><b id="statusPeople">-</b></div>
               <div class="summary-row"><span data-i18n="messengerLabel">Messenger</span><b id="statusMessenger">-</b></div>
               <div class="summary-row"><span data-i18n="sumPlan">Plan</span><b id="statusPlan">-</b></div>
             </div>
             <div class="booking-actions">
               <button class="btn small" type="button" id="copyNoBtn" data-i18n="copyBookingNo">Copy booking number</button>
-              <button class="btn small secondary" type="button" id="captureBtn" data-i18n="saveReceipt">Save receipt image</button>
+              <button class="btn small secondary" type="button" data-status-modal="receipt" data-i18n="viewReceipt">View receipt</button>
             </div>
             <div class="timeline">
-              <div class="timeline-item"><span class="timeline-dot">✓</span><div><b data-i18n="tlRequest">Request submitted</b><span data-i18n="tlRequestSub">Place and booking details received</span></div><span class="timeline-time" id="tlTime1">Now</span></div>
-              <div class="timeline-item"><span class="timeline-dot">✓</span><div><b data-i18n="tlPayment">Payment completed</b><span id="tlPaymentSub">$5.99 · PayPal</span></div><span class="timeline-time" id="tlTime2">Now</span></div>
-              <div class="timeline-item"><span class="timeline-dot now">●</span><div><b data-i18n="tlQueue">Waiting for call</b><span data-i18n="tlQueueSub">Seoully will call during Korean business hours</span></div><span class="timeline-time" data-i18n="soon">Soon</span></div>
-              <div class="timeline-item"><span class="timeline-dot todo">○</span><div><b data-i18n="tlResult">Result update</b><span data-i18n="tlResultSub">Confirmed, full, no answer, or backup needed</span></div><span class="timeline-time" data-i18n="next">Next</span></div>
+              <button class="timeline-item done" type="button" data-status-modal="request"><span class="stage-icon stage-request"><svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="v4ChatBlue" x1="15" y1="8" x2="47" y2="50" gradientUnits="userSpaceOnUse"><stop stop-color="#38bdf8"/><stop offset="1" stop-color="#0866df"/></linearGradient>
+    <linearGradient id="v4BellGold" x1="42" y1="4" x2="57" y2="27" gradientUnits="userSpaceOnUse"><stop stop-color="#ffe66d"/><stop offset=".56" stop-color="#f8b928"/><stop offset="1" stop-color="#df8800"/></linearGradient>
+    <filter id="v4ChatShadow" x="5" y="3" width="57" height="58" color-interpolation-filters="sRGB"><feDropShadow dx="0" dy="7" stdDeviation="5" flood-color="#0f4fba" flood-opacity=".2"/></filter>
+  </defs>
+  <ellipse cx="31" cy="55" rx="19" ry="5" fill="#dbeafe" opacity=".9"/>
+  <path d="M13 19.5C13 11.7 18.8 7 27.5 7h10.8C47 7 53 12.1 53 20.1v12.6C53 40.9 46.7 46 38 46h-7.3L20.4 56.5v-13C15.8 41.5 13 37.2 13 31.8V19.5Z" fill="url(#v4ChatBlue)" filter="url(#v4ChatShadow)"/>
+  <path d="M17 20.5c0-5.5 4.2-9.4 10-9.4h10.3c6.1 0 10.2 3.7 10.7 9.1" stroke="#ffffff" stroke-opacity=".34" stroke-width="2.2" stroke-linecap="round"/>
+  <circle cx="26" cy="28" r="3.7" fill="#f1f7ff"/><circle cx="33.5" cy="28" r="3.7" fill="#f1f7ff"/><circle cx="41" cy="28" r="3.7" fill="#f1f7ff"/>
+  <g filter="url(#v4ChatShadow)">
+    <path d="M50.5 9.2c4 0 7.1 3.2 7.1 7.1v5.4l2.9 4.7H40.6l2.9-4.7v-5.4c0-3.9 3.1-7.1 7-7.1Z" fill="url(#v4BellGold)"/>
+    <path d="M47.4 26.2c.5 2 1.8 3.1 3.6 3.1 1.9 0 3.1-1.1 3.7-3.1" stroke="#c97600" stroke-width="2" stroke-linecap="round"/>
+    <path d="M45.8 15.8c.7-2.2 2.5-3.5 4.8-3.5" stroke="#fff7c7" stroke-width="1.8" stroke-linecap="round" opacity=".85"/>
+  </g>
+</svg></span><div><b data-i18n="tlRequest">Request submitted</b><span data-i18n="tlRequestSub">Tap to review submitted details</span></div><span class="timeline-time" id="tlTime1">Now</span></button>
+              <button class="timeline-item done" type="button" data-status-modal="receipt"><span class="stage-icon stage-payment"><svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="v4WalletBlue" x1="15" y1="22" x2="55" y2="54" gradientUnits="userSpaceOnUse"><stop stop-color="#5aa2ff"/><stop offset="1" stop-color="#1d4ed8"/></linearGradient>
+    <radialGradient id="v4CoinGold" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(35 14) rotate(52) scale(16)"><stop stop-color="#fff6a7"/><stop offset=".55" stop-color="#f7bd37"/><stop offset="1" stop-color="#d67b00"/></radialGradient>
+    <linearGradient id="v4PlusGreen" x1="7" y1="42" x2="29" y2="60" gradientUnits="userSpaceOnUse"><stop stop-color="#77e35f"/><stop offset="1" stop-color="#16a34a"/></linearGradient>
+    <filter id="v4PayShadow" x="4" y="1" width="58" height="64" color-interpolation-filters="sRGB"><feDropShadow dx="0" dy="7" stdDeviation="5" flood-color="#0f4fba" flood-opacity=".22"/></filter>
+  </defs>
+  <ellipse cx="32" cy="57" rx="22" ry="5" fill="#dbeafe"/>
+  <circle cx="36.5" cy="15.5" r="13" fill="url(#v4CoinGold)" filter="url(#v4PayShadow)"/>
+  <circle cx="36.5" cy="15.5" r="9.5" stroke="#d88400" stroke-width="1.5" opacity=".55"/>
+  <path d="M36.5 8.8v13.4M32.4 12.1c1.1-2 7-2.2 8 0 .9 2.1-1.1 3.1-3.9 3.5-2.7.4-4.9 1.2-4 3.5.8 2.2 7.2 2.1 8.4-.2" stroke="#936100" stroke-width="2" stroke-linecap="round"/>
+  <rect x="13" y="24" width="40" height="26" rx="8" fill="url(#v4WalletBlue)" filter="url(#v4PayShadow)"/>
+  <path d="M15 29c2.8-3.2 7.3-4.5 13.2-4.5h16.6c4.6 0 7.2 2.5 7.7 5.8" stroke="#e9f3ff" stroke-opacity=".42" stroke-width="2.2" stroke-linecap="round"/>
+  <rect x="41" y="33" width="15" height="12" rx="5" fill="#75a9ff" stroke="#b8d4ff" stroke-width="1.1"/>
+  <circle cx="47.8" cy="39" r="2.8" fill="#dbeafe"/>
+  <circle cx="19" cy="46" r="12" fill="url(#v4PlusGreen)" filter="url(#v4PayShadow)"/>
+  <path d="M19 39.5v13M12.5 46h13" stroke="#effff2" stroke-width="4" stroke-linecap="round"/>
+</svg></span><div><b data-i18n="tlPayment">Payment completed</b><span id="tlPaymentSub">$7.99 · PayPal</span></div><span class="timeline-time" id="tlTime2">Now</span></button>
+              <div class="timeline-item active"><span class="stage-icon stage-call"><svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="v4PhoneBlue" x1="17" y1="6" x2="49" y2="60" gradientUnits="userSpaceOnUse"><stop stop-color="#67aaff"/><stop offset=".52" stop-color="#2563eb"/><stop offset="1" stop-color="#0ea5e9"/></linearGradient>
+    <linearGradient id="v4PhoneEdge" x1="16" y1="7" x2="48" y2="58" gradientUnits="userSpaceOnUse"><stop stop-color="#a7d7ff"/><stop offset="1" stop-color="#0078d9"/></linearGradient>
+    <filter id="v4PhoneShadow" x="4" y="1" width="58" height="64" color-interpolation-filters="sRGB"><feDropShadow dx="0" dy="8" stdDeviation="5" flood-color="#0756c7" flood-opacity=".25"/></filter>
+  </defs>
+  <ellipse cx="33" cy="57" rx="20" ry="5" fill="#dbeafe"/>
+  <path d="M18.6 7.2c3.8-3 9.5-1.8 11.7 2.5l5.3 10.2c1.5 2.9.6 6.5-2.2 8.5l-4.2 3.1c3.7 5.8 8.4 10.4 14.3 14l3.2-4.2c2.1-2.7 5.9-3.5 8.8-1.7l8.8 5.3c4.4 2.7 5.1 8.8 1.5 12.5l-3.2 3.2c-2.8 2.8-7 3.7-10.7 2.3C28.6 54.3 11.9 37.6 3.2 14.2 1.8 10.5 2.7 6.3 5.5 3.5l3.1-3.1" fill="url(#v4PhoneBlue)" filter="url(#v4PhoneShadow)" transform="translate(2 1) scale(.9)"/>
+  <path d="M18.7 10.4c2.8-2.1 6.8-1.1 8.5 2l4.2 8c.9 1.7.4 3.9-1.2 5.1l-4.9 3.7c4.5 8.6 10.8 14.8 19.3 19.2l3.8-4.9c1.2-1.6 3.4-2 5.1-1l7.1 4.2" stroke="url(#v4PhoneEdge)" stroke-width="3" stroke-linecap="round" opacity=".52" transform="translate(2 1) scale(.9)"/>
+  <path d="M16.4 9.2c3.1-2.2 7.1-1.3 8.7 1.9" stroke="#d8ecff" stroke-width="2" stroke-linecap="round" opacity=".78"/>
+</svg></span><div><b data-i18n="tlQueue">Waiting for call</b><span data-i18n="tlQueueSub">Kall will call during Korean business hours</span></div><span class="timeline-time" data-i18n="soon">Soon</span></div>
+              <div class="timeline-item todo"><span class="stage-icon stage-result"><svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="v4Paper" x1="16" y1="13" x2="43" y2="56" gradientUnits="userSpaceOnUse"><stop stop-color="#e5eeff"/><stop offset="1" stop-color="#b9ccff"/></linearGradient>
+    <linearGradient id="v4PaperBack" x1="25" y1="8" x2="52" y2="49" gradientUnits="userSpaceOnUse"><stop stop-color="#b8e6ff"/><stop offset="1" stop-color="#5ba6ef"/></linearGradient>
+    <linearGradient id="v4Pencil" x1="42" y1="38" x2="58" y2="52" gradientUnits="userSpaceOnUse"><stop stop-color="#ffd66e"/><stop offset=".55" stop-color="#f59e0b"/><stop offset="1" stop-color="#d97706"/></linearGradient>
+    <filter id="v4DocShadow" x="5" y="3" width="58" height="61" color-interpolation-filters="sRGB"><feDropShadow dx="0" dy="8" stdDeviation="5" flood-color="#3b82f6" flood-opacity=".2"/></filter>
+  </defs>
+  <ellipse cx="33" cy="57" rx="20" ry="5" fill="#dbeafe"/>
+  <rect x="24" y="7" width="31" height="43" rx="9" fill="url(#v4PaperBack)" opacity=".95" filter="url(#v4DocShadow)"/>
+  <rect x="11" y="14" width="38" height="43" rx="9" fill="url(#v4Paper)" filter="url(#v4DocShadow)"/>
+  <path d="M20 25h18M20 32h22M20 39h19M20 46h15" stroke="#79a4e8" stroke-width="3" stroke-linecap="round"/>
+  <path d="M43.5 45.6 55.2 33.9c1.5-1.5 4-1.4 5.5.1l.6.6c1.5 1.5 1.6 4 .1 5.5L49.8 51.8 42 53.6l1.5-8Z" fill="url(#v4Pencil)" filter="url(#v4DocShadow)"/>
+  <path d="M56.6 32.6 62.7 38.7" stroke="#b45309" stroke-width="3" stroke-linecap="round"/>
+  <path d="M42 53.6 44.1 48.7 47 51.5Z" fill="#1f2937"/>
+  <path d="M17 20c1.9-1.8 4.4-2.7 7.4-2.7h13" stroke="#fff" stroke-opacity=".75" stroke-width="2" stroke-linecap="round"/>
+</svg></span><div><b data-i18n="tlResult">Result update</b><span data-i18n="tlResultSub">Confirmed, full, no answer, or backup needed</span></div><span class="timeline-time" data-i18n="next">Next</span></div>
             </div>
           </div>
           <div class="glass support-panel">
-            <h3 data-i18n="supportTitle">Need to change something?</h3>
-            <p class="copy" data-i18n="supportCopy">Use the same messenger you selected. Seoully will ask before confirming deposits, fees, or big changes.</p>
-            <div class="support-grid"><div class="support-chip">WhatsApp</div><div class="support-chip">LINE</div><div class="support-chip">KakaoTalk</div><div class="support-chip">Telegram</div></div>
+            <h3 data-i18n="supportTitle">Want to change something?</h3>
+            <p class="copy" data-i18n="supportCopy">If you change your mind within 10 minutes after payment, contact support through WhatsApp, LINE, or KakaoTalk.</p>
+            <div class="support-grid">
+              <a class="support-chip" href="https://wa.me/" target="_blank" rel="noreferrer"><img alt="WhatsApp logo" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/WhatsApp.svg"><span>WhatsApp</span></a>
+              <a class="support-chip" href="https://line.me/" target="_blank" rel="noreferrer"><img alt="LINE logo" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/LINE_logo.svg"><span>LINE</span></a>
+              <a class="support-chip" href="https://www.kakaocorp.com/page/service/service/KakaoTalk" target="_blank" rel="noreferrer"><img alt="KakaoTalk logo" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/KakaoTalk_logo.svg"><span>KakaoTalk</span></a>
+            </div>
           </div>
         </div>
       </section>
@@ -1253,268 +1412,303 @@
       <div class="summary">
         <div class="summary-row"><span data-i18n="paymentSummaryPlan">Plan</span><b id="sheetPlan">Plus Booking</b></div>
         <div class="summary-row"><span data-i18n="paymentSummaryPlace">Place</span><b id="sheetPlace">Mongtan Seoul</b></div>
-        <div class="summary-row"><span data-i18n="paymentSummaryTotal">Total</span><b id="sheetTotal">$5.99</b></div>
+        <div class="summary-row"><span data-i18n="paymentSummaryTotal">Total</span><b id="sheetTotal">$7.99</b></div>
       </div>
       <div class="pay-methods">
-        <button class="pay-method selected" type="button" data-pay="WeChat Pay"><div class="pay-logo wechat">W</div><b>WeChat Pay</b></button>
-        <button class="pay-method" type="button" data-pay="PayPal"><div class="pay-logo paypal">P</div><b>PayPal</b></button>
-        <button class="pay-method" type="button" data-pay="Alipay"><div class="pay-logo alipay">A</div><b>Alipay</b></button>
-        <button class="pay-method" type="button" data-pay="Card"><div class="pay-logo cardpay">C</div><b>Visa / Mastercard</b></button>
-        <button class="pay-method" type="button" data-pay="Apple Pay"><div class="pay-logo applepay">Apple</div><b>Apple Pay</b></button>
-        <button class="pay-method" type="button" data-pay="Google Pay"><div class="pay-logo googlepay">G</div><b>Google Pay</b></button>
+        <button class="pay-method selected" type="button" data-pay="WeChat Pay"><div class="pay-logo"><img alt="WeChat Pay logo" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/WeChat_Pay.png"></div><b>WeChat Pay</b></button>
+        <button class="pay-method" type="button" data-pay="PayPal"><div class="pay-logo"><img alt="PayPal logo" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/PayPal.svg"></div><b>PayPal</b></button>
+        <button class="pay-method" type="button" data-pay="Alipay"><div class="pay-logo"><img alt="Alipay logo" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Alipay_Wordmark_Logo.png"></div><b>Alipay</b></button>
+        <button class="pay-method" type="button" data-pay="Visa"><div class="pay-logo"><img alt="Visa logo" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Visa_2021.svg"></div><b>Visa</b></button>
+        <button class="pay-method" type="button" data-pay="Apple Pay"><div class="pay-logo"><img alt="Apple Pay logo" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Apple_Pay_logo.svg"></div><b>Apple Pay</b></button>
+        <button class="pay-method" type="button" data-pay="Google Pay"><div class="pay-logo"><img alt="Google Pay logo" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Google_Pay_Logo_(2020).svg"></div><b>Google Pay</b></button>
       </div>
       <div class="policy">
-        <label class="check-row"><input type="checkbox" id="policy1"><span data-i18n="policy1">I understand Seoully provides call support, not a guaranteed reservation.</span></label>
+        <label class="check-row"><input type="checkbox" id="policy1"><span data-i18n="policy1">I understand Kall provides call support, not a guaranteed reservation.</span></label>
         <label class="check-row"><input type="checkbox" id="policy2"><span data-i18n="policy2">Please ask me before confirming any deposit, cancellation fee, or major change.</span></label>
       </div>
       <button class="btn" type="button" id="payNowBtn" data-i18n="payNow">Pay and get booking number</button>
     </div>
   </div>
 
+  <div class="info-modal" id="infoModal" aria-hidden="true">
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="sheet-handle"></div>
+      <div class="sheet-head"><h2 id="modalTitle">Booking details</h2><button class="icon-btn" type="button" id="closeInfoModal" aria-label="Close"><svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"/></svg></button></div>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script>
-    const base = {
+    const planPrices = {
+      "Basic Booking": 3.99,
+      "Plus Booking": 7.99,
+      "Rush Booking": 14.99
+    };
+    const currencies = {
+      en: { prefix: "$", values: { 3.99: 3.99, 7.99: 7.99, 14.99: 14.99 }, decimals: 2 },
+      ko: { suffix: "원", values: { 3.99: 5900, 7.99: 11900, 14.99: 21900 }, decimals: 0 },
+      ja: { prefix: "¥", values: { 3.99: 599, 7.99: 1199, 14.99: 2199 }, decimals: 0 },
+      zh: { suffix: "元", values: { 3.99: 29.99, 7.99: 59.99, 14.99: 109.99 }, decimals: 2 },
+      fr: { prefix: "€", values: { 3.99: 3.99, 7.99: 7.99, 14.99: 14.99 }, decimals: 2 }
+    };
+
+    const i18n = {
       en: {
         brandSub: "Korean phone booking help",
-        languageTitle: "Choose your language",
-        languageDesc: "Seoully supports Korean phone reservations in your language.",
-        startApp: "Start with Seoully",
-        introEyebrow: "For Korea trips, before or after arrival",
+        languageTitle: "Choose language",
+        languageDesc: "Pick a flag to continue.",
+        startApp: "Start with Kall",
         heroTitle: "Need a Korean phone reservation?",
-        heroLead: "Tell us where, when, and how many people. Seoully calls in Korean and sends the result to your messenger.",
-        ctaBook: "Make a request", ctaTrack: "Track booking", chipConfirmed: "Confirmed details", screenBadge: "Calling now",
+        heroLead: "Tell us the place, time, and required details. Kall calls in Korean and sends the result to your messenger.",
+        ctaBook: "Make a request", ctaTrack: "Track booking", chipConfirmed: "Details received", screenBadge: "Calling now",
         screenTitle: "Dinner in Seoul", screenText: "May 12 · 7:30 PM · 2 guests · backup time ready",
-        miniSubmitted: "Request sent", miniPayment: "Payment", miniCalling: "Calling venue", miniDone: "Done", miniLive: "Live", chipPrice: "From $2.99",
-        howKicker: "How it works", howTitle: "Three steps, no Korean phone needed.",
-        step1Title: "Send the place and time", step1Desc: "Google link, people, preferred time, and backup options.",
-        step2Title: "Choose a plan and pay", step2Desc: "WeChat Pay, PayPal, Alipay, card, Apple Pay, or Google Pay.",
-        step3Title: "Get your booking number", step3Desc: "Copy it, save the receipt image, and use it to check status anytime.",
-        messengerKicker: "Messenger updates", messengerTitle: "Receive updates in the messenger you prefer.",
-        waDesc: "Global updates", lineDesc: "Japan and Taiwan", kakaoDesc: "Useful in Korea", telegramDesc: "Quick alerts",
-        priceKicker: "Simple pricing", priceTitle: "Pick the call support you need.",
-        planBasicName: "Basic Booking", planBasicDesc: "1 place, 1 reservation request, up to 5 call attempts every 10 minutes.",
-        planPlusName: "Plus Booking", planPlusDesc: "Includes backup time or date coordination when your first choice is full.",
-        planRushName: "Rush Booking", planRushDesc: "Priority handling for same-day reservations, beauty, clinic, or event calls.",
-        planBasicDisplay: "Basic Booking · $2.99", planPlusDisplay: "Plus Booking · $5.99", planRushDisplay: "Rush Booking · $12.99",
+        miniSubmitted: "Request sent", miniPayment: "Payment", miniCalling: "Calling venue", miniDone: "Done", miniLive: "Live",
+        priceKicker: "Pricing first", priceTitle: "Pick the call support you need.",
+        planBasicName: "Basic Booking", planPlusName: "Plus Booking", planRushName: "Rush Booking",
+        planBasicDesc: "📞 One place, one request, up to five Korean call attempts every 10 minutes.",
+        planPlusDesc: "🗓️ Backup date or time coordination if the first choice is full.",
+        planRushDesc: "⚡ Priority handling for same-day restaurant, beauty, clinic, or special requests.",
+        planBasicShort: "1 place, 5 call attempts, every 10 minutes.", planPlusShort: "Backup time/date coordination included.", planRushShort: "Priority same-day handling when available.",
         tagAttempts: "5 attempts", tagInterval: "10 min interval", tagBackup: "Backup options", tagPopular: "Most popular", tagPriority: "Priority", tagSameDay: "Same day",
-        bookKicker: "Reservation request", bookTitle: "Tell us what to book.", bookCopy: "Add the place, preferred time, people, backup options, and messenger.",
-        sumPlace: "Place", sumTime: "Time", sumPeople: "People", sumPlan: "Plan", paymentSummaryTotal: "Total",
-        stepPlaceTitle: "Place information", stepPlaceCopy: "A Google Maps, Naver Map, Instagram, or website link is enough.",
-        placeNameLabel: "Place name", placeLinkLabel: "Google link or website", placePhoneLabel: "Phone number if you know it",
-        catRestaurant: "Restaurant", catRestaurantDesc: "Dining, cafes, bars", catBeauty: "Beauty", catBeautyDesc: "Hair, nail, spa", catClinic: "Clinic", catClinicDesc: "Simple appointment", catOther: "Other", catOtherDesc: "Lost item, event, stock",
-        continueDetails: "Continue to details", stepDetailTitle: "Reservation details", stepDetailCopy: "Backup options help us continue quickly if the first time is full.",
+        howKicker: "How it works", howTitle: "Three steps, no Korean phone needed.",
+        step1Title: "Choose a plan and type", step1Desc: "Start with the price, then select restaurant, beauty, clinic, or other.",
+        step2Title: "Add required details", step2Desc: "Dates cannot be in the past, and required fields block the next step.",
+        step3Title: "Pay and track", step3Desc: "Get a booking number, request popup, and paper-style receipt.",
+        messengerKicker: "Messenger updates", messengerTitle: "Receive updates where you already chat.",
+        waDesc: "Global updates", lineDesc: "Japan and Taiwan", kakaoDesc: "Useful in Korea",
+        bookKicker: "Reservation request", bookTitle: "Plan first, then details.", bookCopy: "Required fields must be complete before the next step.",
+        sumPlan: "Plan", sumType: "Type", sumPlace: "Place", sumTime: "Time", paymentSummaryTotal: "Total",
+        stepPlanTitle: "Choose plan and service type", stepPlanCopy: "Prices are shown in your selected language's currency.",
+        catRestaurant: "Restaurant", catRestaurantDesc: "Dining, cafes, bars", catBeauty: "Beauty", catBeautyDesc: "Hair, skin, spa", catClinic: "Clinic", catClinicDesc: "Treatment, consult", catOther: "Other", catOtherDesc: "Lost item, event, stock",
+        continuePlace: "Continue to place", stepPlaceTitle: "Place information", stepPlaceCopy: "A Google Maps, Naver Map, Instagram, or website link helps us call the right location.",
+        placeNameLabel: "Place name", placeLinkLabel: "Map, Instagram, or website link", placePhoneLabel: "Phone number if you know it",
+        continueDetails: "Continue to details", stepDetailTitle: "Reservation details", stepDetailCopy: "Preferred and backup dates cannot be in the past.",
         peopleLabel: "People", reservationNameLabel: "Name for booking", date1Label: "Preferred date", time1Label: "Preferred time",
         date2Label: "Backup date", time2Label: "Backup time", noteLabel: "Requests to tell the venue",
         notePlaceholder: "Window seat if possible. Please check deposit and cancellation policy.",
-        messengerLabel: "Messenger", messengerIdLabel: "Messenger ID or number", back: "Back", continuePay: "Continue to pay",
-        stepPayTitle: "Choose your call plan", stepPayCopy: "You only pay the Seoully call support fee here. Deposit or venue fees are confirmed separately.",
-        planBasicShort: "1 place, 5 call attempts, every 10 minutes.", planPlusShort: "Backup time/date coordination included.", planRushShort: "Priority same-day handling when available.",
-        checkout: "Checkout", statusKicker: "My booking", statusTitle: "Check your Seoully request.",
-        lookupTitle: "Find by booking number", lookupCopy: "No login needed. Paste your Seoully number to check the last saved request on this device.", lookupBtn: "Check",
-        emptyTitle: "No booking yet", emptyCopy: "Make a request first. After checkout, your Seoully booking number will appear here.", startBooking: "Start booking",
-        statusReceived: "Received", copyBookingNo: "Copy booking number", saveReceipt: "Save receipt image",
-        tlRequest: "Request submitted", tlRequestSub: "Place and booking details received", tlPayment: "Payment completed",
-        tlQueue: "Waiting for call", tlQueueSub: "Seoully will call during Korean business hours", tlResult: "Result update", tlResultSub: "Confirmed, full, no answer, or backup needed", soon: "Soon", next: "Next",
-        supportTitle: "Need to change something?", supportCopy: "Use the same messenger you selected. Seoully will ask before confirming deposits, fees, or big changes.",
+        fullNameLabel: "Full name as shown on passport", passportNoLabel: "Passport number", birthDateLabel: "Date of birth", genderLabel: "Gender",
+        selectOne: "Select", genderFemale: "Female", genderMale: "Male", genderOther: "Other", procedureNameLabel: "Needed treatment name", symptomsLabel: "Symptoms or request",
+        requestTitleLabel: "What should we ask?", otherNoteLabel: "Request details",
+        messengerLabel: "Messenger", messengerIdLabel: "Messenger ID or number", back: "Back", checkout: "Checkout",
+        statusKicker: "My booking", statusTitle: "Check your Kall request.", lookupTitle: "Find by booking number", lookupCopy: "Enter your Kall number to show the saved request details below.", lookupBtn: "Check",
+        emptyTitle: "No booking yet", emptyCopy: "Make a request first. After checkout, your Kall booking number will appear here.", startBooking: "Start booking",
+        statusReceived: "Received", copyBookingNo: "Copy booking number", viewReceipt: "View receipt",
+        tlRequest: "Request submitted", tlRequestSub: "Tap to review submitted details", tlPayment: "Payment completed",
+        tlQueue: "Waiting for call", tlQueueSub: "Kall will call during Korean business hours", tlResult: "Result update", tlResultSub: "Confirmed, full, no answer, or backup needed", soon: "Soon", next: "Next",
+        supportTitle: "Want to change something?", supportCopy: "If you change your mind within 10 minutes after payment, contact support through WhatsApp, LINE, or KakaoTalk.",
         navIntro: "Intro", navBook: "Book", navStatus: "Status", paymentTitle: "Complete payment", paymentSummaryPlan: "Plan", paymentSummaryPlace: "Place",
-        policy1: "I understand Seoully provides call support, not a guaranteed reservation.", policy2: "Please ask me before confirming any deposit, cancellation fee, or major change.",
-        payNow: "Pay and get booking number", toastMissing: "Please add the place name first.", toastPolicy: "Please agree to both payment confirmations.", toastCreated: "Booking number created.", toastCopied: "Booking number copied.", toastSaved: "Receipt image saved.", toastNotFound: "No booking found on this device.", dateFormat: "MM/DD/YYYY", timeFormat: "7:30 PM",
-        notAdded: "Not added", stepCounter: "Step {n} of 3", statusDescTemplate: "Seoully will call in Korean and send updates to {messenger}.",
-        receiptSubtitle: "Korean phone booking receipt", receiptBookingPrefix: "Booking", receiptHelp: "Keep this number to check your status without login.", receiptFooter: "Show this screen or copy the booking number when contacting Seoully.", receiptPaidWith: "Paid with", receiptStatusLabel: "Status", receiptStatusValue: "Received · waiting for call"
+        policy1: "I understand Kall provides call support, not a guaranteed reservation.", policy2: "Please ask me before confirming any deposit, cancellation fee, or major change.",
+        payNow: "Pay and get booking number", requiredHelp: "Required", dateHelp: "Choose today or a future date.",
+        toastRequired: "Please complete the required fields.", toastDate: "Preferred and backup dates cannot be in the past.", toastPolicy: "Please agree to both payment confirmations.", toastCreated: "Booking number created.", toastCopied: "Booking number copied.", toastNotFound: "No booking found on this device.",
+        notAdded: "Not added", stepCounter: "Step {n} of 3", statusDescTemplate: "Kall will call in Korean and send updates to {messenger}.",
+        receiptTitle: "Payment receipt", requestTitle: "Submitted request", receiptBookingPrefix: "Booking", receiptPaidWith: "Paid with", receiptStatusLabel: "Status", receiptStatusValue: "Paid · waiting for call"
+      },
+      ko: {
+        brandSub: "한국 전화 예약 도움",
+        languageTitle: "언어 선택",
+        languageDesc: "국기를 선택해 계속하세요.",
+        startApp: "Kall 시작하기",
+        heroTitle: "한국 전화 예약이 필요하신가요?",
+        heroLead: "장소, 시간, 필요한 정보를 알려주세요. Kall이 한국어로 전화하고 결과를 메신저로 보내드립니다.",
+        ctaBook: "예약 요청하기", ctaTrack: "예약 조회", chipConfirmed: "정보 접수", screenBadge: "전화 중",
+        screenTitle: "서울 저녁 예약", screenText: "5월 12일 · 오후 7:30 · 2명 · 차선 시간 준비",
+        miniSubmitted: "요청 접수", miniPayment: "결제", miniCalling: "가게 전화", miniDone: "완료", miniLive: "진행 중",
+        priceKicker: "가격 먼저", priceTitle: "필요한 전화 지원을 선택하세요.",
+        planBasicName: "베이직 예약", planPlusName: "플러스 예약", planRushName: "러시 예약",
+        planBasicDesc: "📞 한 곳, 예약 요청 1건, 10분 간격 최대 5회 전화.",
+        planPlusDesc: "🗓️ 첫 희망 시간이 어려울 때 차선 날짜나 시간 조율 포함.",
+        planRushDesc: "⚡ 당일 식당, 뷰티, 클리닉, 기타 요청 우선 처리.",
+        planBasicShort: "1곳, 10분 간격 최대 5회 전화.", planPlusShort: "차선 날짜/시간 조율 포함.", planRushShort: "가능 시 당일 우선 처리.",
+        tagAttempts: "5회 전화", tagInterval: "10분 간격", tagBackup: "차선 옵션", tagPopular: "인기", tagPriority: "우선 처리", tagSameDay: "당일",
+        howKicker: "이용 방법", howTitle: "한국 전화번호 없이 3단계로 끝납니다.",
+        step1Title: "플랜과 유형 선택", step1Desc: "가격을 먼저 보고 식당, 뷰티, 클리닉, 기타를 선택하세요.",
+        step2Title: "필수 정보 입력", step2Desc: "과거 날짜는 선택할 수 없고 필수값이 비면 다음 단계로 갈 수 없습니다.",
+        step3Title: "결제 및 조회", step3Desc: "예약 번호, 접수 팝업, 종이 영수증 팝업을 확인하세요.",
+        messengerKicker: "메신저 알림", messengerTitle: "자주 쓰는 메신저로 진행 상황을 받아보세요.",
+        waDesc: "글로벌 업데이트", lineDesc: "일본/대만 여행자", kakaoDesc: "한국 체류에 편리",
+        bookKicker: "예약 요청", bookTitle: "가격 먼저, 그다음 정보.", bookCopy: "필수 입력이 완료되어야 다음 단계로 넘어갑니다.",
+        sumPlan: "플랜", sumType: "유형", sumPlace: "장소", sumTime: "시간", paymentSummaryTotal: "총액",
+        stepPlanTitle: "플랜과 서비스 유형 선택", stepPlanCopy: "선택한 언어 기준 통화로 가격이 표시됩니다.",
+        catRestaurant: "식당", catRestaurantDesc: "식사, 카페, 바", catBeauty: "뷰티", catBeautyDesc: "헤어, 피부, 스파", catClinic: "클리닉", catClinicDesc: "시술, 상담", catOther: "기타", catOtherDesc: "분실물, 이벤트, 재고",
+        continuePlace: "장소 입력", stepPlaceTitle: "가게 정보", stepPlaceCopy: "구글맵, 네이버지도, 인스타그램, 웹사이트 링크가 있으면 정확히 전화할 수 있습니다.",
+        placeNameLabel: "가게 이름", placeLinkLabel: "지도, 인스타그램, 웹사이트 링크", placePhoneLabel: "전화번호를 안다면 입력",
+        continueDetails: "예약 정보 입력", stepDetailTitle: "예약 상세 정보", stepDetailCopy: "희망일과 차선일은 과거 날짜를 선택할 수 없습니다.",
+        peopleLabel: "인원", reservationNameLabel: "예약자 이름", date1Label: "희망일", time1Label: "희망 시간",
+        date2Label: "차선일", time2Label: "차선 시간", noteLabel: "가게에 전달할 요청",
+        notePlaceholder: "가능하면 창가 자리. 예약금과 취소 정책도 확인해 주세요.",
+        fullNameLabel: "여권 기준 Full name", passportNoLabel: "여권 번호", birthDateLabel: "생년월일", genderLabel: "성별",
+        selectOne: "선택", genderFemale: "여성", genderMale: "남성", genderOther: "기타", procedureNameLabel: "필요 시술 이름", symptomsLabel: "증상 또는 요청",
+        requestTitleLabel: "무엇을 문의할까요?", otherNoteLabel: "요청 상세",
+        messengerLabel: "메신저", messengerIdLabel: "메신저 ID 또는 번호", back: "뒤로", checkout: "결제하기",
+        statusKicker: "내 예약", statusTitle: "Kall 요청을 조회하세요.", lookupTitle: "예약 번호로 조회", lookupCopy: "Kall 예약 번호를 입력하면 아래에 접수 정보를 보여드립니다.", lookupBtn: "조회",
+        emptyTitle: "아직 예약이 없습니다", emptyCopy: "먼저 예약을 요청하세요. 결제 후 Kall 예약 번호가 여기에 표시됩니다.", startBooking: "예약 시작하기",
+        statusReceived: "접수 완료", copyBookingNo: "예약 번호 복사", viewReceipt: "영수증 보기",
+        tlRequest: "요청 접수", tlRequestSub: "누르면 접수 정보를 확인합니다", tlPayment: "결제 완료",
+        tlQueue: "전화 대기 중", tlQueueSub: "한국 영업시간에 맞춰 Kall이 전화합니다", tlResult: "결과 업데이트", tlResultSub: "확정, 만석, 미연결, 차선 필요 여부 안내", soon: "곧 진행", next: "다음",
+        supportTitle: "내용을 바꾸고 싶나요?", supportCopy: "결제 후 10분 이내 변심이 생기면 WhatsApp, LINE, KakaoTalk으로 문의센터에 연결하세요.",
+        navIntro: "소개", navBook: "예약", navStatus: "조회", paymentTitle: "결제 완료하기", paymentSummaryPlan: "플랜", paymentSummaryPlace: "장소",
+        policy1: "Kall은 전화 지원 서비스이며 예약 성공을 보장하지 않는다는 점을 이해했습니다.", policy2: "예약금, 취소 수수료, 큰 변경은 확정 전 먼저 확인해 주세요.",
+        payNow: "결제하고 예약 번호 받기", requiredHelp: "필수 입력", dateHelp: "오늘 또는 이후 날짜를 선택하세요.",
+        toastRequired: "필수 정보를 입력해 주세요.", toastDate: "희망일과 차선일은 과거 날짜를 선택할 수 없습니다.", toastPolicy: "결제 확인 항목 2개에 동의해 주세요.", toastCreated: "예약 번호가 생성되었습니다.", toastCopied: "예약 번호를 복사했습니다.", toastNotFound: "이 기기에서 예약을 찾을 수 없습니다.",
+        notAdded: "미입력", stepCounter: "{n}/3 단계", statusDescTemplate: "Kall이 한국어로 전화하고 {messenger}로 진행 상황을 보내드립니다.",
+        receiptTitle: "결제 영수증", requestTitle: "접수된 요청", receiptBookingPrefix: "예약", receiptPaidWith: "결제 수단", receiptStatusLabel: "상태", receiptStatusValue: "결제 완료 · 전화 대기 중"
+      },
+      ja: {
+        brandSub: "韓国電話予約サポート",
+        languageTitle: "言語を選択",
+        languageDesc: "国旗を選んで続行してください。",
+        startApp: "Kallを始める",
+        heroTitle: "韓国語の電話予約が必要ですか？",
+        heroLead: "場所、時間、必要情報を入力してください。Kallが韓国語で電話し、結果をメッセンジャーに送ります。",
+        ctaBook: "予約を依頼", ctaTrack: "予約確認", chipConfirmed: "情報受付済み", screenBadge: "通話中",
+        screenTitle: "ソウルの夕食", screenText: "5月12日 · 19:30 · 2名 · 予備時間あり",
+        miniSubmitted: "依頼受付", miniPayment: "支払い", miniCalling: "店舗へ電話", miniDone: "完了", miniLive: "進行中",
+        priceKicker: "料金から選択", priceTitle: "必要な電話サポートを選んでください。",
+        planBasicName: "Basic予約", planPlusName: "Plus予約", planRushName: "Rush予約",
+        planBasicDesc: "📞 1店舗、1件の依頼、10分ごとに最大5回電話します。",
+        planPlusDesc: "🗓️ 第一希望が満席の場合、予備日程や時間の調整を含みます。",
+        planRushDesc: "⚡ 当日レストラン、美容、クリニック、特別依頼を優先対応。",
+        planBasicShort: "1店舗、10分ごとに最大5回電話。", planPlusShort: "予備日時の調整込み。", planRushShort: "可能な場合は当日優先対応。",
+        tagAttempts: "5回電話", tagInterval: "10分間隔", tagBackup: "予備オプション", tagPopular: "人気", tagPriority: "優先", tagSameDay: "当日",
+        howKicker: "使い方", howTitle: "韓国の電話番号なしで3ステップ。",
+        step1Title: "プランと種類を選択", step1Desc: "料金を確認して、レストラン、美容、クリニック、その他を選択。",
+        step2Title: "必須情報を入力", step2Desc: "過去の日付は選択できず、必須項目が未入力なら進めません。",
+        step3Title: "支払いと確認", step3Desc: "予約番号、受付ポップアップ、紙風の領収書を確認。",
+        messengerKicker: "メッセンジャー通知", messengerTitle: "普段使うメッセンジャーで更新を受信。",
+        waDesc: "グローバル更新", lineDesc: "日本・台湾向け", kakaoDesc: "韓国滞在に便利",
+        bookKicker: "予約依頼", bookTitle: "料金を先に、詳細は後で。", bookCopy: "必須項目を完了すると次へ進めます。",
+        sumPlan: "プラン", sumType: "種類", sumPlace: "場所", sumTime: "時間", paymentSummaryTotal: "合計",
+        stepPlanTitle: "プランとサービス種類を選択", stepPlanCopy: "選択した言語の通貨で料金を表示します。",
+        catRestaurant: "レストラン", catRestaurantDesc: "食事、カフェ、バー", catBeauty: "美容", catBeautyDesc: "ヘア、肌、スパ", catClinic: "クリニック", catClinicDesc: "施術、相談", catOther: "その他", catOtherDesc: "忘れ物、イベント、在庫",
+        continuePlace: "場所入力へ", stepPlaceTitle: "店舗情報", stepPlaceCopy: "Google Maps、Naver Map、Instagram、サイトリンクがあると正確に電話できます。",
+        placeNameLabel: "店舗名", placeLinkLabel: "地図、Instagram、サイトリンク", placePhoneLabel: "電話番号が分かれば入力",
+        continueDetails: "詳細入力へ", stepDetailTitle: "予約詳細", stepDetailCopy: "希望日と予備日は過去の日付を選択できません。",
+        peopleLabel: "人数", reservationNameLabel: "予約名", date1Label: "希望日", time1Label: "希望時間",
+        date2Label: "予備日", time2Label: "予備時間", noteLabel: "店舗へ伝える要望",
+        notePlaceholder: "可能であれば窓側席。予約金とキャンセル規定も確認してください。",
+        fullNameLabel: "パスポート表記の氏名", passportNoLabel: "パスポート番号", birthDateLabel: "生年月日", genderLabel: "性別",
+        selectOne: "選択", genderFemale: "女性", genderMale: "男性", genderOther: "その他", procedureNameLabel: "必要な施術名", symptomsLabel: "症状または要望",
+        requestTitleLabel: "何を確認しますか？", otherNoteLabel: "依頼詳細",
+        messengerLabel: "メッセンジャー", messengerIdLabel: "IDまたは番号", back: "戻る", checkout: "支払い",
+        statusKicker: "予約確認", statusTitle: "Kallの依頼状況を確認。", lookupTitle: "予約番号で検索", lookupCopy: "Kall番号を入力すると、保存された依頼情報を下に表示します。", lookupBtn: "確認",
+        emptyTitle: "予約はまだありません", emptyCopy: "先に依頼してください。支払い後、Kall予約番号がここに表示されます。", startBooking: "予約開始",
+        statusReceived: "受付済み", copyBookingNo: "番号をコピー", viewReceipt: "領収書を見る",
+        tlRequest: "依頼受付", tlRequestSub: "タップして受付内容を確認", tlPayment: "支払い完了",
+        tlQueue: "電話待ち", tlQueueSub: "韓国の営業時間にKallが電話します", tlResult: "結果更新", tlResultSub: "確定、満席、不通、予備案内など", soon: "まもなく", next: "次",
+        supportTitle: "内容を変更しますか？", supportCopy: "支払い後10分以内なら、WhatsApp、LINE、KakaoTalkからサポートへ連絡できます。",
+        navIntro: "紹介", navBook: "予約", navStatus: "状況", paymentTitle: "支払い完了", paymentSummaryPlan: "プラン", paymentSummaryPlace: "場所",
+        policy1: "Kallは電話サポートであり、予約成功を保証しないことを理解しました。", policy2: "予約金、キャンセル料、大きな変更は確定前に確認してください。",
+        payNow: "支払い、予約番号を取得", requiredHelp: "必須", dateHelp: "今日以降の日付を選択してください。",
+        toastRequired: "必須項目を入力してください。", toastDate: "希望日と予備日は過去の日付を選択できません。", toastPolicy: "2つの確認に同意してください。", toastCreated: "予約番号を作成しました。", toastCopied: "予約番号をコピーしました。", toastNotFound: "この端末で予約が見つかりません。",
+        notAdded: "未入力", stepCounter: "ステップ {n}/3", statusDescTemplate: "Kallが韓国語で電話し、{messenger}に更新を送ります。",
+        receiptTitle: "支払い領収書", requestTitle: "受付済み依頼", receiptBookingPrefix: "予約", receiptPaidWith: "支払い方法", receiptStatusLabel: "状態", receiptStatusValue: "支払い済み · 電話待ち"
+      },
+      zh: {
+        brandSub: "韩国电话预约帮助",
+        languageTitle: "选择语言",
+        languageDesc: "选择国旗继续。",
+        startApp: "开始使用 Kall",
+        heroTitle: "需要韩国电话预约吗？",
+        heroLead: "告诉我们地点、时间和必要信息。Kall 会用韩语打电话，并把结果发到你的聊天软件。",
+        ctaBook: "提交请求", ctaTrack: "查询预约", chipConfirmed: "信息已接收", screenBadge: "正在拨打",
+        screenTitle: "首尔晚餐", screenText: "5月12日 · 19:30 · 2人 · 已准备备用时间",
+        miniSubmitted: "请求已提交", miniPayment: "付款", miniCalling: "联系商家", miniDone: "完成", miniLive: "进行中",
+        priceKicker: "先看价格", priceTitle: "选择需要的电话支持。",
+        planBasicName: "基础预约", planPlusName: "Plus 预约", planRushName: "加急预约",
+        planBasicDesc: "📞 一个地点，一次请求，每10分钟最多拨打5次。",
+        planPlusDesc: "🗓️ 首选时间不可用时，包含备用日期或时间协调。",
+        planRushDesc: "⚡ 当日餐厅、美容、诊所或特殊请求优先处理。",
+        planBasicShort: "1个地点，每10分钟最多5次电话。", planPlusShort: "包含备用日期/时间协调。", planRushShort: "可用时当日优先处理。",
+        tagAttempts: "5次拨打", tagInterval: "10分钟间隔", tagBackup: "备用选项", tagPopular: "最受欢迎", tagPriority: "优先", tagSameDay: "当日",
+        howKicker: "使用方式", howTitle: "三步完成，不需要韩国手机号。",
+        step1Title: "选择套餐和类型", step1Desc: "先看价格，再选择餐厅、美容、诊所或其他。",
+        step2Title: "填写必填信息", step2Desc: "不能选择过去日期，必填项未完成不能进入下一步。",
+        step3Title: "付款并查询", step3Desc: "获取预约编号，查看请求弹窗和纸质收据样式。",
+        messengerKicker: "聊天软件更新", messengerTitle: "在常用聊天软件接收进度。",
+        waDesc: "全球更新", lineDesc: "日本和台湾", kakaoDesc: "在韩国很方便",
+        bookKicker: "预约请求", bookTitle: "先选价格，再填详情。", bookCopy: "必填项完成后才能进入下一步。",
+        sumPlan: "套餐", sumType: "类型", sumPlace: "地点", sumTime: "时间", paymentSummaryTotal: "总计",
+        stepPlanTitle: "选择套餐和服务类型", stepPlanCopy: "价格会按所选语言显示对应货币。",
+        catRestaurant: "餐厅", catRestaurantDesc: "餐饮、咖啡、酒吧", catBeauty: "美容", catBeautyDesc: "头发、皮肤、SPA", catClinic: "诊所", catClinicDesc: "治疗、咨询", catOther: "其他", catOtherDesc: "失物、活动、库存",
+        continuePlace: "继续填写地点", stepPlaceTitle: "商家信息", stepPlaceCopy: "Google Maps、Naver Map、Instagram 或网站链接有助于准确联系。",
+        placeNameLabel: "商家名称", placeLinkLabel: "地图、Instagram 或网站链接", placePhoneLabel: "知道电话可填写",
+        continueDetails: "继续填写详情", stepDetailTitle: "预约详情", stepDetailCopy: "首选日和备用日不能选择过去日期。",
+        peopleLabel: "人数", reservationNameLabel: "预约姓名", date1Label: "首选日期", time1Label: "首选时间",
+        date2Label: "备用日期", time2Label: "备用时间", noteLabel: "需要转告商家的要求",
+        notePlaceholder: "如果可以，请安排靠窗座位。请确认订金和取消政策。",
+        fullNameLabel: "护照上的完整姓名", passportNoLabel: "护照号码", birthDateLabel: "出生日期", genderLabel: "性别",
+        selectOne: "选择", genderFemale: "女性", genderMale: "男性", genderOther: "其他", procedureNameLabel: "需要的项目名称", symptomsLabel: "症状或要求",
+        requestTitleLabel: "需要我们询问什么？", otherNoteLabel: "请求详情",
+        messengerLabel: "聊天软件", messengerIdLabel: "ID 或号码", back: "返回", checkout: "结账",
+        statusKicker: "我的预约", statusTitle: "查看 Kall 请求。", lookupTitle: "用预约编号查询", lookupCopy: "输入 Kall 编号后，下方会显示保存的请求信息。", lookupBtn: "查询",
+        emptyTitle: "还没有预约", emptyCopy: "请先提交请求。付款后，你的 Kall 预约编号会显示在这里。", startBooking: "开始预约",
+        statusReceived: "已接收", copyBookingNo: "复制预约编号", viewReceipt: "查看收据",
+        tlRequest: "请求已接收", tlRequestSub: "点击查看提交信息", tlPayment: "付款完成",
+        tlQueue: "等待拨打电话", tlQueueSub: "Kall 会在韩国营业时间联系商家", tlResult: "结果更新", tlResultSub: "确认、满位、无人接听或需要备用方案", soon: "即将", next: "下一步",
+        supportTitle: "想修改内容吗？", supportCopy: "付款后10分钟内如改变想法，可通过 WhatsApp、LINE 或 KakaoTalk 联系客服。",
+        navIntro: "介绍", navBook: "预约", navStatus: "状态", paymentTitle: "完成付款", paymentSummaryPlan: "套餐", paymentSummaryPlace: "地点",
+        policy1: "我了解 Kall 提供电话沟通支持，但不保证一定预约成功。", policy2: "如有订金、取消费或重大变更，请在确认前先联系我。",
+        payNow: "付款并获取预约编号", requiredHelp: "必填", dateHelp: "请选择今天或未来日期。",
+        toastRequired: "请填写必填信息。", toastDate: "首选日和备用日不能选择过去日期。", toastPolicy: "请同意两个付款确认项。", toastCreated: "预约编号已生成。", toastCopied: "预约编号已复制。", toastNotFound: "此设备上未找到预约。",
+        notAdded: "未填写", stepCounter: "第 {n}/3 步", statusDescTemplate: "Kall 会用韩语联系商家，并通过 {messenger} 发送进度。",
+        receiptTitle: "付款收据", requestTitle: "已提交请求", receiptBookingPrefix: "预约", receiptPaidWith: "支付方式", receiptStatusLabel: "状态", receiptStatusValue: "已付款 · 等待拨打"
+      },
+      fr: {
+        brandSub: "Aide aux réservations par téléphone en Corée",
+        languageTitle: "Choisir la langue",
+        languageDesc: "Choisissez un drapeau pour continuer.",
+        startApp: "Commencer avec Kall",
+        heroTitle: "Besoin d'une réservation téléphonique en Corée ?",
+        heroLead: "Indiquez le lieu, l'heure et les informations nécessaires. Kall appelle en coréen et envoie le résultat sur votre messagerie.",
+        ctaBook: "Faire une demande", ctaTrack: "Suivre", chipConfirmed: "Détails reçus", screenBadge: "Appel en cours",
+        screenTitle: "Dîner à Séoul", screenText: "12 mai · 19:30 · 2 personnes · secours prêt",
+        miniSubmitted: "Demande envoyée", miniPayment: "Paiement", miniCalling: "Appel du lieu", miniDone: "Terminé", miniLive: "En cours",
+        priceKicker: "Prix d'abord", priceTitle: "Choisissez l'aide téléphonique nécessaire.",
+        planBasicName: "Réservation Basic", planPlusName: "Réservation Plus", planRushName: "Réservation urgente",
+        planBasicDesc: "📞 Un lieu, une demande, jusqu'à cinq appels toutes les 10 minutes.",
+        planPlusDesc: "🗓️ Coordination d'une date ou heure de secours si le premier choix est complet.",
+        planRushDesc: "⚡ Traitement prioritaire pour restaurant, beauté, clinique ou demande spéciale le jour même.",
+        planBasicShort: "1 lieu, 5 appels toutes les 10 minutes.", planPlusShort: "Date/heure de secours incluse.", planRushShort: "Priorité le jour même si disponible.",
+        tagAttempts: "5 appels", tagInterval: "Toutes les 10 min", tagBackup: "Options secours", tagPopular: "Populaire", tagPriority: "Prioritaire", tagSameDay: "Jour même",
+        howKicker: "Comment ça marche", howTitle: "Trois étapes, sans numéro coréen.",
+        step1Title: "Choisir formule et type", step1Desc: "Commencez par le prix, puis restaurant, beauté, clinique ou autre.",
+        step2Title: "Ajouter les détails requis", step2Desc: "Les dates passées sont bloquées et les champs requis bloquent l'étape suivante.",
+        step3Title: "Payer et suivre", step3Desc: "Recevez un numéro, une popup de demande et un reçu papier.",
+        messengerKicker: "Notifications", messengerTitle: "Recevez les mises à jour dans votre messagerie.",
+        waDesc: "Mises à jour globales", lineDesc: "Japon et Taïwan", kakaoDesc: "Pratique en Corée",
+        bookKicker: "Demande", bookTitle: "Le prix d'abord, les détails ensuite.", bookCopy: "Les champs requis doivent être complétés avant l'étape suivante.",
+        sumPlan: "Formule", sumType: "Type", sumPlace: "Lieu", sumTime: "Heure", paymentSummaryTotal: "Total",
+        stepPlanTitle: "Choisir formule et type de service", stepPlanCopy: "Les prix s'affichent dans la devise de votre langue.",
+        catRestaurant: "Restaurant", catRestaurantDesc: "Repas, cafés, bars", catBeauty: "Beauté", catBeautyDesc: "Cheveux, peau, spa", catClinic: "Clinique", catClinicDesc: "Soin, consultation", catOther: "Autre", catOtherDesc: "Objet perdu, événement, stock",
+        continuePlace: "Continuer au lieu", stepPlaceTitle: "Informations du lieu", stepPlaceCopy: "Un lien Google Maps, Naver Map, Instagram ou site web nous aide à appeler le bon lieu.",
+        placeNameLabel: "Nom du lieu", placeLinkLabel: "Lien carte, Instagram ou site", placePhoneLabel: "Numéro si vous le connaissez",
+        continueDetails: "Continuer", stepDetailTitle: "Détails de réservation", stepDetailCopy: "Les dates souhaitée et de secours ne peuvent pas être passées.",
+        peopleLabel: "Personnes", reservationNameLabel: "Nom pour la réservation", date1Label: "Date souhaitée", time1Label: "Heure souhaitée",
+        date2Label: "Date de secours", time2Label: "Heure de secours", noteLabel: "Demandes à transmettre",
+        notePlaceholder: "Table près de la fenêtre si possible. Merci de vérifier l'acompte et l'annulation.",
+        fullNameLabel: "Nom complet sur le passeport", passportNoLabel: "Numéro de passeport", birthDateLabel: "Date de naissance", genderLabel: "Genre",
+        selectOne: "Choisir", genderFemale: "Femme", genderMale: "Homme", genderOther: "Autre", procedureNameLabel: "Nom du soin demandé", symptomsLabel: "Symptômes ou demande",
+        requestTitleLabel: "Que devons-nous demander ?", otherNoteLabel: "Détails de la demande",
+        messengerLabel: "Messagerie", messengerIdLabel: "ID ou numéro", back: "Retour", checkout: "Paiement",
+        statusKicker: "Ma réservation", statusTitle: "Vérifiez votre demande Kall.", lookupTitle: "Rechercher par numéro", lookupCopy: "Entrez votre numéro Kall pour afficher les détails enregistrés ci-dessous.", lookupBtn: "Vérifier",
+        emptyTitle: "Aucune réservation", emptyCopy: "Faites d'abord une demande. Après paiement, votre numéro Kall apparaîtra ici.", startBooking: "Commencer",
+        statusReceived: "Reçue", copyBookingNo: "Copier le numéro", viewReceipt: "Voir le reçu",
+        tlRequest: "Demande envoyée", tlRequestSub: "Touchez pour revoir les détails", tlPayment: "Paiement terminé",
+        tlQueue: "En attente d'appel", tlQueueSub: "Kall appellera pendant les horaires d'ouverture en Corée", tlResult: "Mise à jour du résultat", tlResultSub: "Confirmé, complet, sans réponse ou secours requis", soon: "Bientôt", next: "Suivant",
+        supportTitle: "Envie de modifier ?", supportCopy: "Si vous changez d'avis dans les 10 minutes après paiement, contactez le support via WhatsApp, LINE ou KakaoTalk.",
+        navIntro: "Intro", navBook: "Réserver", navStatus: "Statut", paymentTitle: "Finaliser le paiement", paymentSummaryPlan: "Formule", paymentSummaryPlace: "Lieu",
+        policy1: "Je comprends que Kall fournit une aide par téléphone, sans garantir la réservation.", policy2: "Veuillez me demander avant de confirmer un acompte, des frais d'annulation ou un changement important.",
+        payNow: "Payer et recevoir le numéro", requiredHelp: "Requis", dateHelp: "Choisissez aujourd'hui ou une date future.",
+        toastRequired: "Veuillez compléter les champs requis.", toastDate: "Les dates ne peuvent pas être passées.", toastPolicy: "Veuillez accepter les deux confirmations.", toastCreated: "Numéro de réservation créé.", toastCopied: "Numéro copié.", toastNotFound: "Aucune réservation trouvée sur cet appareil.",
+        notAdded: "Non renseigné", stepCounter: "Étape {n}/3", statusDescTemplate: "Kall appellera en coréen et enverra les mises à jour sur {messenger}.",
+        receiptTitle: "Reçu de paiement", requestTitle: "Demande envoyée", receiptBookingPrefix: "Réservation", receiptPaidWith: "Payé avec", receiptStatusLabel: "Statut", receiptStatusValue: "Payé · en attente d'appel"
       }
     };
 
-    base.ko = {
-      ...base.en,
-      brandSub: "한국 전화 예약 도움",
-      languageTitle: "언어를 선택하세요",
-      languageDesc: "Seoully는 한국 전화 예약을 원하는 언어로 도와드립니다.",
-      startApp: "Seoully 시작하기",
-      introEyebrow: "한국 여행 전에도, 도착 후에도",
-      heroTitle: "한국어 전화 예약이 필요하신가요?",
-      heroLead: "장소, 시간, 인원만 알려주세요. Seoully가 한국어로 전화하고 결과를 원하는 메신저로 보내드립니다.",
-      ctaBook: "예약 요청하기", ctaTrack: "예약 조회", chipConfirmed: "예약 정보 확인", screenBadge: "전화 진행 중",
-      screenTitle: "서울 저녁 예약", screenText: "5월 12일 · 오후 7:30 · 2명 · 차선 시간 준비됨",
-      miniSubmitted: "요청 접수", miniPayment: "결제", miniCalling: "가게에 전화 중", chipPrice: "$2.99부터",
-      miniDone: "완료", miniLive: "진행 중",
-      howKicker: "이용 방법", howTitle: "한국 전화번호 없이 3단계로 끝납니다.",
-      step1Title: "장소와 시간을 보내기", step1Desc: "구글 링크, 인원, 희망 시간, 차선 날짜와 시간을 입력합니다.",
-      step2Title: "플랜 선택 후 결제", step2Desc: "WeChat Pay, PayPal, Alipay, 카드, Apple Pay, Google Pay를 지원합니다.",
-      step3Title: "예약 번호 받기", step3Desc: "예약 번호를 복사하고 영수증 이미지를 저장한 뒤 언제든 조회할 수 있습니다.",
-      messengerKicker: "메신저 알림", messengerTitle: "원하는 메신저로 진행 상황을 받아보세요.",
-      waDesc: "전 세계에서 사용", lineDesc: "일본/대만 여행자에게 편리", kakaoDesc: "한국 체류 중 편리", telegramDesc: "빠른 알림",
-      priceKicker: "간단한 가격", priceTitle: "필요한 전화 지원을 선택하세요.",
-      planBasicName: "기본 예약", planPlusName: "플러스 예약", planRushName: "긴급 예약",
-      planBasicDisplay: "기본 예약 · $2.99", planPlusDisplay: "플러스 예약 · $5.99", planRushDisplay: "긴급 예약 · $12.99",
-      planBasicShort: "한 곳, 10분 간격 최대 5회 전화.", planPlusShort: "차선 날짜/시간 조율 포함.", planRushShort: "가능 시 당일 우선 처리.",
-      tagAttempts: "5회 전화", tagInterval: "10분 간격", tagBackup: "차선 옵션", tagPopular: "가장 많이 선택", tagPriority: "우선 처리", tagSameDay: "당일 요청",
-      bookKicker: "예약 요청", bookTitle: "무엇을 예약할지 알려주세요.", bookCopy: "장소, 희망 시간, 인원, 차선 옵션, 메신저를 입력하세요.",
-      sumPlace: "장소", sumTime: "시간", sumPeople: "인원", sumPlan: "플랜", paymentSummaryTotal: "총액",
-      stepPlaceTitle: "가게 정보", stepPlaceCopy: "구글맵, 네이버맵, 인스타그램, 웹사이트 링크만 있어도 됩니다.",
-      placeNameLabel: "가게 이름", placeLinkLabel: "구글 링크 또는 웹사이트", placePhoneLabel: "전화번호를 알고 있다면",
-      catRestaurant: "식당", catRestaurantDesc: "식당, 카페, 바", catBeauty: "뷰티", catBeautyDesc: "헤어, 네일, 스파", catClinic: "클리닉", catClinicDesc: "단순 예약 문의", catOther: "기타", catOtherDesc: "분실물, 이벤트, 재고",
-      continueDetails: "예약 정보 입력하기", stepDetailTitle: "예약 정보", stepDetailCopy: "첫 시간이 꽉 찼을 때를 위해 차선 날짜와 시간이 있으면 더 빠르게 진행됩니다.",
-      peopleLabel: "인원", reservationNameLabel: "예약자명", date1Label: "희망일", time1Label: "희망 시간",
-      date2Label: "차선일", time2Label: "차선 시간", noteLabel: "가게에 전달할 요청사항",
-      notePlaceholder: "가능하면 창가 자리로 부탁드립니다. 예약금과 취소 정책도 확인해주세요.",
-      messengerLabel: "메신저", messengerIdLabel: "메신저 ID 또는 번호", back: "뒤로", continuePay: "결제로 이동",
-      stepPayTitle: "전화 지원 플랜 선택", stepPayCopy: "여기서는 Seoully 전화 지원비만 결제합니다. 예약금이나 가게 비용은 별도로 확인합니다.",
-      checkout: "결제하기", statusKicker: "내 예약", statusTitle: "Seoully 예약을 조회하세요.",
-      lookupTitle: "예약 번호로 조회", lookupCopy: "로그인 없이 예약 번호로 상태를 확인할 수 있습니다. 이 기기에 저장된 예약을 조회합니다.", lookupBtn: "조회",
-      emptyTitle: "아직 예약이 없습니다", emptyCopy: "먼저 예약을 요청하세요. 결제 후 Seoully 예약 번호가 여기에 표시됩니다.", startBooking: "예약 시작하기",
-      statusReceived: "접수 완료", copyBookingNo: "예약 번호 복사", saveReceipt: "영수증 이미지 저장", soon: "곧 진행", next: "다음",
-      supportTitle: "내용을 바꾸고 싶나요?", supportCopy: "선택한 메신저로 연락해 주세요. 예약금, 수수료, 큰 변경 사항은 확정 전에 먼저 확인합니다.",
-      navIntro: "소개", navBook: "예약", navStatus: "조회", paymentTitle: "결제 완료하기", paymentSummaryPlan: "플랜", paymentSummaryPlace: "장소",
-      policy1: "Seoully는 전화 지원 서비스이며 예약 성공을 보장하지 않는다는 점을 이해했습니다.", policy2: "예약금, 취소 수수료, 큰 변경은 확정 전 저에게 먼저 확인해 주세요.",
-      payNow: "결제하고 예약 번호 받기", toastMissing: "가게 이름을 먼저 입력해주세요.", toastPolicy: "두 가지 확인 항목에 동의해주세요.", toastCreated: "예약 번호가 생성되었습니다.", toastCopied: "예약 번호를 복사했습니다.", toastSaved: "영수증 이미지를 저장했습니다.", toastNotFound: "이 기기에서 예약을 찾을 수 없습니다.", dateFormat: "YYYY.MM.DD", timeFormat: "오후 7:30",
-      notAdded: "미입력", stepCounter: "{n}/3 단계", statusDescTemplate: "Seoully가 한국어로 전화하고 {messenger}로 진행 상황을 보내드립니다.",
-      receiptSubtitle: "한국 전화 예약 영수증", receiptBookingPrefix: "예약", receiptHelp: "로그인 없이 상태를 확인하려면 이 예약 번호를 보관하세요.", receiptFooter: "Seoully에 문의할 때 이 화면을 보여주거나 예약 번호를 복사하세요.", receiptPaidWith: "결제 수단", receiptStatusLabel: "상태", receiptStatusValue: "접수 완료 · 전화 대기 중"
-    };
-    base.ja = { ...base.en, languageTitle: "言語を選択してください", languageDesc: "Seoullyは韓国の電話予約を希望の言語でサポートします。", startApp: "Seoullyを始める", brandSub: "韓国の電話予約サポート", heroTitle: "韓国語の電話予約が必要ですか？", heroLead: "場所、時間、人数を入力してください。Seoullyが韓国語で電話し、結果を希望のメッセンジャーに送ります。", ctaBook: "予約を依頼する", ctaTrack: "予約を確認", messengerTitle: "希望のメッセンジャーで結果を受け取れます。", checkout: "チェックアウト", navIntro: "紹介", navBook: "予約", navStatus: "状況", dateFormat: "YYYY/MM/DD", timeFormat: "19:30", toastCreated: "予約番号を作成しました。", toastCopied: "予約番号をコピーしました。", toastSaved: "領収書画像を保存しました。", toastNotFound: "この端末で予約が見つかりません。" };
-    base.zh = { ...base.en, languageTitle: "请选择语言", languageDesc: "Seoully 用你的语言帮助你完成韩国电话预约。", startApp: "开始使用 Seoully", brandSub: "韩国电话预约帮助", heroTitle: "需要韩国电话预约吗？", heroLead: "告诉我们地点、时间和人数。Seoully 会用韩语打电话，并把结果发送到你的聊天软件。", ctaBook: "提交预约请求", ctaTrack: "查看预约", messengerTitle: "用你喜欢的聊天软件接收更新。", checkout: "去结账", navIntro: "介绍", navBook: "预约", navStatus: "状态", dateFormat: "YYYY/MM/DD", timeFormat: "19:30", toastCreated: "预约编号已生成。", toastCopied: "预约编号已复制。", toastSaved: "预约截图已保存。", toastNotFound: "此设备上未找到预约。" };
-    base.fr = { ...base.en, languageTitle: "Choisissez votre langue", languageDesc: "Seoully vous aide à réserver par téléphone en Corée dans votre langue.", startApp: "Commencer avec Seoully", brandSub: "Aide aux réservations par téléphone", heroTitle: "Besoin d'une réservation par téléphone en Corée ?", heroLead: "Indiquez le lieu, l'heure et le nombre de personnes. Seoully appelle en coréen et envoie le résultat sur votre messagerie.", ctaBook: "Faire une demande", ctaTrack: "Suivre la réservation", messengerTitle: "Recevez les mises à jour dans la messagerie de votre choix.", checkout: "Paiement", navIntro: "Intro", navBook: "Réserver", navStatus: "Statut", dateFormat: "JJ/MM/AAAA", timeFormat: "19:30", toastCreated: "Numéro de réservation créé.", toastCopied: "Numéro copié.", toastSaved: "Image de reçu enregistrée.", toastNotFound: "Aucune réservation trouvée sur cet appareil." };
-    Object.assign(base.ja, {
-      introEyebrow: "韓国旅行前でも、到着後でも",
-      howKicker: "使い方", howTitle: "韓国の電話番号がなくても3ステップで完了。",
-      step1Title: "場所と時間を送る", step1Desc: "Googleリンク、人数、希望時間、代替日時を入力します。",
-      step2Title: "プランを選んで決済", step2Desc: "WeChat Pay、PayPal、Alipay、カード、Apple Pay、Google Payに対応。",
-      step3Title: "予約番号を受け取る", step3Desc: "番号をコピーし、領収書画像を保存して、いつでも状況確認できます。",
-      priceKicker: "シンプル料金", priceTitle: "必要な電話サポートを選択。",
-      miniDone: "完了", miniLive: "進行中",
-      waDesc: "海外旅行者向け", lineDesc: "日本・台湾に便利", kakaoDesc: "韓国滞在中に便利", telegramDesc: "素早い通知",
-      planBasicName: "基本予約", planPlusName: "プラス予約", planRushName: "緊急予約",
-      planBasicDisplay: "基本予約 · $2.99", planPlusDisplay: "プラス予約 · $5.99", planRushDisplay: "緊急予約 · $12.99",
-      planBasicShort: "1店舗、10分間隔で最大5回電話します。", planPlusShort: "代替日時の調整を含みます。", planRushShort: "可能な場合、当日優先対応します。",
-      tagAttempts: "5回電話", tagInterval: "10分間隔", tagBackup: "代替案", tagPopular: "人気", tagPriority: "優先対応", tagSameDay: "当日",
-      bookKicker: "予約依頼", bookTitle: "予約したい内容を入力してください。", bookCopy: "場所、希望時間、人数、代替案、メッセンジャーを入力してください。",
-      sumPlace: "場所", sumTime: "日時", sumPeople: "人数", sumPlan: "プラン",
-      stepPlaceTitle: "店舗情報", stepPlaceCopy: "Google Maps、Naver Map、Instagram、または公式サイトのリンクだけでも大丈夫です。",
-      placeNameLabel: "店舗名", placeLinkLabel: "Googleリンクまたはウェブサイト", placePhoneLabel: "電話番号が分かる場合",
-      catRestaurant: "レストラン", catRestaurantDesc: "食事、カフェ、バー", catBeauty: "ビューティー", catBeautyDesc: "ヘア、ネイル、スパ", catClinic: "クリニック", catClinicDesc: "簡単な予約", catOther: "その他", catOtherDesc: "紛失物、イベント、在庫",
-      continueDetails: "詳細へ進む", stepDetailTitle: "予約詳細", stepDetailCopy: "第1希望が満席の場合、代替日時があるとすぐに調整できます。",
-      peopleLabel: "人数", reservationNameLabel: "予約名", date1Label: "希望日", time1Label: "希望時間", date2Label: "代替日", time2Label: "代替時間",
-      noteLabel: "店舗に伝えるリクエスト", messengerLabel: "メッセンジャー", messengerIdLabel: "メッセンジャーIDまたは電話番号",
-      notePlaceholder: "可能であれば窓側の席を希望します。予約金とキャンセルポリシーも確認してください。",
-      back: "戻る", continuePay: "支払いへ進む", stepPayTitle: "電話サポートプランを選択", stepPayCopy: "ここではSeoullyの電話サポート料金のみをお支払いいただきます。予約金や店舗料金は別途確認します。",
-      statusKicker: "予約確認", statusTitle: "Seoullyの依頼状況を確認。", lookupTitle: "予約番号で検索", lookupCopy: "ログイン不要です。予約番号を入力して、この端末に保存された依頼を確認できます。", lookupBtn: "確認",
-      emptyTitle: "予約依頼はまだありません", emptyCopy: "まず予約依頼を作成してください。決済後、予約番号がここに表示されます。", startBooking: "予約を始める",
-      statusReceived: "受付済み", copyBookingNo: "予約番号をコピー", saveReceipt: "領収書画像を保存", soon: "まもなく", next: "次へ",
-      paymentTitle: "決済を完了", paymentSummaryPlan: "プラン", paymentSummaryPlace: "場所", paymentSummaryTotal: "合計",
-      policy1: "Seoullyは電話サポートを提供するサービスであり、予約を保証するものではないことを理解しました。", policy2: "予約金、キャンセル料、大きな変更がある場合は、確定前に確認してください。",
-      payNow: "支払い、予約番号を取得", toastMissing: "店舗名を入力してください。", toastPolicy: "2つの確認事項に同意してください。",
-      notAdded: "未入力", stepCounter: "ステップ {n}/3", statusDescTemplate: "Seoullyが韓国語で電話し、{messenger}に進行状況を送ります。",
-      receiptSubtitle: "韓国電話予約の領収書", receiptBookingPrefix: "予約", receiptHelp: "ログインせず状況確認するため、この予約番号を保管してください。", receiptFooter: "Seoullyに連絡する際は、この画面を見せるか予約番号をコピーしてください。", receiptPaidWith: "決済方法", receiptStatusLabel: "状況", receiptStatusValue: "受付済み · 電話待ち"
-    });
-    Object.assign(base.zh, {
-      introEyebrow: "来韩国前后都可以使用",
-      howKicker: "使用方式", howTitle: "无需韩国手机号，三步完成。",
-      step1Title: "发送地点和时间", step1Desc: "填写 Google 链接、人数、首选时间和备用时间。",
-      step2Title: "选择套餐并付款", step2Desc: "支持 WeChat Pay、PayPal、Alipay、银行卡、Apple Pay、Google Pay。",
-      step3Title: "获得预约编号", step3Desc: "复制编号、保存截图，并随时用它查询状态。",
-      priceKicker: "简单价格", priceTitle: "选择你需要的电话支持。",
-      miniDone: "完成", miniLive: "进行中",
-      waDesc: "全球旅行更新", lineDesc: "适合日本和台湾", kakaoDesc: "在韩国使用方便", telegramDesc: "快速提醒",
-      planBasicName: "基础预约", planPlusName: "进阶预约", planRushName: "加急预约",
-      planBasicDisplay: "基础预约 · $2.99", planPlusDisplay: "进阶预约 · $5.99", planRushDisplay: "加急预约 · $12.99",
-      planBasicShort: "1个地点，每10分钟最多拨打5次。", planPlusShort: "包含备用日期/时间协调。", planRushShort: "可用时提供当日优先处理。",
-      tagAttempts: "5次拨打", tagInterval: "10分钟间隔", tagBackup: "备用选项", tagPopular: "最受欢迎", tagPriority: "优先处理", tagSameDay: "当天",
-      bookKicker: "预约请求", bookTitle: "告诉我们要预约什么。", bookCopy: "填写地点、时间、人数、备用方案和聊天软件。",
-      sumPlace: "地点", sumTime: "时间", sumPeople: "人数", sumPlan: "套餐",
-      stepPlaceTitle: "地点信息", stepPlaceCopy: "Google Maps、Naver Map、Instagram 或官网链接都可以。",
-      placeNameLabel: "店名或地点名", placeLinkLabel: "Google 链接或网站", placePhoneLabel: "如果知道电话，请填写",
-      catRestaurant: "餐厅", catRestaurantDesc: "餐饮、咖啡、酒吧", catBeauty: "美容", catBeautyDesc: "发型、美甲、SPA", catClinic: "诊所", catClinicDesc: "简单预约", catOther: "其他", catOtherDesc: "失物、活动、库存",
-      continueDetails: "继续填写详情", stepDetailTitle: "预约详情", stepDetailCopy: "如果首选时间已满，备用日期和时间可以帮助我们更快协调。",
-      peopleLabel: "人数", reservationNameLabel: "预约姓名", date1Label: "首选日期", time1Label: "首选时间", date2Label: "备用日期", time2Label: "备用时间",
-      noteLabel: "需要转达给商家的要求", messengerLabel: "聊天软件", messengerIdLabel: "聊天软件 ID 或电话号码",
-      notePlaceholder: "如果可以，请安排靠窗座位。也请确认预约金和取消政策。",
-      back: "返回", continuePay: "继续支付", stepPayTitle: "选择电话支持套餐", stepPayCopy: "这里仅支付 Seoully 电话支持费。预约金或商家费用会另行确认。",
-      statusKicker: "我的预约", statusTitle: "查看 Seoully 请求状态。", lookupTitle: "用预约编号查询", lookupCopy: "无需登录。输入 Seoully 编号即可查看此设备保存的请求。", lookupBtn: "查询",
-      emptyTitle: "还没有预约", emptyCopy: "请先提交请求。付款后，你的 Seoully 预约编号会显示在这里。", startBooking: "开始预约",
-      statusReceived: "已接收", copyBookingNo: "复制预约编号", saveReceipt: "保存预约截图", soon: "即将", next: "下一步",
-      paymentTitle: "完成支付", paymentSummaryPlan: "套餐", paymentSummaryPlace: "地点", paymentSummaryTotal: "合计",
-      policy1: "我了解 Seoully 提供电话沟通支持，但不保证一定预约成功。", policy2: "如有预约金、取消费或重大变更，请在确认前先联系我。",
-      payNow: "支付并获取预约编号", toastMissing: "请先填写地点名称。", toastPolicy: "请同意两个付款确认事项。",
-      notAdded: "未填写", stepCounter: "第 {n}/3 步", statusDescTemplate: "Seoully 会用韩语联系商家，并通过 {messenger} 发送进度。",
-      receiptSubtitle: "韩国电话预约收据", receiptBookingPrefix: "预约", receiptHelp: "请保存此预约编号，无需登录也能查询状态。", receiptFooter: "联系 Seoully 时，请出示此页面或复制预约编号。", receiptPaidWith: "支付方式", receiptStatusLabel: "状态", receiptStatusValue: "已接收 · 等待拨打"
-    });
-    Object.assign(base.fr, {
-      introEyebrow: "Avant ou pendant votre voyage en Corée",
-      howKicker: "Comment ça marche", howTitle: "Trois étapes, sans numéro coréen.",
-      step1Title: "Envoyez le lieu et l'heure", step1Desc: "Lien Google, nombre de personnes, heure souhaitée et options de secours.",
-      step2Title: "Choisissez et payez", step2Desc: "WeChat Pay, PayPal, Alipay, carte, Apple Pay ou Google Pay.",
-      step3Title: "Recevez votre numéro", step3Desc: "Copiez-le, sauvegardez l'image du reçu et vérifiez le statut à tout moment.",
-      priceKicker: "Prix simples", priceTitle: "Choisissez l'aide téléphonique nécessaire.",
-      miniDone: "Terminé", miniLive: "En cours",
-      waDesc: "Mises à jour globales", lineDesc: "Japon et Taïwan", kakaoDesc: "Pratique en Corée", telegramDesc: "Alertes rapides",
-      planBasicName: "Réservation Basic", planPlusName: "Réservation Plus", planRushName: "Réservation urgente",
-      planBasicDisplay: "Réservation Basic · $2.99", planPlusDisplay: "Réservation Plus · $5.99", planRushDisplay: "Réservation urgente · $12.99",
-      planBasicShort: "1 lieu, jusqu'à 5 appels toutes les 10 minutes.", planPlusShort: "Coordination d'une date/heure de secours incluse.", planRushShort: "Traitement prioritaire le jour même si disponible.",
-      tagAttempts: "5 appels", tagInterval: "Toutes les 10 min", tagBackup: "Options de secours", tagPopular: "Populaire", tagPriority: "Prioritaire", tagSameDay: "Jour même",
-      bookKicker: "Demande de réservation", bookTitle: "Dites-nous quoi réserver.", bookCopy: "Ajoutez le lieu, l'heure, le nombre de personnes, les options de secours et la messagerie.",
-      sumPlace: "Lieu", sumTime: "Heure", sumPeople: "Personnes", sumPlan: "Formule",
-      stepPlaceTitle: "Informations du lieu", stepPlaceCopy: "Un lien Google Maps, Naver Map, Instagram ou site web suffit.",
-      placeNameLabel: "Nom du lieu", placeLinkLabel: "Lien Google ou site web", placePhoneLabel: "Numéro si vous le connaissez",
-      catRestaurant: "Restaurant", catRestaurantDesc: "Repas, cafés, bars", catBeauty: "Beauté", catBeautyDesc: "Coiffure, ongles, spa", catClinic: "Clinique", catClinicDesc: "Rendez-vous simple", catOther: "Autre", catOtherDesc: "Objet perdu, événement, stock",
-      continueDetails: "Continuer", stepDetailTitle: "Détails de réservation", stepDetailCopy: "Les options de secours nous aident à continuer vite si le premier créneau est complet.",
-      peopleLabel: "Personnes", reservationNameLabel: "Nom pour la réservation", date1Label: "Date souhaitée", time1Label: "Heure souhaitée", date2Label: "Date de secours", time2Label: "Heure de secours",
-      noteLabel: "Demandes à transmettre au lieu", messengerLabel: "Messagerie", messengerIdLabel: "ID ou numéro de messagerie",
-      notePlaceholder: "Si possible, une table près de la fenêtre. Merci de vérifier l'acompte et la politique d'annulation.",
-      back: "Retour", continuePay: "Continuer au paiement", stepPayTitle: "Choisissez votre formule d'appel", stepPayCopy: "Vous payez ici uniquement les frais d'assistance Seoully. Les acomptes ou frais du lieu sont confirmés séparément.",
-      statusKicker: "Ma réservation", statusTitle: "Vérifiez votre demande Seoully.", lookupTitle: "Rechercher par numéro", lookupCopy: "Aucune connexion requise. Collez votre numéro Seoully pour vérifier la demande enregistrée sur cet appareil.", lookupBtn: "Vérifier",
-      emptyTitle: "Aucune réservation", emptyCopy: "Faites d'abord une demande. Après paiement, votre numéro Seoully apparaîtra ici.", startBooking: "Commencer",
-      statusReceived: "Reçue", copyBookingNo: "Copier le numéro", saveReceipt: "Enregistrer l'image", soon: "Bientôt", next: "Suivant",
-      paymentTitle: "Finaliser le paiement", paymentSummaryPlan: "Formule", paymentSummaryPlace: "Lieu", paymentSummaryTotal: "Total",
-      policy1: "Je comprends que Seoully fournit une aide par téléphone, sans garantir la réservation.", policy2: "Veuillez me demander avant de confirmer un acompte, des frais d'annulation ou un changement important.",
-      payNow: "Payer et recevoir le numéro", toastMissing: "Ajoutez d'abord le nom du lieu.", toastPolicy: "Veuillez accepter les deux confirmations.",
-      notAdded: "Non renseigné", stepCounter: "Étape {n}/3", statusDescTemplate: "Seoully appellera en coréen et enverra les mises à jour sur {messenger}.",
-      receiptSubtitle: "Reçu de réservation téléphonique en Corée", receiptBookingPrefix: "Réservation", receiptHelp: "Gardez ce numéro pour vérifier le statut sans connexion.", receiptFooter: "Montrez cet écran ou copiez le numéro lorsque vous contactez Seoully.", receiptPaidWith: "Payé avec", receiptStatusLabel: "Statut", receiptStatusValue: "Reçue · en attente d'appel"
-    });
-    Object.assign(base.ko, {
-      planBasicDesc: "한 곳, 예약 요청 1건, 10분 간격 최대 5회 전화합니다.",
-      planPlusDesc: "첫 희망 시간이 꽉 찼을 때 차선 시간이나 날짜 조율을 포함합니다.",
-      planRushDesc: "당일 예약, 뷰티, 클리닉, 이벤트 문의를 우선 처리합니다.",
-      tlRequest: "요청 접수", tlRequestSub: "장소와 예약 정보를 받았습니다", tlPayment: "결제 완료",
-      tlQueue: "전화 대기 중", tlQueueSub: "한국 영업시간에 맞춰 Seoully가 전화합니다",
-      tlResult: "결과 업데이트", tlResultSub: "예약 확정, 만석, 미연결, 차선 필요 여부를 알려드립니다"
-    });
-    Object.assign(base.ja, {
-      chipConfirmed: "確認済みの詳細", screenBadge: "電話中", screenTitle: "ソウルでディナー", screenText: "5月12日 · 19:30 · 2名 · 代替時間あり",
-      miniSubmitted: "依頼送信済み", miniPayment: "決済", miniCalling: "店舗へ電話中", chipPrice: "$2.99から", messengerKicker: "メッセンジャー通知",
-      planBasicDesc: "1店舗、1予約依頼、10分間隔で最大5回電話します。",
-      planPlusDesc: "第1希望が満席の場合、代替時間または日付の調整を含みます。",
-      planRushDesc: "当日予約、ビューティー、クリニック、イベント問い合わせを優先対応します。",
-      tlRequest: "依頼送信済み", tlRequestSub: "場所と予約内容を受け取りました", tlPayment: "決済完了",
-      tlQueue: "電話待ち", tlQueueSub: "韓国の営業時間に合わせてSeoullyが電話します",
-      tlResult: "結果更新", tlResultSub: "予約確定、満席、未接続、代替案の必要有無をお知らせします",
-      supportTitle: "内容を変更したいですか？", supportCopy: "選択したメッセンジャーで連絡してください。予約金、料金、大きな変更は確定前に確認します。"
-    });
-    Object.assign(base.zh, {
-      chipConfirmed: "已确认信息", screenBadge: "正在拨打", screenTitle: "首尔晚餐", screenText: "5月12日 · 19:30 · 2人 · 已准备备用时间",
-      miniSubmitted: "请求已发送", miniPayment: "支付", miniCalling: "正在联系商家", chipPrice: "$2.99起", messengerKicker: "聊天软件通知",
-      planBasicDesc: "1个地点、1次预约请求，每10分钟最多拨打5次。",
-      planPlusDesc: "首选时间满位时，包含备用时间或日期协调。",
-      planRushDesc: "适合同日预约、美容、诊所或活动咨询的优先处理。",
-      tlRequest: "请求已提交", tlRequestSub: "已收到地点和预约信息", tlPayment: "支付完成",
-      tlQueue: "等待拨打电话", tlQueueSub: "Seoully 会在韩国营业时间内联系商家",
-      tlResult: "结果更新", tlResultSub: "我们会告知预约成功、满位、无人接听或需要备用方案",
-      supportTitle: "需要修改内容吗？", supportCopy: "请使用你选择的聊天软件联系。预约金、费用或重大变更都会在确认前询问你。"
-    });
-    Object.assign(base.fr, {
-      chipConfirmed: "Détails confirmés", screenBadge: "Appel en cours", screenTitle: "Dîner à Séoul", screenText: "12 mai · 19:30 · 2 personnes · option de secours prête",
-      miniSubmitted: "Demande envoyée", miniPayment: "Paiement", miniCalling: "Appel du lieu", chipPrice: "Dès $2.99", messengerKicker: "Notifications",
-      planBasicDesc: "1 lieu, 1 demande, jusqu'à 5 appels toutes les 10 minutes.",
-      planPlusDesc: "Inclut la coordination d'une date ou heure de secours si le premier choix est complet.",
-      planRushDesc: "Traitement prioritaire pour le jour même, beauté, clinique ou événements.",
-      tlRequest: "Demande envoyée", tlRequestSub: "Lieu et détails de réservation reçus", tlPayment: "Paiement terminé",
-      tlQueue: "En attente d'appel", tlQueueSub: "Seoully appellera pendant les horaires d'ouverture en Corée",
-      tlResult: "Mise à jour du résultat", tlResultSub: "Confirmé, complet, sans réponse ou option de secours nécessaire",
-      supportTitle: "Besoin de modifier quelque chose ?", supportCopy: "Utilisez la messagerie sélectionnée. Seoully demandera votre accord avant tout acompte, frais ou changement important.",
-      navIntro: "Accueil"
-    });
-
     const state = {
-      lang: localStorage.getItem("seoullyLang") || "en",
+      lang: localStorage.getItem("kallLang") || "en",
       step: 1,
       category: "Restaurant",
       selectedPay: "WeChat Pay",
@@ -1522,14 +1716,34 @@
     };
     const $ = (selector) => document.querySelector(selector);
     const $$ = (selector) => Array.from(document.querySelectorAll(selector));
-    const t = (key) => (base[state.lang] && base[state.lang][key]) || base.en[key] || key;
-    const price = (value) => `$${Number(value).toFixed(2)}`;
+    const t = (key) => (i18n[state.lang] && i18n[state.lang][key]) || i18n.en[key] || key;
+
+    function formatMoney(usd) {
+      const config = currencies[state.lang] || currencies.en;
+      const value = config.values[Number(usd)] ?? Number(usd);
+      const formatted = Number(value).toLocaleString(undefined, {
+        minimumFractionDigits: config.decimals,
+        maximumFractionDigits: config.decimals
+      });
+      return `${config.prefix || ""}${formatted}${config.suffix || ""}`;
+    }
+    function planName(name) {
+      const key = {
+        "Basic Booking": "planBasicName",
+        "Plus Booking": "planPlusName",
+        "Rush Booking": "planRushName"
+      }[name];
+      return key ? t(key) : name;
+    }
+    function planLabel(name) {
+      return `${planName(name)} · ${formatMoney(planPrices[name])}`;
+    }
 
     function applyLanguage(lang) {
       state.lang = lang;
-      localStorage.setItem("seoullyLang", lang);
+      localStorage.setItem("kallLang", lang);
       document.documentElement.lang = lang;
-      const codes = { en: "EN", ko: "KO", ja: "JP", zh: "中", fr: "FR" };
+      const codes = { en: "EN", ko: "KO", ja: "JP", zh: "CN", fr: "FR" };
       $("#langCode").textContent = codes[lang] || "EN";
       $$("[data-i18n]").forEach((el) => {
         const value = t(el.dataset.i18n);
@@ -1540,11 +1754,19 @@
         if (value) el.placeholder = value;
       });
       $$(".lang-option").forEach((button) => button.classList.toggle("selected", button.dataset.lang === lang));
-      $$("[data-date-field]").forEach((input) => { input.placeholder = t("dateFormat"); });
-      $("#time1").placeholder = t("timeFormat");
-      $("#time2").placeholder = t("timeFormat");
+      updatePrices();
       updateSummary();
       renderBooking();
+    }
+
+    function updatePrices() {
+      $$("[data-price-plan]").forEach((el) => {
+        el.textContent = formatMoney(planPrices[el.dataset.pricePlan]);
+      });
+      $$("[data-plan-label]").forEach((el) => {
+        el.textContent = planLabel(el.dataset.planLabel);
+      });
+      $("#chipPrice").textContent = `From ${formatMoney(planPrices["Basic Booking"])}`;
     }
 
     function openLanguage() {
@@ -1561,7 +1783,16 @@
       $$(".nav-btn").forEach((button) => button.classList.toggle("active", button.dataset.nav === view));
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
-    function setStep(step) {
+    function selectPlanAndBook(plan) {
+      const input = $(`input[name="plan"][value="${plan}"]`);
+      if (input) {
+        input.checked = true;
+        input.dispatchEvent(new Event("change", { bubbles: true }));
+      }
+      navigate("book");
+      setStep(1);
+      updateSummary();
+    }    function setStep(step) {
       state.step = Math.max(1, Math.min(3, step));
       $$(".form-step").forEach((el) => el.classList.toggle("active", Number(el.dataset.step) === state.step));
       const percent = Math.round((state.step / 3) * 100);
@@ -1570,6 +1801,27 @@
       $("#progressFill").style.width = `${percent}%`;
       updateSummary();
     }
+
+    function todayISO() {
+      const d = new Date();
+      d.setMinutes(d.getMinutes() - d.getTimezoneOffset());
+      return d.toISOString().slice(0, 10);
+    }
+    function formatDate(value) {
+      if (!value) return t("notAdded");
+      const [year, month, day] = value.split("-");
+      if (state.lang === "ko") return `${year}.${month}.${day}`;
+      if (state.lang === "fr") return `${day}/${month}/${year}`;
+      return `${year}/${month}/${day}`;
+    }
+    function formatTime(value) {
+      return value || "";
+    }
+    function displayDateTime(date, time) {
+      if (!date && !time) return t("notAdded");
+      return `${formatDate(date)} · ${formatTime(time) || "--:--"}`;
+    }
+
     function getData() {
       const plan = $("input[name='plan']:checked");
       return {
@@ -1578,47 +1830,65 @@
         placePhone: $("#placePhone").value.trim(),
         people: $("#people").value.trim(),
         reservationName: $("#reservationName").value.trim(),
-        date1: $("#date1").value.trim(),
-        time1: $("#time1").value.trim(),
-        date2: $("#date2").value.trim(),
-        time2: $("#time2").value.trim(),
+        fullName: $("#fullName").value.trim(),
+        passportNo: $("#passportNo").value.trim(),
+        birthDate: $("#birthDate").value,
+        gender: $("#gender").value,
+        procedureName: $("#procedureName").value.trim(),
+        symptoms: $("#symptoms").value.trim(),
+        requestTitle: $("#requestTitle").value.trim(),
+        otherNote: $("#otherNote").value.trim(),
+        date1: $("#date1").value,
+        time1: $("#time1").value,
+        date2: $("#date2").value,
+        time2: $("#time2").value,
         note: $("#note").value.trim(),
         messenger: $("#messenger").value,
         messengerId: $("#messengerId").value.trim(),
         plan: plan.value,
-        price: plan.dataset.price,
+        priceUsd: Number(plan.dataset.priceUsd),
         category: state.category
       };
     }
-    function displayDateTime(date, time) {
-      const d = date || t("dateFormat");
-      const tm = time || t("timeFormat");
-      return `${d} · ${tm}`;
-    }
-    function planDisplay(name) {
+
+    function categoryName(category) {
       const key = {
-        "Basic Booking": "planBasicName",
-        "Plus Booking": "planPlusName",
-        "Rush Booking": "planRushName"
-      }[name];
-      return key ? t(key) : name;
+        Restaurant: "catRestaurant",
+        Beauty: "catBeauty",
+        Clinic: "catClinic",
+        Other: "catOther"
+      }[category];
+      return t(key);
     }
+
     function updateSummary() {
       if (!$("#placeName")) return;
       const data = getData();
       const timeText = displayDateTime(data.date1, data.time1);
+      $("#sumPlan").textContent = planLabel(data.plan);
+      $("#sumType").textContent = categoryName(data.category);
       $("#sumPlace").textContent = data.placeName || t("notAdded");
       $("#sumTime").textContent = timeText;
-      $("#sumPeople").textContent = data.people || t("notAdded");
-      $("#sumPlan").textContent = `${planDisplay(data.plan)} · ${price(data.price)}`;
       $("#payPlace").textContent = data.placeName || t("notAdded");
       $("#payTime").textContent = timeText;
       $("#payMessenger").textContent = data.messenger;
-      $("#payTotal").textContent = price(data.price);
-      $("#sheetPlan").textContent = planDisplay(data.plan);
+      $("#payTotal").textContent = formatMoney(data.priceUsd);
+      $("#sheetPlan").textContent = planName(data.plan);
       $("#sheetPlace").textContent = data.placeName || t("notAdded");
-      $("#sheetTotal").textContent = price(data.price);
+      $("#sheetTotal").textContent = formatMoney(data.priceUsd);
     }
+
+    function updateCategoryFields() {
+      $$("[data-category-fields]").forEach((group) => {
+        const categories = group.dataset.categoryFields.split(" ");
+        const active = categories.includes(state.category);
+        group.hidden = !active;
+        group.querySelectorAll("[data-required]").forEach((field) => { field.disabled = !active; });
+      });
+      $$(".choice").forEach((item) => item.classList.toggle("selected", item.dataset.category === state.category));
+      updateSummary();
+    }
+
     function toast(message) {
       const el = $("#toast");
       el.textContent = message;
@@ -1626,13 +1896,41 @@
       clearTimeout(toast.timer);
       toast.timer = setTimeout(() => el.classList.remove("show"), 2200);
     }
+
+    function fieldsForCurrentStep() {
+      const stepEl = $(`.form-step[data-step="${state.step}"]`);
+      return Array.from(stepEl.querySelectorAll("[data-required]")).filter((field) => !field.disabled && !field.closest("[hidden]"));
+    }
+    function markField(field, invalid) {
+      const wrapper = field.closest(".field");
+      if (wrapper) wrapper.classList.toggle("invalid", invalid);
+    }
+    function validateStep() {
+      let valid = true;
+      fieldsForCurrentStep().forEach((field) => {
+        const missing = !String(field.value || "").trim();
+        const past = field.matches("[data-future-date]") && field.value && field.value < todayISO();
+        const invalid = missing || past;
+        markField(field, invalid);
+        if (invalid) valid = false;
+      });
+      if (!valid) toast(t("toastRequired"));
+      return valid;
+    }
+    function validateAllBeforePayment() {
+      const oldStep = state.step;
+      let valid = true;
+      [2, 3].forEach((step) => {
+        state.step = step;
+        if (!validateStep()) valid = false;
+      });
+      state.step = oldStep;
+      setStep(oldStep);
+      return valid;
+    }
+
     function openPayment() {
-      const data = getData();
-      if (!data.placeName) {
-        toast(t("toastMissing"));
-        setStep(1);
-        return;
-      }
+      if (!validateAllBeforePayment()) return;
       updateSummary();
       $("#paymentSheet").classList.add("open");
       $("#paymentSheet").setAttribute("aria-hidden", "false");
@@ -1641,21 +1939,22 @@
     function closePayment() {
       $("#paymentSheet").classList.remove("open");
       $("#paymentSheet").setAttribute("aria-hidden", "true");
-      if ($("#languageModal").classList.contains("hidden")) document.body.classList.remove("locked");
+      if ($("#languageModal").classList.contains("hidden") && !$("#infoModal").classList.contains("open")) document.body.classList.remove("locked");
     }
+
     function generateBookingNumber() {
       const now = new Date();
       const yy = String(now.getFullYear()).slice(-2);
       const mm = String(now.getMonth() + 1).padStart(2, "0");
       const dd = String(now.getDate()).padStart(2, "0");
       const rand = Math.floor(1000 + Math.random() * 9000);
-      return `SL-${yy}${mm}${dd}-${rand}`;
+      return `KA-${yy}${mm}${dd}-${rand}`;
     }
     function saveBooking(booking) {
-      const list = JSON.parse(localStorage.getItem("seoullyBookings") || "{}");
+      const list = JSON.parse(localStorage.getItem("kallBookings") || "{}");
       list[booking.bookingNo] = booking;
-      localStorage.setItem("seoullyBookings", JSON.stringify(list));
-      localStorage.setItem("seoullyLastBooking", JSON.stringify(booking));
+      localStorage.setItem("kallBookings", JSON.stringify(list));
+      localStorage.setItem("kallLastBooking", JSON.stringify(booking));
     }
     function createBooking() {
       if (!$("#policy1").checked || !$("#policy2").checked) {
@@ -1664,7 +1963,13 @@
       }
       const data = getData();
       const now = new Date();
-      const booking = { ...data, bookingNo: generateBookingNumber(), payMethod: state.selectedPay, createdAt: now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }) };
+      const booking = {
+        ...data,
+        bookingNo: generateBookingNumber(),
+        payMethod: state.selectedPay,
+        createdAt: now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
+        createdDate: now.toLocaleDateString()
+      };
       state.booking = booking;
       saveBooking(booking);
       renderBooking();
@@ -1673,8 +1978,10 @@
       copyBookingNumber(false);
       toast(`${t("toastCreated")} ${booking.bookingNo}`);
     }
+
     function renderBooking() {
       const booking = state.booking;
+      if (!$("#emptyStatus")) return;
       if (!booking) {
         $("#emptyStatus").hidden = false;
         $("#activeStatus").hidden = true;
@@ -1683,19 +1990,20 @@
       $("#emptyStatus").hidden = true;
       $("#activeStatus").hidden = false;
       const timeText = displayDateTime(booking.date1, booking.time1);
-      $("#bookingNo").textContent = `Seoully #${booking.bookingNo}`;
-      $("#statusMain").textContent = `${booking.placeName} · ${planDisplay(booking.plan)}`;
+      $("#bookingNo").textContent = `Kall #${booking.bookingNo}`;
+      $("#statusMain").textContent = `${booking.placeName} · ${planName(booking.plan)}`;
       $("#statusDesc").textContent = t("statusDescTemplate").replace("{messenger}", booking.messenger);
+      $("#statusType").textContent = categoryName(booking.category);
       $("#statusPlace").textContent = booking.placeName;
       $("#statusTime").textContent = timeText;
-      $("#statusPeople").textContent = booking.people;
       $("#statusMessenger").textContent = booking.messenger;
-      $("#statusPlan").textContent = `${planDisplay(booking.plan)} · ${price(booking.price)}`;
-      $("#tlPaymentSub").textContent = `${price(booking.price)} · ${booking.payMethod}`;
+      $("#statusPlan").textContent = planLabel(booking.plan);
+      $("#tlPaymentSub").textContent = `${formatMoney(booking.priceUsd)} · ${booking.payMethod}`;
       $("#tlTime1").textContent = booking.createdAt;
       $("#tlTime2").textContent = booking.createdAt;
       $("#lookupInput").value = booking.bookingNo;
     }
+
     async function copyBookingNumber(show = true) {
       if (!state.booking) return;
       try {
@@ -1711,81 +2019,9 @@
         if (show) toast(t("toastCopied"));
       }
     }
-    function captureReceipt() {
-      if (!state.booking) return;
-      const b = state.booking;
-      const canvas = document.createElement("canvas");
-      const w = 1080;
-      const h = 1520;
-      canvas.width = w;
-      canvas.height = h;
-      const ctx = canvas.getContext("2d");
-      const r = (x, y, rw, rh, rr) => {
-        ctx.beginPath();
-        ctx.moveTo(x + rr, y);
-        ctx.arcTo(x + rw, y, x + rw, y + rh, rr);
-        ctx.arcTo(x + rw, y + rh, x, y + rh, rr);
-        ctx.arcTo(x, y + rh, x, y, rr);
-        ctx.arcTo(x, y, x + rw, y, rr);
-        ctx.closePath();
-      };
-      const text = (value, x, y, size, weight = 700, color = "#101827") => {
-        ctx.fillStyle = color;
-        ctx.font = `${weight} ${size}px -apple-system, BlinkMacSystemFont, Segoe UI, Arial, sans-serif`;
-        ctx.fillText(value, x, y);
-      };
-      ctx.fillStyle = "#eef4ff";
-      ctx.fillRect(0, 0, w, h);
-      const grad = ctx.createLinearGradient(0, 0, w, h);
-      grad.addColorStop(0, "#ffffff");
-      grad.addColorStop(1, "#f7fbff");
-      r(80, 80, 920, 1360, 56);
-      ctx.fillStyle = grad;
-      ctx.fill();
-      ctx.shadowColor = "rgba(37,99,255,.18)";
-      ctx.shadowBlur = 38;
-      r(120, 120, 120, 120, 40);
-      ctx.fillStyle = "#2563ff";
-      ctx.fill();
-      ctx.shadowBlur = 0;
-      ctx.fillStyle = "#fff";
-      ctx.font = "900 70px Arial";
-      ctx.fillText("S", 160, 200);
-      text("Seoully", 270, 170, 48, 900);
-      text(t("receiptSubtitle"), 270, 222, 27, 700, "#64748b");
-      text(`${t("receiptBookingPrefix")} #${b.bookingNo}`, 120, 350, 56, 900);
-      text(t("receiptHelp"), 120, 402, 28, 700, "#64748b");
-      const rows = [
-        [t("sumPlace"), b.placeName],
-        [t("sumTime"), displayDateTime(b.date1, b.time1)],
-        [t("sumPeople"), b.people || t("notAdded")],
-        [t("messengerLabel"), b.messenger],
-        [t("sumPlan"), `${planDisplay(b.plan)} · ${price(b.price)}`],
-        [t("receiptPaidWith"), b.payMethod],
-        [t("receiptStatusLabel"), t("receiptStatusValue")]
-      ];
-      let y = 520;
-      rows.forEach(([label, value]) => {
-        r(120, y - 48, 840, 92, 26);
-        ctx.fillStyle = "#f8fafc";
-        ctx.fill();
-        text(label, 150, y + 6, 26, 800, "#64748b");
-        text(String(value).slice(0, 38), 420, y + 6, 28, 900, "#101827");
-        y += 112;
-      });
-      text(t("receiptFooter"), 120, 1350, 27, 700, "#64748b");
-      const url = canvas.toDataURL("image/png");
-      const link = document.createElement("a");
-      link.href = url;
-      link.download = `seoully-${b.bookingNo}.png`;
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
-      toast(t("toastSaved"));
-    }
     function lookupBooking() {
       const no = $("#lookupInput").value.trim().toUpperCase();
-      const list = JSON.parse(localStorage.getItem("seoullyBookings") || "{}");
+      const list = JSON.parse(localStorage.getItem("kallBookings") || "{}");
       if (list[no]) {
         state.booking = list[no];
         renderBooking();
@@ -1794,28 +2030,97 @@
       }
     }
 
+    function detailRows(booking) {
+      const rows = [
+        [t("sumType"), categoryName(booking.category)],
+        [t("sumPlace"), booking.placeName],
+        [t("placeLinkLabel"), booking.placeLink],
+        [t("sumTime"), displayDateTime(booking.date1, booking.time1)],
+        [t("date2Label"), displayDateTime(booking.date2, booking.time2)]
+      ];
+      if (booking.category === "Restaurant") {
+        rows.push([t("peopleLabel"), booking.people], [t("reservationNameLabel"), booking.reservationName], [t("noteLabel"), booking.note || t("notAdded")]);
+      } else if (booking.category === "Beauty" || booking.category === "Clinic") {
+        rows.push([t("fullNameLabel"), booking.fullName], [t("passportNoLabel"), booking.passportNo], [t("birthDateLabel"), formatDate(booking.birthDate)], [t("genderLabel"), booking.gender], [t("procedureNameLabel"), booking.procedureName], [t("symptomsLabel"), booking.symptoms]);
+      } else {
+        rows.push([t("requestTitleLabel"), booking.requestTitle], [t("otherNoteLabel"), booking.otherNote]);
+      }
+      rows.push([t("messengerLabel"), `${booking.messenger} · ${booking.messengerId}`]);
+      return rows;
+    }
+    function rowsHtml(rows) {
+      return `<div class="summary">${rows.map(([label, value]) => `<div class="summary-row"><span>${label}</span><b>${String(value || t("notAdded")).replace(/[<>]/g, "")}</b></div>`).join("")}</div>`;
+    }
+    function openInfoModal(kind) {
+      if (!state.booking) return;
+      const b = state.booking;
+      const title = kind === "receipt" ? t("receiptTitle") : t("requestTitle");
+      $("#toast").classList.remove("show");
+      $("#modalTitle").textContent = title;
+      if (kind === "receipt") {
+        $("#modalBody").innerHTML = `
+          <div class="receipt-paper">
+            <div class="receipt-logo"><b>Kall</b><span>${b.createdDate} ${b.createdAt}</span></div>
+            <div class="summary-row"><span>${t("receiptBookingPrefix") || "Booking"} #</span><b>${b.bookingNo}</b></div>
+            ${rowsHtml([
+              [t("paymentSummaryPlan"), planName(b.plan)],
+              [t("paymentSummaryPlace"), b.placeName],
+              [t("receiptPaidWith"), b.payMethod],
+              [t("receiptStatusLabel"), t("receiptStatusValue")]
+            ])}
+            <div class="receipt-total"><span>${t("paymentSummaryTotal")}</span><b>${formatMoney(b.priceUsd)}</b></div>
+          </div>`;
+      } else {
+        $("#modalBody").innerHTML = rowsHtml(detailRows(b));
+      }
+      $("#infoModal").classList.add("open");
+      $("#infoModal").setAttribute("aria-hidden", "false");
+      document.body.classList.add("locked");
+    }
+    function closeInfoModal() {
+      $("#infoModal").classList.remove("open");
+      $("#infoModal").setAttribute("aria-hidden", "true");
+      if ($("#languageModal").classList.contains("hidden") && !$("#paymentSheet").classList.contains("open")) document.body.classList.remove("locked");
+    }
+
     $$(".lang-option").forEach((btn) => btn.addEventListener("click", () => applyLanguage(btn.dataset.lang)));
     $("#startApp").addEventListener("click", closeLanguage);
     $("#openLanguage").addEventListener("click", openLanguage);
     $$("[data-nav]").forEach((btn) => btn.addEventListener("click", (e) => { e.preventDefault(); navigate(btn.dataset.nav); }));
-    $$("[data-next-step]").forEach((btn) => btn.addEventListener("click", () => setStep(state.step + 1)));
+    $$("[data-select-plan]").forEach((card) => {
+      card.addEventListener("click", () => selectPlanAndBook(card.dataset.selectPlan));
+      card.addEventListener("keydown", (event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); selectPlanAndBook(card.dataset.selectPlan); } });
+    });
+    $$("[data-next-step]").forEach((btn) => btn.addEventListener("click", () => { if (validateStep()) setStep(state.step + 1); }));
     $$("[data-prev-step]").forEach((btn) => btn.addEventListener("click", () => setStep(state.step - 1)));
-    $$(".choice").forEach((btn) => btn.addEventListener("click", () => { state.category = btn.dataset.category; $$(".choice").forEach((item) => item.classList.remove("selected")); btn.classList.add("selected"); }));
-    $$("input, select, textarea").forEach((field) => { field.addEventListener("input", updateSummary); field.addEventListener("change", updateSummary); });
+    $$(".choice").forEach((btn) => btn.addEventListener("click", () => { state.category = btn.dataset.category; updateCategoryFields(); }));
+    $$("input, select, textarea").forEach((field) => {
+      field.addEventListener("input", () => { markField(field, false); updateSummary(); });
+      field.addEventListener("change", () => { markField(field, false); updateSummary(); });
+    });
+    $$("input[name='plan']").forEach((field) => field.addEventListener("change", updateSummary));
     $$(".pay-method").forEach((btn) => btn.addEventListener("click", () => { state.selectedPay = btn.dataset.pay; $$(".pay-method").forEach((item) => item.classList.remove("selected")); btn.classList.add("selected"); }));
     $("#checkoutBtn").addEventListener("click", openPayment);
     $("#closePayment").addEventListener("click", closePayment);
     $("#paymentSheet").addEventListener("click", (e) => { if (e.target.id === "paymentSheet") closePayment(); });
     $("#payNowBtn").addEventListener("click", createBooking);
     $("#copyNoBtn").addEventListener("click", () => copyBookingNumber(true));
-    $("#captureBtn").addEventListener("click", captureReceipt);
     $("#lookupBtn").addEventListener("click", lookupBooking);
+    $$("[data-status-modal]").forEach((btn) => btn.addEventListener("click", () => openInfoModal(btn.dataset.statusModal)));
+    $("#closeInfoModal").addEventListener("click", closeInfoModal);
+    $("#infoModal").addEventListener("click", (e) => { if (e.target.id === "infoModal") closeInfoModal(); });
+
+    const minDate = todayISO();
+    $("#date1").min = minDate;
+    $("#date2").min = minDate;
+    $("#birthDate").max = minDate;
 
     try {
-      const saved = JSON.parse(localStorage.getItem("seoullyLastBooking"));
+      const saved = JSON.parse(localStorage.getItem("kallLastBooking"));
       if (saved && saved.bookingNo) state.booking = saved;
     } catch (error) {}
     applyLanguage(state.lang);
+    updateCategoryFields();
     setStep(1);
     renderBooking();
     openLanguage();
