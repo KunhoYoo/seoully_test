@@ -879,22 +879,25 @@
       backdrop-filter: none;
       transition: opacity .2s ease, visibility .2s ease;
     }
-    .language-modal::before {
-      content: "";
+    .language-bg {
       position: absolute;
       inset: 0;
       z-index: 0;
-      background: url("./background.png?v=3") center center / cover no-repeat;
-      opacity: .95;
-      filter: saturate(1.08) contrast(1.03);
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center bottom;
+      opacity: .44;
+      filter: saturate(1.08) contrast(1.04);
       pointer-events: none;
+      user-select: none;
     }
     .language-modal::after {
       content: "";
       position: absolute;
       inset: 0;
       z-index: 0;
-      background: linear-gradient(180deg, rgba(255,255,255,.48), rgba(255,255,255,.70));
+      background: linear-gradient(180deg, rgba(255,255,255,.50), rgba(255,255,255,.74));
       pointer-events: none;
     }
     .language-modal.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
@@ -997,6 +1000,13 @@
     }
     .toast.show { opacity: 1; transform: translate(-50%, 0); }
 
+    @media (min-aspect-ratio: 3/2) {
+      .language-bg { object-position: center 72%; }
+    }
+
+    @media (max-height: 700px) {
+      .language-bg { object-position: center 84%; opacity: .36; }
+    }
     @media (max-width: 360px) {
       .app { padding-left: 12px; padding-right: 12px; }
       .topbar { margin-left: -12px; margin-right: -12px; padding-left: 12px; padding-right: 12px; }
@@ -1050,6 +1060,7 @@
 </head>
 <body class="locked">
   <div class="language-modal" id="languageModal" role="dialog" aria-modal="true" aria-labelledby="languageTitle">
+    <img class="language-bg" src="./background.png?v=4" alt="" aria-hidden="true">
     <div class="language-panel">
       <div class="brand">
         <div class="brand-logo" aria-hidden="true">K</div>
